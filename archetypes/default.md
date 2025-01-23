@@ -1,5 +1,5 @@
 ---
-date: '{{ .Date | time.Format ":date_medium" }}' 
+date: '{{ .Date }}' 
 draft: true
 title: '{{ replace .File.ContentBaseName "-" " " | title }}'
 ---

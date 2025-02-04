@@ -2,14 +2,14 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>http://localhost:1313/posts/solid-principles/</loc>
+    <lastmod>2025-01-27T09:14:08+05:30</lastmod>
+  </url><url>
     <loc>http://localhost:1313/</loc>
-    <lastmod>2025-01-23T08:45:18+05:30</lastmod>
+    <lastmod>2025-01-27T09:14:08+05:30</lastmod>
   </url><url>
     <loc>http://localhost:1313/posts/</loc>
-    <lastmod>2025-01-23T08:45:18+05:30</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/posts/testingmarkdown/</loc>
-    <lastmod>2025-01-23T07:29:58+05:30</lastmod>
+    <lastmod>2025-01-27T09:14:08+05:30</lastmod>
   </url><url>
     <loc>http://localhost:1313/categories/</loc>
   </url><url>

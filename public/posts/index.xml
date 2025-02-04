@@ -6,7 +6,15 @@
     <description>Recent content in Posts on MangoDriod</description>
     <generator>Hugo -- 0.141.0</generator>
     <language>en-us</language>
-    <lastBuildDate></lastBuildDate>
+    <lastBuildDate>Mon, 27 Jan 2025 09:14:08 +0530</lastBuildDate>
     <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Exploring Solid Principles With kotlin</title>
+      <link>http://localhost:1313/posts/solid-principles/</link>
+      <pubDate>Mon, 27 Jan 2025 09:14:08 +0530</pubDate>
+      <guid>http://localhost:1313/posts/solid-principles/</guid>
+      <description>&lt;p&gt;| Learning SOLID principles is about writing code that survives the test of time — code that’s maintainable, scalable, and collaborative.&lt;/p&gt;
+&lt;p&gt;Uncle Bob&amp;rsquo;s SOLID principles are a set of design principles that help you write better software. They are a set of guidelines that help you write code that is easy to understand, maintain, and extend. They are a set of principles that help you write code that is easy to understand, maintain, and extend. They are a set of principles that help you write code that is easy to  understand, maintain, and extend. They are a set of principles that help you write code that is easy to understand, maintain, and extend.&lt;/p&gt;</description>
+    </item>
   </channel>
 </rss>

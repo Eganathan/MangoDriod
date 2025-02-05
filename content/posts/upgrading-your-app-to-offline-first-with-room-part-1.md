@@ -10,11 +10,11 @@ The whole idea of offline-first application is to persist the fetched data local
 
 ## Intro to Google Room's Persistence Library
 
- Google Room's Persistence Library is built on top of SQLite that provides a more convenient and structured way to manage your app's local database. It lets you work with your data as Kotlin objects (data classes) instead of manually formulating them using SQL queries, which itself is a tedious task prone to many errors. 
- 
+ Google Room's Persistence Library is built on top of SQLite that provides a more convenient and structured way to manage your app's local database. It lets you work with your data as Kotlin objects (data classes) instead of manually formulating them using SQL queries, which itself is a tedious task prone to many errors.
+
  Room also simplifies interactions with the database with many great features like validating the queries, seamless integration with Kotlin Flow, paging, LiveData, and many more. These features make Room the most preferred option for offline-first apps, as it expedites the process and helps us to avoid issues early in the development cycle, lets just begin by setting up:
 
-## Setup:
+## Setup
 
 Since Google has the best article for setting up, I will be skipping the setup up
 Dependency setup: [Official Guide on Setting up Room Dependencies and plugins](https://developer.android.com/jetpack/androidx/releases/room)
@@ -77,7 +77,7 @@ interface HabitTrackerDao {
     suspend fun delete(habitTracker: LocalHabitTracker)
 }```
 
-As you can see in the above snippet, Room simplifies the process of implementing an offline-first app. Though it looks simple, don't assume that Room is only for simple use cases; I have kept it minimal to not overcomplicate it. We will definitely go through the complex use cases in the upcoming articles.
+As you can see in the above snippet, Room simplifies the process of implementing an offline-first app. Though it looks simple, don't assume that Room is only for simple use cases; I have kept it minimal to not overcompensate it. We will definitely go through the complex use cases in the upcoming articles.
 
 The interface annotated with @Dao is typically called Dao's; here our Dao is called HabitTrackerDao.''It is preferred to name your Dao with a postfix 'Dao.'.
 
@@ -130,7 +130,7 @@ Hooray! Finally, we are here. You can build it for accessing the database and in
        
         setContent {
             AppTheme {
-                AppNav(activity = this, habbitLocalService = habitTrackerDao)
+                AppNav(activity = this, habitLocalService = habitTrackerDao)
             }
         }
     }
@@ -144,4 +144,4 @@ This is a simple implementation, but a typical app developer would use a DI. Whe
 
 Thanks for reading so far. While this already feels like a lot, these could be enough for your first simple projects, but there are a lot of other interesting cases we have not yet talked about, like @RawQuery, Junctions, TableViews, and many more, which we shall discuss in the next article.
 
-feel free to share your feedbacks and suggestions below
+feel free to share your feedbacks and suggestions below.

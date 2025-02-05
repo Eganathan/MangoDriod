@@ -1,6 +1,6 @@
 ---
 date: '2025-01-27T09:14:08+05:30' 
-draft: false
+draft: true
 title: 'Exploring Solid Principles With kotlin'
 ---
 

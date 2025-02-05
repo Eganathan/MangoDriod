@@ -15,13 +15,5 @@
       <guid>https://md.eknath.dev/posts/upgrading-your-app-to-offline-first-with-room-part-1/</guid>
       <description>&lt;p&gt;Making your app Offline first is extremely essential if you intend to provide a better user experience for your users, but not just that it makes your app faster by reduce the number of network call which in turn also reduces the running cost of servers significantly, i can yap more about why this is good but since you have already decided to invest in this lets skip this for now.&lt;/p&gt;</description>
     </item>
-    <item>
-      <title>Exploring Solid Principles With kotlin</title>
-      <link>https://md.eknath.dev/posts/solid-principles/</link>
-      <pubDate>Mon, 27 Jan 2025 09:14:08 +0530</pubDate>
-      <guid>https://md.eknath.dev/posts/solid-principles/</guid>
-      <description>&lt;p&gt;Uncle Bob&amp;rsquo;s SOLID principles are a set of design principles that help you write better software in Object Oriented Programming paradagime. They are a set of guidelines that help you write code that is easy to understand, maintain, and extend. This is a one liner that you can expect from any Developer but we are going to dig a little deeper into each principles one by one.&lt;/p&gt;
-&lt;p&gt;Kotlin offers both Functional and OOPS paradagimes which gives us the developers an edge on understanding this much faster:&lt;/p&gt;</description>
-    </item>
   </channel>
 </rss>

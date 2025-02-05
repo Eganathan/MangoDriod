@@ -2,3 +2,56 @@ baseURL: "https://md.eknath.dev"
 languageCode: en-us
 title: MangoDriod
 theme: ["PaperMod"]
+powered: "no"
+
+menu:
+  main:
+    - identifier: "categories"
+      name: Categories
+      url: /categories/
+      weight: 10
+    - identifier: "tags"
+      name: Tags
+      url: /tags/
+      weight: 20
+    - identifier: "archives"
+      name: Archives
+      url: /archives/
+      weight: 30
+      
+
+params:
+  hideFooter: true
+  defaultTheme: auto 
+  homeInfoParams:
+    Title: Hi there 👋
+    Content: Welcome to MangoDriod, my personal blog. I am Eknath, a software engineer and a tech enthusiast. I write about software development, tech, and other things that interest me.
+
+  socialIcons:
+    - name: "X"
+      url: "https://x.com/eknath_dev"
+    - name: "Github"
+      url: "https://github.com/Eganathan"
+    - name: "Linkedin"
+      url: "http://linkedin.com/in/eganathan/"
+    - name: "Socials"
+      url: "https://eknath.dev/"
+
+  ShowCodeCopyButtons: true
+  comments: true
+  
+  ShowShareButtons: true
+  ShowReadingTime: true
+  
+  ShowToc: true
+  TocOpen: true
+
+  ShowBreadCrumbs: true
+
+  ShowPostNavLinks: true # Next and Previous Posts navigation
+  
+outputs:
+  home:
+  - HTML
+  - RSS
+  - JSON # necessary for search

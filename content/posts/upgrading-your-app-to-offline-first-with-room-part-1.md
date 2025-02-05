@@ -75,7 +75,8 @@ interface HabitTrackerDao {
     // Deletes the row from the table
     @Delete
     suspend fun delete(habitTracker: LocalHabitTracker)
-}```
+}
+```
 
 As you can see in the above snippet, Room simplifies the process of implementing an offline-first app. Though it looks simple, don't assume that Room is only for simple use cases; I have kept it minimal to not overcompensate it. We will definitely go through the complex use cases in the upcoming articles.
 
@@ -103,7 +104,8 @@ abstract class HabitTrackerDataBase() : RoomDatabase() {
     //Add all your Dao's here that you want to access
 
     
-}```
+}
+```
 
 This might be a little tricky, but it's pretty simple. We are creating an abstract class that extends the RoomDatabase and also annotating it with @Database to represent the class as a database and letting the room compiler know that this is one of the databases and the declared entities inside the array are to be associated with this database, and this serves as an entry point to the database.
 
@@ -134,7 +136,8 @@ Hooray! Finally, we are here. You can build it for accessing the database and in
             }
         }
     }
-}```
+}
+```
 
 We are using the DatabaseBuilder function from the Room Companion object to build our database; the result of the build is our own implementation of the requested database, with which we can get the implementation of our DAO's from Room and do our interactions... 
 

@@ -29,7 +29,8 @@ Primarily, there are three important components: Entity, DAO's, and Database, Th
 
 Any class annotated with @Entity is an entity, and those classes represent a table in the database. Here is an example of what a simple entity would look like:
 
-```@Entity
+```kotlin
+@Entity
 data class LocalHabitTracker(
     @PrimaryKey(autoGenerate = true) val id: Long,
     val associatedHabitId: Long,
@@ -49,7 +50,8 @@ The entity can be further modified with a custom name for the table, indexing, c
 
 Short for Data Access Object, as the name suggests, this is the interface between the developer and Room for accessing the tables in a safe and simplified way. It's basically an interface with an annotation with @Dao; inside you can use Room query annotations to access and modify the tables as per your requirements. Here is a sample code snippet of how a DAO for our case will look like:
 
-```@Dao
+```kotlin
+@Dao
 interface HabitTrackerDao {
 
     //Query to get all the habit trackers
@@ -92,7 +94,8 @@ Now we have tables or entities and the DAOs that enable us to access and interac
 
 Take a look at the following code snippet of our simple database:
 
-```@Database(
+```kotlin
+@Database(
     entities = [LocalHabitTracker::class], // Add all your entities here
     version = 1,//version of the database,update this once you make changes to the schema(Entity) of the database
 )
@@ -114,7 +117,8 @@ The entities array as of now has only one entity for simplicity, so don't forget
 Manually Creating a Database and Interacting
 Hooray! Finally, we are here. You can build it for accessing the database and interacting with it easily. Do check out the code below; it shows a simple manual creation of the database. 
 
-```class MainActivity : AppCompatActivity() {
+```kotlin
+class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

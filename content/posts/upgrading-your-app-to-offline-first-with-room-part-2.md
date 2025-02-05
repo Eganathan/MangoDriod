@@ -1,7 +1,7 @@
 ---
 date: '2025-02-05T13:02:29+05:30' 
-draft: false
-title: 'SetUp and key components of Room (OfflineFirst Part 2)'
+draft: true
+title: 'Setting up Room and exploring its Key components (#OFWR-02)'
 ---
 
 Previously we discussed about the strategies and picked Google's Room Library,so now lets get started with setting up the library and discuss about the key components of room.

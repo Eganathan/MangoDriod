@@ -1,7 +1,7 @@
 ---
 date: '2025-02-05T09:23:57+05:30' 
 draft: false
-title: 'Upgrading Your App to Offline First With Room Part 1'
+title: 'Upgrading Your App to Offline First With Room Part 1 (#OFWR1)'
 ---
 
 Making your app Offline first is extremely essential if you intend to provide the best user experience for your users,it makes your app significantly faster by reduce the number of network call which in turn also reduces the running cost of servers, i can still yap a lot more about why this is must but since you have already decided to invest in this lets focus on the core topic.

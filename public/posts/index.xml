@@ -6,8 +6,19 @@
     <description>Recent content in Posts on MangoDriod</description>
     <generator>Hugo -- 0.141.0</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 05 Feb 2025 09:23:57 +0530</lastBuildDate>
+    <lastBuildDate>Wed, 05 Feb 2025 13:02:29 +0530</lastBuildDate>
     <atom:link href="https://md.eknath.dev/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Upgrading Your App to Offline First With Room Part 2 (Key Components of Room)</title>
+      <link>https://md.eknath.dev/posts/upgrading-your-app-to-offline-first-with-room-part-2/</link>
+      <pubDate>Wed, 05 Feb 2025 13:02:29 +0530</pubDate>
+      <guid>https://md.eknath.dev/posts/upgrading-your-app-to-offline-first-with-room-part-2/</guid>
+      <description>&lt;p&gt;Previously we discussed about the strategies and picked Google&amp;rsquo;s Room Library,so now lets get started with setting up the library and discuss about the key components of room.&lt;/p&gt;
+&lt;h2 id=&#34;setup&#34;&gt;Setup&lt;/h2&gt;
+&lt;p&gt;Since Google has the best article for setting up, I will be skipping the setup up
+Dependency setup: &lt;a href=&#34;https://developer.android.com/jetpack/androidx/releases/room&#34;&gt;Official Guide on Setting up Room Dependencies and plugins&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Please do ensure you follow the above guide and then sync and build your project successfully, as it will help you to try out the components yourself. In this article, my intention is to explore the key components of Room, a bare minimum you need to know to implement a simple offline-first app. For a detailed and more complex use case, check out my upcoming article.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Upgrading Your App to Offline First With Room Part 1</title>
       <link>https://md.eknath.dev/posts/upgrading-your-app-to-offline-first-with-room-part-1/</link>

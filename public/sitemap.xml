@@ -3,10 +3,13 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://md.eknath.dev/</loc>
-    <lastmod>2025-02-05T09:23:57+05:30</lastmod>
+    <lastmod>2025-02-05T13:02:29+05:30</lastmod>
   </url><url>
     <loc>https://md.eknath.dev/posts/</loc>
-    <lastmod>2025-02-05T09:23:57+05:30</lastmod>
+    <lastmod>2025-02-05T13:02:29+05:30</lastmod>
+  </url><url>
+    <loc>https://md.eknath.dev/posts/upgrading-your-app-to-offline-first-with-room-part-2/</loc>
+    <lastmod>2025-02-05T13:02:29+05:30</lastmod>
   </url><url>
     <loc>https://md.eknath.dev/posts/upgrading-your-app-to-offline-first-with-room-part-1/</loc>
     <lastmod>2025-02-05T09:23:57+05:30</lastmod>

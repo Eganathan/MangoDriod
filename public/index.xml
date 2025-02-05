@@ -2,22 +2,27 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>MangoDriod</title>
-    <link>http://localhost:1313/</link>
+    <link>https://md.eknath.dev/</link>
     <description>Recent content on MangoDriod</description>
     <generator>Hugo -- 0.141.0</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 27 Jan 2025 09:14:08 +0530</lastBuildDate>
-    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 05 Feb 2025 09:23:57 +0530</lastBuildDate>
+    <atom:link href="https://md.eknath.dev/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Upgrading Your App to Offline First With Room Part 1</title>
+      <link>https://md.eknath.dev/posts/upgrading-your-app-to-offline-first-with-room-part-1/</link>
+      <pubDate>Wed, 05 Feb 2025 09:23:57 +0530</pubDate>
+      <guid>https://md.eknath.dev/posts/upgrading-your-app-to-offline-first-with-room-part-1/</guid>
+      <description>&lt;p&gt;Room is a library built on top of SQLite that provides a more convenient and structured way to manage your app&amp;rsquo;s local database. It lets you work with your data as Kotlin objects (data classes) instead of manually formulating them using SQL queries, which itself is a tedious task prone to many errors.&lt;/p&gt;
+&lt;p&gt;It also simplifies interactions with the database with many great features like validating the queries, seamless integration with Kotlin Flow, paging, LiveData, and many more. These features make Room the most preferred option for offline-first apps, as it expedites the process and helps us to avoid issues early in the development cycle.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Exploring Solid Principles With kotlin</title>
-      <link>http://localhost:1313/posts/solid-principles/</link>
+      <link>https://md.eknath.dev/posts/solid-principles/</link>
       <pubDate>Mon, 27 Jan 2025 09:14:08 +0530</pubDate>
-      <guid>http://localhost:1313/posts/solid-principles/</guid>
-      <description>&lt;p&gt;Uncle Bob&amp;rsquo;s SOLID principles are a set of design principles that help you write better software. They are a set of guidelines that help you write code that is easy to understand, maintain, and extend.&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Learning SOLID principles is about writing code that survives the test of time — code that’s maintainable, scalable, and collaborative. - Deep Seek v3&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;They are a set of principles that help you write code that is easy to understand, maintain, and extend. They are a set of principles that help you write code that is easy to  understand, maintain, and extend. They are a set of principles that help you write code that is easy to understand, maintain, and extend.&lt;/p&gt;</description>
+      <guid>https://md.eknath.dev/posts/solid-principles/</guid>
+      <description>&lt;p&gt;Uncle Bob&amp;rsquo;s SOLID principles are a set of design principles that help you write better software in Object Oriented Programming paradagime. They are a set of guidelines that help you write code that is easy to understand, maintain, and extend. This is a one liner that you can expect from any Developer but we are going to dig a little deeper into each principles one by one.&lt;/p&gt;
+&lt;p&gt;Kotlin offers both Functional and OOPS paradagimes which gives us the developers an edge on understanding this much faster:&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

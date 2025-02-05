@@ -3,13 +3,19 @@ date: '2025-02-05T09:23:57+05:30'
 draft: false
 title: 'Upgrading Your App to Offline First With Room Part 1'
 ---
+ 
+Making your app Offline first is extremely essential if you intend to provide a better user experience for your users, but not just that it makes your app faster by reduce the number of network call which in turn also reduces the running cost of servers significantly, i can yap more about why this is good but since you have already decided to invest in this lets skip this for now.
 
-Room is a library built on top of SQLite that provides a more convenient and structured way to manage your app's local database. It lets you work with your data as Kotlin objects (data classes) instead of manually formulating them using SQL queries, which itself is a tedious task prone to many errors. 
+The whole idea of offline-first application is to persist the fetched data locally, there is wide verity of options to choose from but we are going to stick with Google Room's Persistence Library as its most preferred option for Android and KMP projects due to its simplicity to use.
 
-It also simplifies interactions with the database with many great features like validating the queries, seamless integration with Kotlin Flow, paging, LiveData, and many more. These features make Room the most preferred option for offline-first apps, as it expedites the process and helps us to avoid issues early in the development cycle.
+## Intro to Google Room's Persistence Library
+ Google Room's Persistence Library is built on top of SQLite that provides a more convenient and structured way to manage your app's local database. It lets you work with your data as Kotlin objects (data classes) instead of manually formulating them using SQL queries, which itself is a tedious task prone to many errors. 
+ 
+ Room also simplifies interactions with the database with many great features like validating the queries, seamless integration with Kotlin Flow, paging, LiveData, and many more. These features make Room the most preferred option for offline-first apps, as it expedites the process and helps us to avoid issues early in the development cycle, lets just begin by setting up:
 
+## Setup:
 Since Google has the best article for setting up, I will be skipping the setup up
-Dependency setup: Official Guide on Setting up Room Dependencies and plugins 
+Dependency setup: [Official Guide on Setting up Room Dependencies and plugins](https://developer.android.com/jetpack/androidx/releases/room)
 
 Please do ensure you follow the above guide and then sync and build your project successfully, as it will help you to try out the components yourself. In this article, my intention is to explore the key components of Room, a bare minimum you need to know to implement a simple offline-first app. For a detailed and more complex use case, check out my upcoming article.
 
@@ -135,4 +141,4 @@ This is a simple implementation, but a typical app developer would use a DI. Whe
 
 Thanks for reading so far. While this already feels like a lot, these could be enough for your first simple projects, but there are a lot of other interesting cases we have not yet talked about, like @RawQuery, Junctions, TableViews, and many more, which we shall discuss in the next article.
 
-feel free to share your feedacks and suggestions below
+feel free to share your feedbacks and suggestions below

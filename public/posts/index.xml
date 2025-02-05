@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Posts on MangoDriod</title>
-    <link>http://localhost:1313/posts/</link>
+    <link>https://md.eknath.dev/posts/</link>
     <description>Recent content in Posts on MangoDriod</description>
     <generator>Hugo -- 0.141.0</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 05 Feb 2025 09:23:57 +0530</lastBuildDate>
-    <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://md.eknath.dev/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Upgrading Your App to Offline First With Room Part 1</title>
-      <link>http://localhost:1313/posts/upgrading-your-app-to-offline-first-with-room-part-1/</link>
+      <link>https://md.eknath.dev/posts/upgrading-your-app-to-offline-first-with-room-part-1/</link>
       <pubDate>Wed, 05 Feb 2025 09:23:57 +0530</pubDate>
-      <guid>http://localhost:1313/posts/upgrading-your-app-to-offline-first-with-room-part-1/</guid>
-      <description>&lt;p&gt;Making your app Offline first is extremely essential if you intend to provide a better user experience for your users, but not just that it makes your app faster by reduce the number of network call which in turn also reduces the running cost of servers significantly, i can yap more about why this is good but since you have already decided to invest in this lets skip this for now.&lt;/p&gt;</description>
+      <guid>https://md.eknath.dev/posts/upgrading-your-app-to-offline-first-with-room-part-1/</guid>
+      <description>&lt;p&gt;Making your app Offline first is extremely essential if you intend to provide a better user experience for your users, but not just that it makes your app faster by reduce the number of network call which in turn also reduces the running cost of servers significantly, i can yap more about why this is must but since you have already decided to invest in this lets skip it for now.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

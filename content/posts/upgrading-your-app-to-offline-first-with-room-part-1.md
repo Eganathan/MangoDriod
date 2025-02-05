@@ -9,23 +9,27 @@ Making your app Offline first is extremely essential if you intend to provide a 
 The whole idea of offline-first application is to persist the fetched data locally, there is wide verity of options to choose from but we are going to stick with Google Room's Persistence Library as its most preferred option for Android and KMP projects due to its simplicity to use.
 
 ## Intro to Google Room's Persistence Library
+
  Google Room's Persistence Library is built on top of SQLite that provides a more convenient and structured way to manage your app's local database. It lets you work with your data as Kotlin objects (data classes) instead of manually formulating them using SQL queries, which itself is a tedious task prone to many errors. 
  
  Room also simplifies interactions with the database with many great features like validating the queries, seamless integration with Kotlin Flow, paging, LiveData, and many more. These features make Room the most preferred option for offline-first apps, as it expedites the process and helps us to avoid issues early in the development cycle, lets just begin by setting up:
 
 ## Setup:
+
 Since Google has the best article for setting up, I will be skipping the setup up
 Dependency setup: [Official Guide on Setting up Room Dependencies and plugins](https://developer.android.com/jetpack/androidx/releases/room)
 
 Please do ensure you follow the above guide and then sync and build your project successfully, as it will help you to try out the components yourself. In this article, my intention is to explore the key components of Room, a bare minimum you need to know to implement a simple offline-first app. For a detailed and more complex use case, check out my upcoming article.
 
 ## Key Components
+
 Primarily, there are three important components: Entity, DAO's, and Database, The entity represent a table. Dao's are an interface to write queries and define your operations. The database is where you associate your entities and include the dao's you would like to access from outside; hence, it's the entry point of your database. Let's check it out one by one:
 
 ### Entity
+
 Any class annotated with @Entity is an entity, and those classes represent a table in the database. Here is an example of what a simple entity would look like:
-```
-@Entity
+
+```@Entity
 data class LocalHabitTracker(
     @PrimaryKey(autoGenerate = true) val id: Long,
     val associatedHabitId: Long,
@@ -39,12 +43,13 @@ An entity must have a minimum of one parameter that is annotated with @PrimaryKe
 
 You can set the autogenerate to true just like the above code snippet. Ensure the type is primitive; I prefer Long, but if you are expecting very few entries, you can use Short; otherwise, you decide it according to your needs. If you have no clue, then stick with Long.
 
-The entity can be further modified with a custom name for the table, indexing, custom column names, etc. We can discuss those in the upcoming articles. 
+The entity can be further modified with a custom name for the table, indexing, custom column names, etc. We can discuss those in the upcoming articles.
 
 ### DAOs
+
 Short for Data Access Object, as the name suggests, this is the interface between the developer and Room for accessing the tables in a safe and simplified way. It's basically an interface with an annotation with @Dao; inside you can use Room query annotations to access and modify the tables as per your requirements. Here is a sample code snippet of how a DAO for our case will look like:
-```
-@Dao
+
+```@Dao
 interface HabitTrackerDao {
 
     //Query to get all the habit trackers
@@ -70,8 +75,7 @@ interface HabitTrackerDao {
     // Deletes the row from the table
     @Delete
     suspend fun delete(habitTracker: LocalHabitTracker)
-}
-```
+}```
 
 As you can see in the above snippet, Room simplifies the process of implementing an offline-first app. Though it looks simple, don't assume that Room is only for simple use cases; I have kept it minimal to not overcomplicate it. We will definitely go through the complex use cases in the upcoming articles.
 
@@ -81,12 +85,13 @@ I would highly recommend you access only one entity (table) in a single DAO, but
 
  Do note There is no restriction on the number of Dao's you can have; just ensure the names don't conflict with each other, and the minimum target can handle it (no need to worry if your entities are less than 50).
 
-### Database 
+### Database
+
 Now we have tables or entities and the DAOs that enable us to access and interact with the tables. Now, there can be multiple databases in an Android app, so how does Room know that the entity and DAO are part of which database? That's exactly what we are going to define next.
 
 Take a look at the following code snippet of our simple database:
-```
-@Database(
+
+```@Database(
     entities = [LocalHabitTracker::class], // Add all your entities here
     version = 1,//version of the database,update this once you make changes to the schema(Entity) of the database
 )
@@ -98,8 +103,7 @@ abstract class HabitTrackerDataBase() : RoomDatabase() {
     //Add all your Dao's here that you want to access
 
     
-}
-```
+}```
 
 This might be a little tricky, but it's pretty simple. We are creating an abstract class that extends the RoomDatabase and also annotating it with @Database to represent the class as a database and letting the room compiler know that this is one of the databases and the declared entities inside the array are to be associated with this database, and this serves as an entry point to the database.
 
@@ -108,8 +112,7 @@ The entities array as of now has only one entity for simplicity, so don't forget
 Manually Creating a Database and Interacting
 Hooray! Finally, we are here. You can build it for accessing the database and interacting with it easily. Do check out the code below; it shows a simple manual creation of the database. 
 
-```
-class MainActivity : AppCompatActivity() {
+```class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -131,8 +134,8 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
-}
-```
+}```
+
 We are using the DatabaseBuilder function from the Room Companion object to build our database; the result of the build is our own implementation of the requested database, with which we can get the implementation of our DAO's from Room and do our interactions... 
 
 Do ensure you don't use the UI thread for accessing the database, as it can cause issues; otherwise, you should not have any other issue, but if you face any issue, feel free to start a discussion below:

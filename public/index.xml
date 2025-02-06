@@ -24,7 +24,9 @@ Dependency setup: &lt;a href=&#34;https://developer.android.com/jetpack/androidx
       <link>http://localhost:1313/posts/upgrading-your-app-to-offline-first-with-room-part-1/</link>
       <pubDate>Wed, 05 Feb 2025 09:23:57 +0530</pubDate>
       <guid>http://localhost:1313/posts/upgrading-your-app-to-offline-first-with-room-part-1/</guid>
-      <description>&lt;p&gt;Making your app Offline first is extremely essential if you intend to provide the best user experience for your users,it makes your app significantly faster by reduce the number of network call which in turn also reduces the running cost of servers, i can still yap a lot more about why this is must but since you have already decided to invest in this lets focus on the core topic.&lt;/p&gt;</description>
+      <description>&lt;h2 id=&#34;why-should-you-care&#34;&gt;Why Should You Care?&lt;/h2&gt;
+&lt;p&gt;Making your app &lt;strong&gt;offline-first&lt;/strong&gt; is essential if you want to provide the &lt;strong&gt;best user experience&lt;/strong&gt;. It makes your app significantly &lt;strong&gt;faster&lt;/strong&gt; by reducing the number of network calls, which in turn also &lt;strong&gt;reduces server costs&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;The core idea of an offline-first app is to &lt;strong&gt;persist/store remote-fetched data on the device&lt;/strong&gt;. This allows users to access the data &lt;strong&gt;instantly&lt;/strong&gt;, skipping unnecessary network requests—until the data expires or is invalidated.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

@@ -152,6 +152,6 @@ This is my journey in **building an offline-first app**. I’d love to hear your
 
 Feel free to connect with me on:  
 📩 **[Email](mailto:mail@eknath.dev)**  
-🌍 **[Website](https://ekanth.dev)**  
+🌍 **[Website](https://eknath.dev)**  
 
 🚀 **Stay tuned for Part 2!** 🚀  

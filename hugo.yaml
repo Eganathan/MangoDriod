@@ -48,7 +48,7 @@ params:
   ShowReadingTime: true
   
   ShowToc: true
-  TocOpen: true
+  TocOpen: false
 
   ShowBreadCrumbs: true
 

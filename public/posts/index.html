@@ -145,6 +145,50 @@ What does Offline-First mean? The core idea is to persist/store remote-fetched d
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">Exploring some Key Components of Room (#OF03)
+      <span class="entry-hint" title="Draft">
+        <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" fill="currentColor">
+          <path
+            d="M160-410v-60h300v60H160Zm0-165v-60h470v60H160Zm0-165v-60h470v60H160Zm360 580v-123l221-220q9-9 20-13t22-4q12 0 23 4.5t20 13.5l37 37q9 9 13 20t4 22q0 11-4.5 22.5T862.09-380L643-160H520Zm300-263-37-37 37 37ZM580-220h38l121-122-18-19-19-18-122 121v38Zm141-141-19-18 37 37-18-19Z" />
+        </svg>
+      </span>
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Key Components Primarily, there are three important components: Entity, DAO’s, and Database, The entity represent a table. Dao’s are an interface to write queries and define your operations. The database is where you associate your entities and include the dao’s you would like to access from outside; hence, it’s the entry point of your database. Let’s check it out one by one:
+Entity Any class annotated with @Entity is an entity, and those classes represent a table in the database. Here is an example of what a simple entity would look like:
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2025-02-08 11:23:17 +0530 IST'>February 8, 2025</span>&nbsp;·&nbsp;6 min</footer>
+  <a class="entry-link" aria-label="post link to Exploring some Key Components of Room (#OF03)" href="http://localhost:1313/posts/upgrading-your-app-to-offline-first-with-room-part-3/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Setting-up Room Library and its dependencies(#OF02)
+      <span class="entry-hint" title="Draft">
+        <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" fill="currentColor">
+          <path
+            d="M160-410v-60h300v60H160Zm0-165v-60h470v60H160Zm0-165v-60h470v60H160Zm360 580v-123l221-220q9-9 20-13t22-4q12 0 23 4.5t20 13.5l37 37q9 9 13 20t4 22q0 11-4.5 22.5T862.09-380L643-160H520Zm300-263-37-37 37 37ZM580-220h38l121-122-18-19-19-18-122 121v38Zm141-141-19-18 37 37-18-19Z" />
+        </svg>
+      </span>
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Before we proceed with the setup, let’s quickly recap why we chose Room:
+✅ Compile-time SQL Validation – Catches errors early by verifying SQL queries at compile time.
+✅ Kotlin-first Approach – Supports coroutines, Flow, and LiveData natively.
+✅ Less Boilerplate Code – Simplifies database interactions while maintaining SQLite’s power.
+✅ Seamless Migration Handling – Built-in support for database migrations.
+For a more detailed explanation, refer to the official Android documentation.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2025-02-07 13:02:29 +0530 IST'>February 7, 2025</span>&nbsp;·&nbsp;3 min</footer>
+  <a class="entry-link" aria-label="post link to Setting-up Room Library and its dependencies(#OF02)" href="http://localhost:1313/posts/upgrading-your-app-to-offline-first-with-room-part-2/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Exploring Solid Principles With kotlin
       <span class="entry-hint" title="Draft">
         <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" fill="currentColor">

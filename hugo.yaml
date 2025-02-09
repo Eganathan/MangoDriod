@@ -27,8 +27,8 @@ menu:
 params:
   hideFooter: true
   defaultTheme: auto 
-  # assets:
-  #   favicon: "/img/favicon.ico"
+  assets:
+    favicon: "/img/favicon.ico"
   homeInfoParams:
     Title: Hi there 👋
     Content: Welcome to MangoDriod, my personal blog. I am Eknath, a software engineer and a tech enthusiast. I write about software development, tech, and other things that interest me.

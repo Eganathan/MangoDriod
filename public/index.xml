@@ -6,8 +6,27 @@
     <description>Recent content on MangoDriod</description>
     <generator>Hugo -- 0.141.0</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 05 Feb 2025 09:23:57 +0530</lastBuildDate>
+    <lastBuildDate>Thu, 06 Feb 2025 19:23:17 +0530</lastBuildDate>
     <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Exploring some Key Components of Room (#OF03)</title>
+      <link>http://localhost:1313/posts/upgrading-your-app-to-offline-first-with-room-part-3/</link>
+      <pubDate>Thu, 06 Feb 2025 19:23:17 +0530</pubDate>
+      <guid>http://localhost:1313/posts/upgrading-your-app-to-offline-first-with-room-part-3/</guid>
+      <description>&lt;h2 id=&#34;key-components&#34;&gt;Key Components&lt;/h2&gt;
+&lt;p&gt;Primarily, there are three important components: Entity, DAO&amp;rsquo;s, and Database, The entity represent a table. Dao&amp;rsquo;s are an interface to write queries and define your operations. The database is where you associate your entities and include the dao&amp;rsquo;s you would like to access from outside; hence, it&amp;rsquo;s the entry point of your database. Let&amp;rsquo;s check it out one by one:&lt;/p&gt;
+&lt;h3 id=&#34;entity&#34;&gt;Entity&lt;/h3&gt;
+&lt;p&gt;Any class annotated with @Entity is an entity, and those classes represent a table in the database. Here is an example of what a simple entity would look like:&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Setting-up Room Library and its dependencies(#OF02)</title>
+      <link>http://localhost:1313/posts/upgrading-your-app-to-offline-first-with-room-part-2/</link>
+      <pubDate>Wed, 05 Feb 2025 13:02:29 +0530</pubDate>
+      <guid>http://localhost:1313/posts/upgrading-your-app-to-offline-first-with-room-part-2/</guid>
+      <description>&lt;p&gt;Previously we discussed some important strategies and picked Google&amp;rsquo;s Room Library,now lets get started with setting up the library and a deeper look into the dependencies.&lt;/p&gt;
+&lt;h2 id=&#34;official-documentation&#34;&gt;Official Documentation&lt;/h2&gt;
+&lt;p&gt;The Google team keeps the document up-to-date, and has a simper set-up guide so feel free to check it out. Obviously you might be wondering why write an article if the content is already available, The team at google have to consider all the developers equally i meant the Java and Kotlin users, while most of us have migrated to kotlin, some still are using Java hence the documentation has both dependencies but we don&amp;rsquo;t need all of them hence this article.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Upgrading Your App to Offline First With Room (#OF01)</title>
       <link>http://localhost:1313/posts/upgrading-your-app-to-offline-first-with-room-part-1/</link>
@@ -16,8 +35,16 @@
       <description>&lt;h2 id=&#34;why-should-you-care&#34;&gt;Why Should You Care?&lt;/h2&gt;
 &lt;p&gt;Making your app &lt;strong&gt;offline-first&lt;/strong&gt; is essential if you want to provide the &lt;strong&gt;best user experience&lt;/strong&gt;. It makes your app significantly &lt;strong&gt;faster&lt;/strong&gt; by reducing the number of network calls, which in turn also &lt;strong&gt;reduces server costs&lt;/strong&gt;.&lt;/p&gt;
 &lt;hr&gt;
-&lt;h2 id=&#34;what-is-offline-first-mean&#34;&gt;What is Offline-First mean?&lt;/h2&gt;
+&lt;h2 id=&#34;what-does-offline-first-mean&#34;&gt;What does Offline-First mean?&lt;/h2&gt;
 &lt;p&gt;The core idea is to &lt;strong&gt;persist/store remote-fetched data on the device&lt;/strong&gt;. This allows users to access the data &lt;strong&gt;instantly&lt;/strong&gt;, skipping unnecessary network requests—until the data expires or is invalidated.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Exploring Solid Principles With kotlin</title>
+      <link>http://localhost:1313/posts/solid-principles/</link>
+      <pubDate>Mon, 27 Jan 2025 09:14:08 +0530</pubDate>
+      <guid>http://localhost:1313/posts/solid-principles/</guid>
+      <description>&lt;p&gt;Uncle Bob&amp;rsquo;s SOLID principles are a set of design principles that help you write better software in Object Oriented Programming paradagime. They are a set of guidelines that help you write code that is easy to understand, maintain, and extend. This is a one liner that you can expect from any Developer but we are going to dig a little deeper into each principles one by one.&lt;/p&gt;
+&lt;p&gt;Kotlin offers both Functional and OOPS paradagimes which gives us the developers an edge on understanding this much faster:&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

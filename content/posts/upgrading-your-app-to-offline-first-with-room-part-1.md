@@ -11,7 +11,7 @@ Making your app **offline-first** is essential if you want to provide the **best
 
 ---
 
-## What is Offline-First mean?
+## What does Offline-First mean?
 
 The core idea is to **persist/store remote-fetched data on the device**. This allows users to access the data **instantly**, skipping unnecessary network requests—until the data expires or is invalidated.  
 
@@ -49,11 +49,11 @@ In this approach, users can:
 🔴 **Major Challenge**:  
 
 - If a user **forgets to sync** data from one device (e.g., a tablet) and later accesses their account from another device (e.g., a phone), they might think the data is lost.  
-- This can **frustrate users**, leading to complaints or abandoned our app.
+- This can **frustrate users**, leading to complaints or abandoning our app.
 
 🔵 **Idea Use case**:
 
-Best option for apps that are does not support multi user and has single device login, but ⚠️ The data loss % is still significantly high if user forgets to connect online after the initial login and loses his device etc, but thats a tradeoff you have to live with.
+Best option for apps that does not support multi user and has single device login, but ⚠️ The data loss % is still significantly high if user forgets to connect online after the initial login and loses his device etc, but thats a tradeoff you have to live with.
 
 While this approach offers **true offline functionality**, it introduces **complex synchronization issues**, making it harder to maintain **data consistency across devices**.  
 

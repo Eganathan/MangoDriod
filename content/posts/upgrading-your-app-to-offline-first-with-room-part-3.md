@@ -4,9 +4,9 @@ draft: true
 title: 'Exploring some Key Components of Room (#OF03)'
 ---
 
-## Key Components
+### Intro
 
-Primarily, there are three important components: Entity, DAO's, and Database, The entity represent a table. Dao's are an interface to write queries and define your operations. The database is where you associate your entities and include the dao's you would like to access from outside; hence, it's the entry point of your database. Let's check it out one by one:
+Primarily, there are three important components: **Entity**, **Dao**'s, and **Database**. The entity represent a single row of a table. Dao's are an interface to write queries and define your operations. The database is where you associate your entities and include the dao's you would like to access from outside; hence, it's the entry point of your database. Let's check it out one by one:
 
 ### Entity
 

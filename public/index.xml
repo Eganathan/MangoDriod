@@ -6,8 +6,29 @@
     <description>Recent content on MangoDriod</description>
     <generator>Hugo -- 0.141.0</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 09 Feb 2025 09:23:57 +0530</lastBuildDate>
+    <lastBuildDate>Thu, 13 Feb 2025 10:25:22 +0530</lastBuildDate>
     <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Implementing Static App Shortcuts on Android</title>
+      <link>http://localhost:1313/posts/implement-static-app-shortcuts-on-android/</link>
+      <pubDate>Thu, 13 Feb 2025 10:25:22 +0530</pubDate>
+      <guid>http://localhost:1313/posts/implement-static-app-shortcuts-on-android/</guid>
+      <description>&lt;p&gt;App shortcuts enable the user to interact with you app quickly without any complex navigation&amp;rsquo;s from users part, it simplifies and encourages the user to interact with the app more swiftly.&lt;/p&gt;
+&lt;h2 id=&#34;what-is-an-app-short-cut&#34;&gt;What is an app short cut?&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;They are some custom options that pop&amp;rsquo;s up when the user long presses your app icon&lt;/strong&gt; along with some system provided short app-specific cuts&lt;code&gt;App Info&lt;/code&gt; and &lt;code&gt;Pause App&lt;/code&gt;, This provides a better UX for users by providing a fastest way to interact with most common app-specific operations.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Setting-up Room Library and its dependencies(#OF02)</title>
+      <link>http://localhost:1313/posts/upgrading-your-app-to-offline-first-with-room-part-2/</link>
+      <pubDate>Mon, 10 Feb 2025 13:02:29 +0530</pubDate>
+      <guid>http://localhost:1313/posts/upgrading-your-app-to-offline-first-with-room-part-2/</guid>
+      <description>&lt;p&gt;Before we proceed with the setup, let’s quickly recap &lt;strong&gt;why&lt;/strong&gt; we chose Room:&lt;/p&gt;
+&lt;p&gt;✅ &lt;strong&gt;Compile-time SQL Validation&lt;/strong&gt; – Catches errors early by verifying SQL queries at compile time.&lt;br&gt;
+✅ &lt;strong&gt;Kotlin-first Approach&lt;/strong&gt; – Supports coroutines, Flow, and LiveData natively.&lt;br&gt;
+✅ &lt;strong&gt;Less Boilerplate Code&lt;/strong&gt; – Simplifies database interactions while maintaining SQLite’s power.&lt;br&gt;
+✅ &lt;strong&gt;Seamless Migration Handling&lt;/strong&gt; – Built-in support for database migrations.&lt;/p&gt;
+&lt;p&gt;For a more detailed explanation, refer to the &lt;a href=&#34;https://developer.android.com/training/data-storage/room&#34;&gt;official Android documentation&lt;/a&gt;.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Upgrading Your App to Offline First With Room (#OF01)</title>
       <link>http://localhost:1313/posts/upgrading-your-app-to-offline-first-with-room-part-1/</link>
@@ -24,22 +45,10 @@
       <link>http://localhost:1313/posts/upgrading-your-app-to-offline-first-with-room-part-3/</link>
       <pubDate>Sat, 08 Feb 2025 11:23:17 +0530</pubDate>
       <guid>http://localhost:1313/posts/upgrading-your-app-to-offline-first-with-room-part-3/</guid>
-      <description>&lt;h2 id=&#34;key-components&#34;&gt;Key Components&lt;/h2&gt;
-&lt;p&gt;Primarily, there are three important components: Entity, DAO&amp;rsquo;s, and Database, The entity represent a table. Dao&amp;rsquo;s are an interface to write queries and define your operations. The database is where you associate your entities and include the dao&amp;rsquo;s you would like to access from outside; hence, it&amp;rsquo;s the entry point of your database. Let&amp;rsquo;s check it out one by one:&lt;/p&gt;
+      <description>&lt;h3 id=&#34;intro&#34;&gt;Intro&lt;/h3&gt;
+&lt;p&gt;Primarily, there are three important components: &lt;strong&gt;Entity&lt;/strong&gt;, &lt;strong&gt;Dao&lt;/strong&gt;&amp;rsquo;s, and &lt;strong&gt;Database&lt;/strong&gt;. The entity represent a single row of a table. Dao&amp;rsquo;s are an interface to write queries and define your operations. The database is where you associate your entities and include the dao&amp;rsquo;s you would like to access from outside; hence, it&amp;rsquo;s the entry point of your database. Let&amp;rsquo;s check it out one by one:&lt;/p&gt;
 &lt;h3 id=&#34;entity&#34;&gt;Entity&lt;/h3&gt;
 &lt;p&gt;Any class annotated with @Entity is an entity, and those classes represent a table in the database. Here is an example of what a simple entity would look like:&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Setting-up Room Library and its dependencies(#OF02)</title>
-      <link>http://localhost:1313/posts/upgrading-your-app-to-offline-first-with-room-part-2/</link>
-      <pubDate>Fri, 07 Feb 2025 13:02:29 +0530</pubDate>
-      <guid>http://localhost:1313/posts/upgrading-your-app-to-offline-first-with-room-part-2/</guid>
-      <description>&lt;p&gt;Before we proceed with the setup, let’s quickly recap &lt;strong&gt;why&lt;/strong&gt; we chose Room:&lt;/p&gt;
-&lt;p&gt;✅ &lt;strong&gt;Compile-time SQL Validation&lt;/strong&gt; – Catches errors early by verifying SQL queries at compile time.&lt;br&gt;
-✅ &lt;strong&gt;Kotlin-first Approach&lt;/strong&gt; – Supports coroutines, Flow, and LiveData natively.&lt;br&gt;
-✅ &lt;strong&gt;Less Boilerplate Code&lt;/strong&gt; – Simplifies database interactions while maintaining SQLite’s power.&lt;br&gt;
-✅ &lt;strong&gt;Seamless Migration Handling&lt;/strong&gt; – Built-in support for database migrations.&lt;/p&gt;
-&lt;p&gt;For a more detailed explanation, refer to the &lt;a href=&#34;https://developer.android.com/training/data-storage/room&#34;&gt;official Android documentation&lt;/a&gt;.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Exploring Solid Principles With kotlin</title>

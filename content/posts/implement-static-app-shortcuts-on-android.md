@@ -1,7 +1,7 @@
 ---
 date: '2025-02-13T10:25:22+05:30' 
-draft: true
-title: 'Implementing Static App Shortcuts on Android'
+draft: false
+title: 'Implementing Static App Shortcuts on Android(Draft)'
 ---
 App shortcuts enable the user to interact with you app quickly without any complex navigation's from users part, it simplifies and encourages the user to interact with the app more swiftly.
 
@@ -60,19 +60,19 @@ The nice thing about Static App Shortcuts are that, it does not require any depe
         android:enabled="true"
         android:shortcutShortLabel="@string/create_note"
         android:shortcutLongLabel="@string/create_note_description_for_short_cut"
-        android:icon="@drawable/ic_short_cut_creation"
-        >
+        android:icon="@drawable/ic_short_cut_creation">
         <intent
             android:action="android.intent.action.VIEW"
             android:targetPackage="dev.eknath.jottersspace"
             android:targetClass="dev.eknath.jottersspace.MainActivity">
 
-            <extra android:name="content_key" android:value="your-value-here-that-can-be-accessed-by-you-later-on-the-app"/>
+            <extra android:name="content_key" android:value="_ssKey_create_note"/>
         </intent>
     </shortcut>
 </shortcuts>
 ```
 
+The intent extra `content_key` enables us to understand what shortcut was applied, here i have added a prefix:`_ssKey_` this enables me to map the shortcut keys much better, so on the above example i know this shortcuts intention is to create a note, so on the activity i know what to do to implement logic of the shortcut, we will talk about this again on step 3 so lets add this to manifest.
 
 ### 2️⃣ Adding it to Manifest
 
@@ -124,6 +124,27 @@ after adding the above code your app's `AndroidManifest.xml` will look something
 </manifest>
 ```
 
-With this the app already has the shorts available to users,
+### 3️⃣ Handling Business Logic for the shortcuts
 
-[Commit with Static App Shortcuts](https://github.com/Eganathan/jotters-space-android/commit/6f0070aef1c0cd53b0d72450121c77a2edf38482)
+Now the app has the defined shortcuts and the system will take care of the UI, next handling the business logic.
+
+The *Activity's* intent will have the provided `content-key` so on the launched effect we can get the value of `content-key` and decide on what to do next, this is what i have done to one of my app:
+
+#### Example of Logic Handling
+
+I have added a prefix `_ssKey_` on all my shortcut intent's extras, just like the example shared earlier and i have also associated each key with a number for ease of logic handling:
+
+```kotlin
+val activity = (LocalContext.current as MainActivity)
+val shortCutCode = (if(activity.intent.getStringExtra("content_key")?.contains("create_note") == true) 1 else 0)`
+```
+
+on the example above 0 is the default value so i know its not any of the shortcuts, on the other hand if the value is 1 then i navigate them to an appropriate screen and in my case open a new note creation screen focused and keyboard at the bottom, if user had to do the same operation otherwise a minimum of 3 clicks are to be required `Launch the app -> Navigate to note screen -> Create NewButton -> Request Focus` instead the with the shortcut the user will now directly be at the creation screen on a single click if they have pinned the shortcut.
+
+### Changeset of implementation on my app
+
+[Commit with Static App Shortcuts on Jot-Android-app](https://github.com/Eganathan/jotters-space-android/commit/6f0070aef1c0cd53b0d72450121c77a2edf38482)
+
+Hope you were able to implement the static app shortcuts easily, if you have any feedbacks or inputs please do share it via any of my social handles.
+
+Thank you for reading :)

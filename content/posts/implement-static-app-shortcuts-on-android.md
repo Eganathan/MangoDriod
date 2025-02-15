@@ -1,150 +1,157 @@
 ---
-date: '2025-02-13T10:25:22+05:30' 
+date: '2025-02-15T10:25:15+05:30' 
 draft: false
-title: 'Implementing Static App Shortcuts on Android(Draft)'
+title: 'Static App Shortcuts in Android: A Simple Implementation Guide'
 ---
-App shortcuts enable the user to interact with you app quickly without any complex navigation's from users part, it simplifies and encourages the user to interact with the app more swiftly.
+Have you ever long-pressed an app icon and seen quick actions like **"Search"** or **"New Message"**?  
+These are **App Shortcuts**, a powerful feature that allows users to interact with your app **faster** and **more efficiently**.  
 
-## What is an app short cut?
+In this guide, we'll explore how to implement **static app shortcuts** in Android to enhance user experience.  
 
-**They are some custom options that pop's up when the user long presses your app icon** along with some system provided short app-specific cuts`App Info` and `Pause App`, This provides a better UX for users by providing a fastest way to interact with most common app-specific operations.
+## What Are App Shortcuts?  
 
-Users could also choose to pin these shortcuts on their home screens so the long press can also be avoided, basically it provides a single click action that user will otherwise not be able to perform that quickly.
+**App shortcuts provide quick access to common app features when the user long-presses your app icon.**  
+Along with system options like **App Info** and **Pause App**, you can define your own **custom shortcuts** for essential actions.  
 
-Here is how it looks on the actual device:
-![Static App Shortcut example](/img/static-app-short-cut.jpg#center)
+📌 **Example use cases:**  
+✔ **"Create Note"** in a notes app (bypasses unnecessary navigation)  
+✔ **"Search"** shortcut (instantly opens search with keyboard focused)  
 
-## Limitations
+Users can also **pin shortcuts to their home screen** for even faster access!  
 
-This is supported only from API 25+ and since the developer might misuse this the developer team has constrained to a maximum of 4, so make sure you add only what could ease the user experience.
+### **How It Looks on a Device**  
+![Static App Shortcut example](/img/static-app-short-cut.jpg#center)  
 
-1️⃣ You can only create a maximum of 4 static shortcuts in your app.    
-2️⃣ Supported only from API level 25+
+---  
 
-### Considerations
+## 🚧 Limitations of Static App Shortcuts  
 
-Since we are limited to maximum of 4, we must ensure the shortcut are absolutely essential and solves a common user problem because the user will get used to it and might even pin the shortcut to their home screen.
+🔹 **Requires API level 25+ (Android 7.1 and above)**  
+🔹 **Maximum of 4 static shortcuts per app** (to prevent misuse)  
 
-An example for a best use case for a shortcut will be   
+Since shortcuts are limited, **choose only essential ones that improve UX!**  
 
-1️⃣ **Creation in a note app**    
-*This allows the user to avoid navigating to notes screen, click a button and click for focus.*
+---  
 
-2️⃣ **Search Option**    
-*User can swiftly navigate to search screen with a focused textfield with keyboard loaded already.*
+## 🛠 Implementation Guide  
 
-So ensure you abide by these points:
+The best part? **Static shortcuts don’t require any dependencies**—we just define them in XML.  
 
-✅ Add only essential shortcuts.   
-✅ Ensure it provides value for the user.   
-✅ Once added it must not be removed later.  
+### **1️⃣ Creating Shortcut Values**  
 
-Since we are are clear on this, let's get our hands dirty;
-
-## Implementation
-
-The nice thing about Static App Shortcuts are that, it does not require any dependency we can get started by defining the shortcuts first, but before you have to create a new resource folder:
-
-### 1️⃣ Creating the Shortcut values
-
-1. Switch your project File View to Project from Android
-2. Create a new folder in the `res` folder named `xml-v25`
-3. Inside the `res/xml-v25/` create a new file xml resource file named `shortcuts.xml` with root element `shortcuts`
-4. add your shortcuts to the file, like the example below
+1. Switch to **Project View** in Android Studio.  
+2. Create a new folder in `res/` named **`xml-v25`**.  
+3. Inside `res/xml-v25/`, create a new file named **`shortcuts.xml`**.  
+4. Add the following shortcut definition:  
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
+
     <shortcut
-        android:shortcutId="custom-unique-short-cut-identifier"
+        android:shortcutId="create_note_shortcut"
         android:enabled="true"
         android:shortcutShortLabel="@string/create_note"
-        android:shortcutLongLabel="@string/create_note_description_for_short_cut"
-        android:icon="@drawable/ic_short_cut_creation">
+        android:shortcutLongLabel="@string/create_note_description_for_shortcut"
+        android:icon="@drawable/ic_shortcut_create_note">
+
         <intent
             android:action="android.intent.action.VIEW"
-            android:targetPackage="dev.eknath.jottersspace"
-            android:targetClass="dev.eknath.jottersspace.MainActivity">
+            android:targetPackage="com.example.myapp"
+            android:targetClass="com.example.myapp.MainActivity">
 
+            <!-- Extra key to identify the shortcut action -->
             <extra android:name="content_key" android:value="_ssKey_create_note"/>
         </intent>
+
     </shortcut>
 </shortcuts>
-```
+```  
 
-The intent extra `content_key` enables us to understand what shortcut was applied, here i have added a prefix:`_ssKey_` this enables me to map the shortcut keys much better, so on the above example i know this shortcuts intention is to create a note, so on the activity i know what to do to implement logic of the shortcut, we will talk about this again on step 3 so lets add this to manifest.
+🔹 The `content_key` extra helps identify **which shortcut was used**, so we can handle it later.  
 
-### 2️⃣ Adding it to Manifest
+⚠️ Since my app's minimum supported version is API 24, i have to add it on the **`xml-v25`** if your app's minimum supported version is 25 or above you can add the **`shortcuts.xml`**  directly to **`xml`** folder.
 
-Ensure you add this to your apps `AndroidManifest.xml` file, it must be right before the ending `</activity>` tag
+---  
 
-```xml
- <meta-data
- android:name="android.app.shortcuts"
- android:resource="@xml/shortcuts"/>
- ```
+### **2️⃣ Adding to AndroidManifest.xml**  
 
-after adding the above code your app's `AndroidManifest.xml` will look something like this:
+Add the following inside your **`AndroidManifest.xml`**, **before** the closing `</activity>` tag:  
 
 ```xml
-<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+<meta-data
+    android:name="android.app.shortcuts"
+    android:resource="@xml/shortcuts"/>
+```  
 
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-    <uses-permission android:name="android.permission.INTERNET"/>
+After adding this, your manifest should look like this:  
 
+```xml
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <application
         android:allowBackup="false"
-        android:dataExtractionRules="@xml/data_extraction_rules"
-        android:fullBackupContent="@xml/backup_rules"
         android:icon="@drawable/ic_launcher_round"
-        android:label="@string/app_name"
-        android:roundIcon="@drawable/ic_app_icon"
-        android:supportsRtl="true"
-        android:name=".AppName"
-        android:theme="@style/Theme.AppTheme"
-        tools:targetApi="31">
-        <activity
-            android:name=".MainActivity"
-            android:exported="false"
-            android:label="@string/app_name"
-            android:theme="@style/Theme.AppTheme">
+        android:label="@string/app_name">
+
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
+            <!-- Registering the shortcut -->
             <meta-data
                 android:name="android.app.shortcuts"
                 android:resource="@xml/shortcuts"/>
         </activity>
+
     </application>
-
 </manifest>
-```
+```  
 
-### 3️⃣ Handling Business Logic for the shortcuts
+---  
 
-Now the app has the defined shortcuts and the system will take care of the UI, next handling the business logic.
+### **3️⃣ Handling Shortcut Logic in Code**  
 
-The *Activity's* intent will have the provided `content-key` so on the launched effect we can get the value of `content-key` and decide on what to do next, this is what i have done to one of my app:
-
-#### Example of Logic Handling
-
-I have added a prefix `_ssKey_` on all my shortcut intent's extras, just like the example shared earlier and i have also associated each key with a number for ease of logic handling:
+When the user taps a shortcut, it launches the **MainActivity** with an extra `content_key`.  
+We can handle this in Kotlin:  
 
 ```kotlin
-val activity = (LocalContext.current as MainActivity)
-val shortCutCode = (if(activity.intent.getStringExtra("content_key")?.contains("create_note") == true) 1 else 0)`
-```
+val activity = LocalContext.current as MainActivity
 
-on the example above 0 is the default value so i know its not any of the shortcuts, on the other hand if the value is 1 then i navigate them to an appropriate screen and in my case open a new note creation screen focused and keyboard at the bottom, if user had to do the same operation otherwise a minimum of 3 clicks are to be required `Launch the app -> Navigate to note screen -> Create NewButton -> Request Focus` instead the with the shortcut the user will now directly be at the creation screen on a single click if they have pinned the shortcut.
+// Check which shortcut was used
+val shortcutCode = when {
+    activity.intent.getStringExtra("content_key")?.contains("create_note") == true -> 1
+    else -> 0  // Default: No shortcut used
+}
 
-### Changeset of implementation on my app
+// Handle shortcut action
+LaunchedEffect(shortcutCode) {
+    if (shortcutCode == 1) {
+        navigateToNoteCreationScreen()
+    }
+}
+```  
 
-[Commit with Static App Shortcuts on Jot-Android-app](https://github.com/Eganathan/jotters-space-android/commit/6f0070aef1c0cd53b0d72450121c77a2edf38482)
+📌 **Shortcut Flow:**  
+1️⃣ User **long-presses** the app icon and selects "Create Note".  
+2️⃣ App opens **directly in note creation mode** (keyboard preloaded).  
+3️⃣ Saves **3+ clicks** compared to manual navigation! 🚀  
 
-Hope you were able to implement the static app shortcuts easily, if you have any feedbacks or inputs please do share it via any of my social handles.
+---  
 
-Thank you for reading :)
+## ✅ Key Takeaways  
+
+✔ **App Shortcuts improve UX** by reducing navigation steps.  
+✔ **Maximum of 4 static shortcuts per app** (API 25+ required).  
+✔ **Define shortcuts in `res/xml-v25/shortcuts.xml`**.  
+✔ **Use `content_key` in the intent** to determine the shortcut action.  
+
+### **🔗 Implementation in My App**  
+[📌 Commit with Static App Shortcuts on Jot Notes](https://github.com/Eganathan/jotters-space-android/commit/6f0070aef1c0cd53b0d72450121c77a2edf38482)  
+
+Hope this guide helps! Feel free to share your thoughts via my social handles. 😊  
+
+---  
+
+**Thank you for reading!** 🎉

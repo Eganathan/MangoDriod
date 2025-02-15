@@ -2,6 +2,7 @@
 date: '2025-02-15T10:25:15+05:30' 
 draft: false
 title: 'Static App Shortcuts in Android: A Simple Implementation Guide'
+categories: ["Android"]
 ---
 Have you ever long-pressed an app icon and seen quick actions like **"Search"** or **"New Message"**?  
 These are **App Shortcuts**, a powerful feature that allows users to interact with your app **faster** and **more efficiently**.  

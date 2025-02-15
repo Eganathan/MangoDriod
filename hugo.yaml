@@ -25,10 +25,12 @@ menu:
       
 
 params:
+  env: production
   hideFooter: true
   defaultTheme: auto 
-  # assets:
-  #   favicon: "/img/favicon.ico"
+  title: MangoDriod-A personal Tech Blog of Eknath
+  description: "I write about Android, Kotlin, Bash, Zoho, Google Products and what not that interests me on tech and related stuff"
+  keywords: [Blog, Android, Kotlin,Zoho,Eganathan,Google, Tech, Software Development]
   homeInfoParams:
     Title: Hi there 👋
     Content: Welcome to MangoDriod, my personal blog. I am Eknath, a software engineer and a tech enthusiast. I write about software development, tech, and other things that interest me.
@@ -61,3 +63,7 @@ outputs:
   - HTML
   - RSS
   - JSON # necessary for search
+
+analytics:
+  google:
+    SiteVerificationTag: "G-MVDW52KZVB"

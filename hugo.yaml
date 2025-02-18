@@ -57,6 +57,9 @@ params:
   ShowBreadCrumbs: true
 
   ShowPostNavLinks: true # Next and Previous Posts navigation
+
+  ShowFullTextinRSS: true
+  ShowRssButtonInSectionTermList: true
   
 outputs:
   home:

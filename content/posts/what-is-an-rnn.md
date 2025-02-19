@@ -1,8 +1,9 @@
 ---
 date: '2025-02-19T19:47:13+05:30' 
 draft: false
-title: 'Understanding Recurrent Neural Network and its role in the Machine learning journey'
+title: 'Understanding Recurrent Neural Network'
 categories: ["Ai/ML"]
+tags: ["AI","ML"]
 ---
 
 ## Understanding the Evolution of AI Models

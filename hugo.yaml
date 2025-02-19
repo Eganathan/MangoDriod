@@ -26,7 +26,7 @@ menu:
 
 params:
   env: production
-  hideFooter: true
+  hideFooter: false
   defaultTheme: auto 
   title: MangoDriod-A personal Tech Blog of Eknath
   description: "I write about Android, Kotlin, Bash, Zoho, Google Products and what not that interests me on tech and related stuff"

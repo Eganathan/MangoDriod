@@ -1,7 +1,7 @@
 ---
 date: '2025-02-19T19:47:13+05:30' 
 draft: false
-title: 'What is an RNN? An explanation for simpletons'
+title: 'Understanding RNN's role in AI/ML journey'
 categories: ["Ai/ML"]
 ---
 

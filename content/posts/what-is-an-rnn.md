@@ -6,8 +6,6 @@ categories: ["Ai/ML"]
 tags: ["AI","ML"]
 ---
 
-## Understanding the Evolution of AI Models
-
 When diving into AI/ML, we constantly hear about **transformers** and their revolutionary impact. But how did we get here? The journey started from `Traditional Neural Networks` ➡ `Recurrent Neural Networks (RNNs)` ➡ `Attention Mechanisms` and finally to `Transformers`.  
 
 RNNs were a **significant milestone** because they addressed sequential data processing but had major limitations. These limitations led to the birth of attention mechanisms and transformers. Interestingly, before **GPT** became a household name, **Google extensively used RNNs** in their products, including predictive text, speech recognition, and early recommendation systems.

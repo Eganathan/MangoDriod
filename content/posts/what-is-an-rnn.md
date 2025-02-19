@@ -1,7 +1,7 @@
 ---
 date: '2025-02-19T19:47:13+05:30' 
 draft: false
-title: 'Understanding RNN's role in AI/ML journey'
+title: 'Understanding Recurrent Neural Network and its role in the Machine learning journey'
 categories: ["Ai/ML"]
 ---
 

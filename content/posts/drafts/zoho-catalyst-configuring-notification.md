@@ -6,7 +6,6 @@ title: 'Zoho Catalyst Configuring Notification'
 
 Sometimes the actual documentation does not work as expected and hence we have to brute force and find solutions, this is one such journey with ZCatalyst so far:
 
-
 https://docs.catalyst.zoho.com/en/cloud-scale/help/push-notifications/android/
 
 Add these scopes to existing properties file:

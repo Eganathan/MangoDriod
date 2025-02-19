@@ -1,49 +1,77 @@
 ---
 date: '2025-02-19T19:47:13+05:30' 
-draft: true
+draft: false
 title: 'What is an RNN? An explanation for simpletons'
 categories: ["Ai/ML"]
 ---
 
-On the topics of AI/ML i keep hearing about the importance of transformers, so i dig a little deeper in learning the journey from `Traditional-Neural-networks` ➡ `Recurrent Neural Network (RNN)` ➡ `Attention Mechanism` to finally `Transformers`, the RNN  is significant milestone because the others were born out of `RNN`'s limitations, also it was around for quite a while before we knew the word GPT, it was used by google for most of their products before the `Transformer` advancement.
+## Understanding the Evolution of AI Models
 
-## What is a Recurrent Neural Network(RNN)?
+When diving into AI/ML, we constantly hear about **transformers** and their revolutionary impact. But how did we get here? The journey started from `Traditional Neural Networks` ➡ `Recurrent Neural Networks (RNNs)` ➡ `Attention Mechanisms` and finally to `Transformers`.  
 
-Have you wondered how the keyboard's word suggestion works perfectly well while typing? the secret behind it was RNN's before the `transformers`, so technically:
+RNNs were a **significant milestone** because they addressed sequential data processing but had major limitations. These limitations led to the birth of attention mechanisms and transformers. Interestingly, before **GPT** became a household name, **Google extensively used RNNs** in their products, including predictive text, speech recognition, and early recommendation systems.
 
-An RNN or Recurrent Neural Network is a type of artificial neural network designed for sequential data processing. Unlike traditional feed-forward neural networks, RNNs have loops that allow information to persist, making them well-suited for tasks where  context and order matters.
+## What is a Recurrent Neural Network (RNN)?
 
-**here are some more examples which might make it more easier to understand:**
+Have you ever wondered how your keyboard **predicts the next word** while typing? Before transformers took over, **RNNs were the secret behind word suggestions** and other sequential tasks.
 
-👉 **Natural Language Processing (NLP)** (e.g., speech recognition, text generation, machine translation)
-👉 **Time Series Prediction** (e.g., stock price forecasting, weather prediction)
-👉 **Sequence Modeling** (e.g., handwriting recognition, music composition)
+### **Definition:**
+An **RNN (Recurrent Neural Network)** is a type of artificial neural network designed specifically for **processing sequential data**. Unlike traditional feed-forward networks, RNNs have **loops that allow information to persist**, making them well-suited for tasks where **context and order matter**.
 
-## Stages of its working
+### **Common Use Cases of RNNs:**
+👉 **Natural Language Processing (NLP)** (e.g., speech recognition, text generation, machine translation)  
+👉 **Time Series Prediction** (e.g., stock price forecasting, weather prediction)  
+👉 **Sequence Modeling** (e.g., handwriting recognition, music composition)  
 
-Lets take the previous example of word prediction: Predicting the next word as you type your sentence, there are three states like, `Input Processing Stage` where the model knows what you have already typed, `Hidden State Update (Memory Stage)` is what you are typing now and `Output Generation Stage` is what the model prediction stage where it tries to predict the next word, lets go a little deeper into these:
+## How Does an RNN Work?  
 
-### 1️⃣ Input Processing Stage
+Let’s use the **word prediction** example to understand the key stages of an RNN. When you type a sentence, the RNN processes it in three key stages:  
 
-**This is the very first stage where the data is collected**, You might have noticed the first time you used a social media the suggestions are really crappy but as you use it more and more the platform behaves as if it knows you,right? the reason is because they have more **data from you** which is a must for better prediction, hence this is the most crucial stage for the RNN's to work effectively and this continues as you consume the content more.
+### **1️⃣ Input Processing Stage**  
 
-The data is collected continuously for better prediction, as you type more words into the keyboard this stage ensures the data is added to its memory for the next stage.
+This is the **data collection stage**, where the model gathers input to make predictions.  
 
-### 2️⃣ Hidden State Update (Memory Stage)
+🔹 When you **first start using a social media app**, its recommendations may seem random or inaccurate. Over time, as you interact more, the app starts to understand your preferences. This happens because it continuously **collects data from you** to make better predictions.  
 
-If we are to follow the same analogy form the previous stage about social media, This stage is where the model updates its **Hidden/Unknown State** (reality) by takeing the current media/reel that is consumed by the user and previous information from the memory, thanks to stage 1 now the model analyzes what to show next.
+🔹 In the **keyboard analogy**, as you type more, the model **stores your words** in memory, helping it predict what you might type next.  
 
-### 3️⃣ Output Generation Stage
+### **2️⃣ Hidden State Update (Memory Stage)**  
 
-This is the stage where the model decides and provides an output of what you most likely prefer to watch/consume next, or in the the typing analogy where is here the next work is provided as suggestion.
+At this stage, the RNN **updates its hidden state** based on the new input and previous memory.  
 
-### 4️⃣ Backpropagation Through Time (BPTT) – Training Stage
+🔹 In **social media**, the model remembers what you’ve previously engaged with and **adjusts recommendations** accordingly. If you keep watching **travel vlogs**, it will prioritize showing more similar content.  
 
-At this stage, the model learns from past mistakes and improves its predictions over time. Think of it like a student reviewing mistakes in past exams to score better in the next one.
+🔹 In **keyboard predictions**, the model updates its memory with each word you type, continuously refining its **contextual understanding**.  
 
-In the social media analogy, if you suddenly stop engaging with a certain type of content (e.g., you stop watching travel vlogs and start liking fitness videos), the model realizes its past predictions were wrong and adjusts itself to better match your new interests and in the keyboard analogy, if you frequently delete a suggested word and type something else, the model learns that its previous prediction was incorrect. Over time, it improves its word suggestions based on your actual typing patterns.
+### **3️⃣ Output Generation Stage**  
 
-💡 How does it work?
-1️⃣ The model compares its predictions to what actually happened.
-2️⃣ If there’s an error, it adjusts its internal weights to improve future predictions.
-3️⃣ This process happens over multiple iterations, constantly fine-tuning the model to become more accurate.
+Now, the model **makes a decision** and produces an output based on its learning.  
+
+🔹 In **social media**, this means recommending the **next video or post** that best matches your interests.  
+🔹 In **typing**, this means predicting and suggesting the **next word** in your sentence.  
+
+### **4️⃣ Backpropagation Through Time (BPTT) – Training Stage**  
+
+This is where the model **learns from past mistakes** and improves over time. Think of it like a **student reviewing mistakes from past exams** to perform better in the next test.  
+
+🔹 In **social media**, if you suddenly stop engaging with travel vlogs and switch to fitness videos, the model realizes its past predictions were wrong and **adjusts itself** to reflect your new interests.  
+
+🔹 In **keyboard predictions**, if you frequently **delete a suggested word and type something else**, the model **adapts** to improve its future suggestions.  
+
+### **How Does BPTT Work?**  
+1️⃣ The model **compares its predictions** to actual user behavior.  
+2️⃣ If there’s an **error**, it **adjusts its internal weights** to improve accuracy.  
+3️⃣ This process repeats across **multiple iterations**, constantly fine-tuning the model.  
+
+This stage is **crucial** because it ensures that the model **evolves and adapts** based on real-world interactions.
+
+---
+
+## **Final Thoughts**  
+
+RNNs played a critical role in AI’s evolution, **powering early NLP applications, recommendations, and predictive text systems**. However, due to **limitations like vanishing gradients and slow processing**, they were eventually replaced by **transformers** and **attention-based models**.  
+
+Yet, understanding RNNs is essential because they paved the way for **modern AI breakthroughs**. Without RNNs, we wouldn’t have reached **the transformer era of GPT**! 🚀  
+
+---
+Your feedbacks are welcome, Thanks for Reading.

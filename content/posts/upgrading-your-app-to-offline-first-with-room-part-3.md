@@ -1,16 +1,25 @@
 ---
-date: '2025-02-08T11:23:17+05:30' 
-draft: true
-title: 'Exploring some Key Components of Room (#OF03)'
+date: '2025-02-22T11:23:17+05:30' 
+draft: false
+title: 'Quickly Exploring Key Components of Room (#OF03)'
+---
+## 👋 Intro
+
+On the [previous article](https://md.eknath.dev/posts/upgrading-your-app-to-offline-first-with-room-part-2/) we have set-up the Room dependencies and plugins, Now lets get into the primary key components of a room library.
+
+There are three important components: **Entity**, **DAO**'s, and **Database**.  
+
+- **Entity** represents a single row of a table. (Table structure)
+- **DAO**'s (Data Access Objects) are interfaces to write queries and define operations.
+- **Database** is where you associate entities and include the DAO's you'd like to access from outside.  
+
+Let's check it out one by one! 🔍
+
 ---
 
-### Intro
+## 🏗️ Entities: Defining Your Data Structure
 
-Primarily, there are three important components: **Entity**, **Dao**'s, and **Database**. The entity represent a single row of a table. Dao's are an interface to write queries and define your operations. The database is where you associate your entities and include the dao's you would like to access from outside; hence, it's the entry point of your database. Let's check it out one by one:
-
-### Entity
-
-Any class annotated with @Entity is an entity, and those classes represent a table in the database. Here is an example of what a simple entity would look like:
+Any class annotated with `@Entity` is an entity, which represents a table in a database,ensure you follow [Normal Forms](https://www.geeksforgeeks.org/normal-forms-in-dbms/) while creating a perfect schema, lets look how an entity/table is represented here.
 
 ```kotlin
 @Entity
@@ -23,82 +32,90 @@ data class LocalHabitTracker(
 )
 ```
 
-An entity must have a minimum of one parameter that is annotated with @PrimaryKey(), and it would be the primary key for uniquely identifying a single row; the value of the parameter must be unique; otherwise the app will crash.
+**Key Points:**
+✅ An entity **must have** at least one parameter annotated with @PrimaryKey().
+✅ The **primary key** must be unique, or your app will crash.
+✅ If you want Room to **auto-generate** the primary key, set autoGenerate = true.
+✅ Stick to **primitive types** like Long, but if you’re expecting very few entries, you can use Short.
 
-You can set the autogenerate to true just like the above code snippet. Ensure the type is primitive; I prefer Long, but if you are expecting very few entries, you can use Short; otherwise, you decide it according to your needs. If you have no clue, then stick with Long.
+The entity can be further customized with **table names, indexing, and custom column names**, which we’ll cover in later articles. 🎯
 
-The entity can be further modified with a custom name for the table, indexing, custom column names, etc. We can discuss those in the upcoming articles.
+### 🔗 DAOs: Your Data Gateway
 
-### DAOs
+DAOs serve as the interface between your app and the database, providing an abstraction layer. This is a bridge between you the developer and the Database all your interactions happen here,
 
-Short for Data Access Object, as the name suggests, this is the interface between the developer and Room for accessing the tables in a safe and simplified way. It's basically an interface with an annotation with @Dao; inside you can use Room query annotations to access and modify the tables as per your requirements. Here is a sample code snippet of how a DAO for our case will look like:
+**✍️ Example:**
 
 ```kotlin
 @Dao
 interface HabitTrackerDao {
 
-    //Query to get all the habit trackers
+    // Query to get all habit trackers
     @Query("SELECT * FROM LocalHabitTracker")
     suspend fun getAll(): List<LocalHabitTracker>
 
-    //Query to get a habit tracker by id
+    // Query to get a habit tracker by ID
     @Query("SELECT * FROM LocalHabitTracker WHERE id = :id")
     suspend fun getById(id: Long): LocalHabitTracker
 
-    //Insert's the row into a table, if the data already exists, it will crash
+    // Insert a new row into the table (fails if duplicate)
     @Insert
     suspend fun insert(habitTracker: LocalHabitTracker)
 
-    //Update's the row if the data already exists
+    // Update an existing row
     @Update
     suspend fun update(habitTracker: LocalHabitTracker)
 
-    // Upsert's the row, if the data already exists, it will update, else it will insert
+    // Upsert: If exists, update; otherwise, insert
     @Upsert
     suspend fun upsert(habitTracker: LocalHabitTracker)
 
-    // Deletes the row from the table
+    // Delete a row from the table
     @Delete
     suspend fun delete(habitTracker: LocalHabitTracker)
 }
 ```
 
-As you can see in the above snippet, Room simplifies the process of implementing an offline-first app. Though it looks simple, don't assume that Room is only for simple use cases; I have kept it minimal to not overcompensate it. We will definitely go through the complex use cases in the upcoming articles.
+**Best Practices:**
 
-The interface annotated with @Dao is typically called Dao's; here our Dao is called HabitTrackerDao.''It is preferred to name your Dao with a postfix 'Dao.'.
+✅ **One entity per DAO:** It’s best to separate each table into its own DAO for maintainability.
+✅ **No limit** on the number of DAOs, but make sure they have unique names.
+✅ **Keep queries optimized** to avoid performance issues as your app scales.
 
-I would highly recommend you access only one entity (table) in a single DAO, but Room does not restrict you from accessing multiple entities (tables) in the same DAO, but trust me, this will be helpful as your product grows. We will talk about how to handle the complex cases in the next article on Room.
+We’ll cover complex cases like @RawQuery, Junctions, and TableViews in later articles! 🔮
 
- Do note There is no restriction on the number of Dao's you can have; just ensure the names don't conflict with each other, and the minimum target can handle it (no need to worry if your entities are less than 50).
+### 🏛️ Database: The Central Hub
 
-### Database
+Now that we have entities and DAOs, we need to connect them through a database class so it can generate the table and Dao's for us to interact with and it also manages integrity validation, migrations and works as a central hub for our interactions with tables.
 
-Now we have tables or entities and the DAOs that enable us to access and interact with the tables. Now, there can be multiple databases in an Android app, so how does Room know that the entity and DAO are part of which database? That's exactly what we are going to define next.
-
-Take a look at the following code snippet of our simple database:
+**✍️ Example:**
 
 ```kotlin
 @Database(
     entities = [LocalHabitTracker::class], // Add all your entities here
-    version = 1,//version of the database,update this once you make changes to the schema(Entity) of the database
+    version = 1 // Update this when modifying the schema
 )
-abstract class HabitTrackerDataBase() : RoomDatabase() {
+abstract class HabitTrackerDataBase : RoomDatabase() {
 
-    //Room will implement this funtion and return the implementation of this dao
+    // Room will auto-implement this function and return the DAO implementation
     abstract fun habitTrackerDao(): HabitTrackerDao
-   
-    //Add all your Dao's here that you want to access
 
-    
 }
 ```
 
-This might be a little tricky, but it's pretty simple. We are creating an abstract class that extends the RoomDatabase and also annotating it with @Database to represent the class as a database and letting the room compiler know that this is one of the databases and the declared entities inside the array are to be associated with this database, and this serves as an entry point to the database.
+**Important Notes:**
 
-The entities array as of now has only one entity for simplicity, so don't forget to add all the entities in this array. Another thing to note is that whenever you are modifying the entities, ensure you upgrade the version of the database to avoid a crash. The reason for this crash is that Room does not know how to handle the schema changes unless a migration strategy is provided; we will talk about this in the next article. In a real-world application, the table could contain user data, and we usually want to preserve this data during schema updates, making migrations a crucial part of database version management.
+✅ Always increase the version when modifying entities to prevent crashes.
+✅ Room doesn’t know how to handle schema changes unless you define a migration strategy.
+✅ Multiple databases can exist in an app, so this class serves as an entry point for Room.
 
-Manually Creating a Database and Interacting
-Hooray! Finally, we are here. You can build it for accessing the database and interacting with it easily. Do check out the code below; it shows a simple manual creation of the database. 
+Migrations and schema updates are crucial for real-world apps to prevent data loss. We’ll cover that soon. 🔄
+
+🎛️ Manually Creating and Using the Database
+
+Now, let’s see how to manually create and interact with the database in our app.
+
+**✍️ Example:**
 
 ```kotlin
 class MainActivity : AppCompatActivity() {
@@ -106,17 +123,16 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // Manually Creating the Database
-        val habitTrackerData = Room.databaseBuilder(
+        // Creating the database manually
+        val habitTrackerDB = Room.databaseBuilder(
             context = this, // ApplicationContext
             klass = HabitTrackerDataBase::class.java, // Database abstract class
-            name = "your_custom_database_name" // custom name for the table
+            name = "habbit_tracker" // Custom database name
         ).build() 
         
-        // You can receive the implementation of the Dao class from the database object
+        // Get the DAO implementation
         val habitTrackerDao = habitTrackerDB.habitTrackerDao()
-        
-       
+
         setContent {
             AppTheme {
                 AppNav(activity = this, habitLocalService = habitTrackerDao)
@@ -126,12 +142,18 @@ class MainActivity : AppCompatActivity() {
 }
 ```
 
-We are using the DatabaseBuilder function from the Room Companion object to build our database; the result of the build is our own implementation of the requested database, with which we can get the implementation of our DAO's from Room and do our interactions... 
+**⚡ Pro Tips:**
 
-Do ensure you don't use the UI thread for accessing the database, as it can cause issues; otherwise, you should not have any other issue, but if you face any issue, feel free to start a discussion below:
+✅ Don’t use the UI thread for database operations; always use coroutines or background threads.
+✅ In real-world apps, use Dependency Injection (DI) for managing database instances efficiently.
+✅ Avoid creating multiple database instances, as it can lead to memory leaks and performance issues.
 
-This is a simple implementation, but a typical app developer would use a DI. Whether to use DI or not is your decision,, depending on the scale of your project. but I will be using it in the final project after this series of articles.
 
-Thanks for reading so far. While this already feels like a lot, these could be enough for your first simple projects, but there are a lot of other interesting cases we have not yet talked about, like @RawQuery, Junctions, TableViews, and many more, which we shall discuss in the next article.
+Mostly this is enough for creating simple CRUD apps, though it looks simple the entities will be converted into a query to create tables, A concrete classes will be created for each Dao's and other essential tasks will be carried by room it self easing our development and debug process.
 
-feel free to share your feedbacks and suggestions below.
+#### 🚀 What’s Next?
+
+This was a quick summary on each of the key components, on the next article we will dive a little deeper into **@Entity** its keys and customizations, the purpose of this series to learn each one of them in detail.
+
+I’d love to hear your feedbacks and suggestion.
+Thanks for reading! 🚀

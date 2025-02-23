@@ -1,7 +1,7 @@
 ---
 date: '2025-02-22T11:23:17+05:30' 
 draft: false
-title: 'Quickly Exploring Key Components of Room (#OF03)'
+title: 'Key Components of Room & Manually Creating A Database Instance(#OF03)'
 ---
 ## 👋 Intro
 
@@ -19,7 +19,9 @@ Let's check it out one by one! 🔍
 
 ## 🏗️ Entities: Defining Your Data Structure
 
-Any class annotated with `@Entity` is an entity, which represents a table in a database,ensure you follow [Normal Forms](https://www.geeksforgeeks.org/normal-forms-in-dbms/) while creating a perfect schema, lets look how an entity/table is represented here.
+Any class annotated with `@Entity` is called a entity, it represents a table in a database, while designing the entity ensure you follow [Normalizations Rules](https://www.geeksforgeeks.org/normal-forms-in-dbms/) to keep it simple and future proof. Let's look checkout a sample entity in a Habit Tracker app.
+
+**Example:**
 
 ```kotlin
 @Entity
@@ -33,16 +35,16 @@ data class LocalHabitTracker(
 ```
 
 **Key Points:**
-✅ An entity **must have** at least one parameter annotated with @PrimaryKey().
-✅ The **primary key** must be unique, or your app will crash.
-✅ If you want Room to **auto-generate** the primary key, set autoGenerate = true.
-✅ Stick to **primitive types** like Long, but if you’re expecting very few entries, you can use Short.
+✅ An entity **must have** at least one parameter annotated with @PrimaryKey.
+✅ The **primary key** must be unique the `primaryKey` column can't have a duplicate key.
+✅ If you want Room to **auto-generate** the primary key, set autoGenerate = true otherwise to false.
+✅ Stick to **primitive types** like Long or Int as PrimaryKey.
 
-The entity can be further customized with **table names, indexing, and custom column names**, which we’ll cover in later articles. 🎯
+The entity can be further customized with **table names, indexing, custom column names, keys and more**, which we’ll cover in next article. 🎯
 
-### 🔗 DAOs: Your Data Gateway
+## 🔗 DAOs: Your Data Gateway
 
-DAOs serve as the interface between your app and the database, providing an abstraction layer. This is a bridge between you the developer and the Database all your interactions happen here,
+DAOs or Data Access Objects serve as the interface between your app and the database, providing an abstraction layer. This is a bridge between you the developer and the Database all your interactions you intend to have table must be defined here later at compile time the compiler will generate the concrete classes for these at compile time, lets see an example how to define these interactions.
 
 **✍️ Example:**
 
@@ -78,17 +80,17 @@ interface HabitTrackerDao {
 
 **Best Practices:**
 
-✅ **One entity per DAO:** It’s best to separate each table into its own DAO for maintainability.
-✅ **No limit** on the number of DAOs, but make sure they have unique names.
+✅ **One entity per DAO:** It’s best to separate interaction with each table into its own DAO for maintainability.
 ✅ **Keep queries optimized** to avoid performance issues as your app scales.
+✅ **Inheritance** if some of the interactions are common to other Dao's create a new Dao with `Common` as prefix for example `CommonHabitTrackerDao`.
 
-We’ll cover complex cases like @RawQuery, Junctions, and TableViews in later articles! 🔮
+We’ll cover complex cases like @RawQuery, Junctions, and TableViews in later articles as to not over-complicate this! 🔮
 
-### 🏛️ Database: The Central Hub
+## 🏛️ Database: The Central Hub
 
-Now that we have entities and DAOs, we need to connect them through a database class so it can generate the table and Dao's for us to interact with and it also manages integrity validation, migrations and works as a central hub for our interactions with tables.
+Now that we have defined the entities and DAOs, we need to create a database to integrate thee entity and Dao's into its domain. Now the room can effectively generate its contents when instantiated along with this the database also manages the integrity validation, migrations and works as a central hub of control for our interactions with this database and its entities.
 
-**✍️ Example:**
+Here is an **example** of a database class:
 
 ```kotlin
 @Database(
@@ -105,13 +107,13 @@ abstract class HabitTrackerDataBase : RoomDatabase() {
 
 **Important Notes:**
 
-✅ Always increase the version when modifying entities to prevent crashes.
+✅ Always increase the version when modifying entities, it enables room to validate the integrity of tables and run migrations effectively.
 ✅ Room doesn’t know how to handle schema changes unless you define a migration strategy.
-✅ Multiple databases can exist in an app, so this class serves as an entry point for Room.
+✅ Multiple databases can exist in an app, so this class serves as an entry point of the particular database.
 
-Migrations and schema updates are crucial for real-world apps to prevent data loss. We’ll cover that soon. 🔄
+Migrations and schema updates are crucial for real-world apps to prevent data loss. We’ll cover on later articles. 🔄
 
-🎛️ Manually Creating and Using the Database
+## 🎛️ Manually Creating and Using the Database
 
 Now, let’s see how to manually create and interact with the database in our app.
 
@@ -147,7 +149,6 @@ class MainActivity : AppCompatActivity() {
 ✅ Don’t use the UI thread for database operations; always use coroutines or background threads.
 ✅ In real-world apps, use Dependency Injection (DI) for managing database instances efficiently.
 ✅ Avoid creating multiple database instances, as it can lead to memory leaks and performance issues.
-
 
 Mostly this is enough for creating simple CRUD apps, though it looks simple the entities will be converted into a query to create tables, A concrete classes will be created for each Dao's and other essential tasks will be carried by room it self easing our development and debug process.
 

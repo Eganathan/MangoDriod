@@ -153,5 +153,6 @@ This is my journey in **building an offline-first app**. I’d love to hear your
 Feel free to connect with me on:  
 📩 **[Email](mailto:mail@eknath.dev)**  
 🌍 **[Website](https://eknath.dev)**  
+💫 **[LinkedIn-Post for comments and feedbacks](https://www.linkedin.com/posts/eganathan_offlinefirstandroid-offlinefirst-android-activity-7294912159627546624-TG77?utm_source=share&utm_medium=member_desktop&rcm=ACoAABYcOpgBgvDfy-0uUjfX0HTNqzzLfKZQAQU)**
 
-🚀 **Stay tuned for Part 2!** 🚀  
+🔖 [Next Article in this Series](https://md.eknath.dev/posts/upgrading-your-app-to-offline-first-with-room-part-2/)

@@ -2,6 +2,8 @@
 date: '2025-02-22T11:23:17+05:30' 
 draft: false
 title: 'Key Components of Room & Manually Creating A Database Instance(#OF03)'
+tags: ["Room","Android","Offline-First-App"]
+categories: ["Android","KMP"]
 ---
 ## 👋 Intro
 
@@ -153,9 +155,20 @@ class MainActivity : AppCompatActivity() {
 
 Mostly this is enough for creating simple CRUD apps, though it looks simple the entities will be converted into a query to create tables, A concrete classes will be created for each Dao's and other essential tasks will be carried by room it self easing our development and debug process.
 
-#### 🚀 What’s Next?
+## 🚀 What’s Next?
 
 This was a quick run through of some of the key components of room, on the next article we will dive a little deeper into **@Entity** its keys and customizations,as we have a larger purpose to explore them each in detail.
 
-I’d love to hear your feedbacks and suggestion.
-Thanks for reading! 🚀
+## **Final Thoughts**  
+
+This is my journey in **building an offline-first app**. I’d love to hear your feedback, suggestions, or questions!  
+
+Feel free to connect with me on:  
+📩 **[Email](mailto:mail@eknath.dev)**  
+🌍 **[Website](https://eknath.dev)** 
+💫 **[LinkedIn-Post for comments and feedbacks](https://www.linkedin.com/posts/eganathan_offlinefirstandroid-offlinefirst-android-activity-7294912159627546624-TG77?utm_source=share&utm_medium=member_desktop&rcm=ACoAABYcOpgBgvDfy-0uUjfX0HTNqzzLfKZQAQU)** 
+
+🔖 [Previous Article in this Series](https://md.eknath.dev/posts/upgrading-your-app-to-offline-first-with-room-part-2/) 
+🚀 **Stay tuned for Part 4!** 🚀 
+
+<!-- 🔖 [Next Article in this Series](https://md.eknath.dev/posts/upgrading-your-app-to-offline-first-with-room-part-4/) -->

@@ -34,11 +34,12 @@ data class LocalHabitTracker(
 )
 ```
 
-**Key Points:**
-✅ An entity **must have** at least one parameter annotated with @PrimaryKey.
-✅ The **primary key** must be unique the `primaryKey` column can't have a duplicate key.
-✅ If you want Room to **auto-generate** the primary key, set autoGenerate = true otherwise to false.
-✅ Stick to **primitive types** like Long or Int as PrimaryKey.
+**Key Points:**    
+
+✅ An entity **must have** at least one parameter annotated with @PrimaryKey.    
+✅ The **primary key** must be unique the `primaryKey` column can't have a duplicate key.    
+✅ If you want Room to **auto-generate** the primary key, set autoGenerate = true otherwise to false.    
+✅ Stick to **primitive types** like Long or Int as PrimaryKey.    
 
 The entity can be further customized with **table names, indexing, custom column names, keys and more**, which we’ll cover in next article. 🎯
 
@@ -80,9 +81,9 @@ interface HabitTrackerDao {
 
 **Best Practices:**
 
-✅ **One entity per DAO:** It’s best to separate interaction with each table into its own DAO for maintainability.
-✅ **Keep queries optimized** to avoid performance issues as your app scales.
-✅ **Inheritance** if some of the interactions are common to other Dao's create a new Dao with `Common` as prefix for example `CommonHabitTrackerDao`.
+✅ **One entity per DAO:** It’s best to separate interaction with each table into its own DAO for maintainability.     
+✅ **Keep queries optimized** to avoid performance issues as your app scales.     
+✅ **Inheritance** if some of the interactions are common to other Dao's create a new Dao with `Common` as prefix for example`CommonHabitTrackerDao`.    
 
 We’ll cover complex cases like @RawQuery, Junctions, and TableViews in later articles as to not over-complicate this! 🔮
 
@@ -107,9 +108,9 @@ abstract class HabitTrackerDataBase : RoomDatabase() {
 
 **Important Notes:**
 
-✅ Always increase the version when modifying entities, it enables room to validate the integrity of tables and run migrations effectively.
-✅ Room doesn’t know how to handle schema changes unless you define a migration strategy.
-✅ Multiple databases can exist in an app, so this class serves as an entry point of the particular database.
+✅ Always increase the version when modifying entities, it enables room to validate the integrity of tables and run migrations effectively.    
+✅ Room doesn’t know how to handle schema changes unless you define a migration strategy.    
+✅ Multiple databases can exist in an app, so this class serves as an entry point of the particular database.   
 
 Migrations and schema updates are crucial for real-world apps to prevent data loss. We’ll cover on later articles. 🔄
 
@@ -146,9 +147,9 @@ class MainActivity : AppCompatActivity() {
 
 **⚡ Pro Tips:**
 
-✅ Don’t use the UI thread for database operations; always use coroutines or background threads.
-✅ In real-world apps, use Dependency Injection (DI) for managing database instances efficiently.
-✅ Avoid creating multiple database instances, as it can lead to memory leaks and performance issues.
+✅ Don’t use the UI thread for database operations; always use coroutines or background threads.    
+✅ In real-world apps, use Dependency Injection (DI) for managing database instances efficiently.     
+✅ Avoid creating multiple database instances, as it can lead to memory leaks and performance issues.    
 
 Mostly this is enough for creating simple CRUD apps, though it looks simple the entities will be converted into a query to create tables, A concrete classes will be created for each Dao's and other essential tasks will be carried by room it self easing our development and debug process.
 

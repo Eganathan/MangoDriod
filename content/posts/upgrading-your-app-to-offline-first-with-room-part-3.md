@@ -155,7 +155,7 @@ Mostly this is enough for creating simple CRUD apps, though it looks simple the 
 
 #### 🚀 What’s Next?
 
-This was a quick summary on each of the key components, on the next article we will dive a little deeper into **@Entity** its keys and customizations, the purpose of this series to learn each one of them in detail.
+This was a quick run through of some of the key components of room, on the next article we will dive a little deeper into **@Entity** its keys and customizations,as we have a larger purpose to explore them each in detail.
 
 I’d love to hear your feedbacks and suggestion.
 Thanks for reading! 🚀

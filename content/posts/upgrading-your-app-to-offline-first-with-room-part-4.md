@@ -1,7 +1,7 @@
 ---
 date: '2025-03-02T15:39:05+05:30' 
 draft: false
-title: 'Room Entity and its intricacies| Offline First part 04 (#OF04)'
+title: 'Room Entity and its intricacies (#OF04)'
 tags: ["Room","Android","Offline-First-App"]
 categories: ["Android","KMP"]
 ---

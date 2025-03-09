@@ -2,7 +2,7 @@
 date: '2025-03-09T13:18:39+05:30' 
 draft: false
 title: 'Upgrading Your App to Offline First With Room Part 5'
-title: 'Writing Simple Data Access Objects(#OF05)'
+title: 'Writing Efficient DAOs in Room: The Backbone of Offline-First Apps (#OF05)'
 tags: ["Room", "Android", "Offline-First-App"]
 categories: ["Android", "KMP"]
 ---

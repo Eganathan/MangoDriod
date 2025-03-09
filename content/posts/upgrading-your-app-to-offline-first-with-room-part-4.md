@@ -167,7 +167,7 @@ data class LocalHabitTracker(
  
 The `@ForeignKey` is a primary key of an associated entity in the context of current entity the associated entity is referred as parent entity, using `@ForeignKey` help us to create relations and trigger changes depending on the event triggered, most commonly used trigger event is `onDelete` the other one is `onUpdate` the actions supported are as follows:
 
- **Supported Actions:**
+#### **Supported Actions:**
 
 | Action       | Behavior on Delete/Update |
 |-------------|-----------------------------|
@@ -177,8 +177,9 @@ The `@ForeignKey` is a primary key of an associated entity in the context of cur
 | RESTRICT    | Prevents deletion or update of the parent row if child rows exist (throws an error). |
 | NO ACTION   | Similar to RESTRICT, but the check happens after the statement executes. |
 
-This table should have given you a clear picture of what each action's behavior and next lets checkout how to select them and when to use them effectively:
-**When to Use Each Action**
+This table should have given you a clear picture of what each action's behavior and next lets checkout how to select them and when to use them effectively:     
+
+#### **When to Use Each Action**
 
 | Action       | When to Use? |
 |-------------|------------------------------------------------------|
@@ -213,12 +214,15 @@ data class LocalHabitTracker(
 This helps with **structuring data efficiently without creating a separate table for nested objects**, It is primarily used to flatten objects into separate columns within the same table this helps us to avoid using `TypeConverters`, extra Table, faster queries as we don't have to deal with JOINS and other complications.
 
 **When to Use @Embedded:**
+
 1. You have small nested objects (e.g., Position, Address, Metadata).
 1. You don’t need a separate table for the object.
 1. You want to avoid TypeConverters for simple objects.
-1. The embedded object is always used with the parent (it has no independent existence).
+1. The embedded object is always used with the parent (it has no independent existence).    
+
 
 **When to Avoid it:**
+
 1. The embedded object is large or frequently updated → Use a separate table.
 1. The object has relationships with other entities → Use @Relation instead.
 1. The object needs to be referenced from multiple entities → Use Foreign Keys.
@@ -298,7 +302,7 @@ These cover the most important aspects of the `@Entity` and its properties and h
 ✅ Define `@ForeignKey` relationships to maintain integrity but optional for complex cases.  
 ✅ Use `@Ignore` for transient fields that shouldn't be stored in the database.  
 ✅ Keep entity classes small and focused—avoid unnecessary logic inside them.  
-✅ Ensure Proper Indexing: Index frequently queried columns to improve performance.
+✅ Ensure Proper Indexing: Index frequently queried columns to improve performance.    
 ✅ Use Primitive Types: Room doesn’t support custom objects directly. Use `@TypeConverter` if needed.
 
 ---
@@ -307,7 +311,7 @@ These cover the most important aspects of the `@Entity` and its properties and h
 
 Room Entities form the foundation of Android's database layer, allowing structured and efficient data management. By following best practices, you ensure scalable and maintainable database architectures.
 
-Want to dive deeper? Stay tuned for the next article in this series! 🚀
+**Next we will explore Data Access Objects**, Stay tuned for the next article in this series! 🚀
 
 ## **Final Thoughts**  
 
@@ -321,4 +325,4 @@ Feel free to connect with me on:
 🔖 [Previous Article in this Series](https://md.eknath.dev/posts/upgrading-your-app-to-offline-first-with-room-part-3/) 
 🚀 **Stay tuned for Part 5!** 🚀 
 
-<!-- 🔖 [Next Article in this Series](https://md.eknath.dev/posts/upgrading-your-app-to-offline-first-with-room-part-5/) -->
+🔖 [Next Article in this Series](https://md.eknath.dev/posts/upgrading-your-app-to-offline-first-with-room-part-5/)

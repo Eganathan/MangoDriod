@@ -7,7 +7,7 @@ tags: ["Room","Android","Offline-First-App"]
 categories: ["Android","KMP"]
 ---
 
-In our [previous article](https://md.eknath.dev/posts/upgrading-your-app-to-offline-first-with-room-part-4/), we covered **Entities** in Room. Now, let’s explore **DAOs (Data Access Objects)** – the bridge between your app and the database. DAOs allow you to execute queries that allow is to insert, update, and delete records efficiently.
+In our [previous article](https://md.eknath.dev/posts/upgrading-your-app-to-offline-first-with-room-part-4/), we covered **Entities** in Room. Now, let’s explore **DAOs (Data Access Objects)** – the bridge between your app and the database. DAOs allow you to execute queries that allow us to insert, update, and delete records efficiently and that's exactly what we are going to explore.
 
 ---
 ## What is a DAO?

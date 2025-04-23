@@ -6,7 +6,7 @@ title: 'Understanding SOLID Principles in Android Developer Context'
 
 This is my take on understanding the SOLID principle as a Android developer,so expect 
 
-Uncle Bob's SOLID principles are a set of design principles that help you write better software in Object Oriented Programming paradagime. They are a set of guidelines that help you write code that is easy to understand, maintain, and extend. This is a one liner that you can expect from any Developer but to be honest i never 
+Uncle Bob's SOLID principles are a set of design principles that help you write better software in Object Oriented Programming paradime. They are a set of guidelines that help you write code that is easy to understand, maintain, and extend. This is a one liner that you can expect from any Developer but to be honest i never 
 
 Kotlin offers both Functional and OOPS paradigms which gives us the developers an edge on understanding this much faster:
 

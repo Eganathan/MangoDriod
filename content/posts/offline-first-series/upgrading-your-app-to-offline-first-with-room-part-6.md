@@ -8,35 +8,33 @@ categories: ["Android","KMP"]
 
 In the [previous article](https://md.eknath.dev/posts/upgrading-your-app-to-offline-first-with-room-part-5/), we explored the power and flexibility of DAOs with Room’s built-in query annotations. But what if your query needs don’t fit into Room’s constraints? Enter @RawQuery – the most flexible and dangerous tool in the Room arsenal.
 
-Let’s dive into what @RawQuery is, when it shines and shuns.
+Let’s dive into what `@RawQuery` is, when it shines and shuns.
 ---
 ## What is @RawQuery?
 
 `@RawQuery` allows you to execute **SQL statements that aren’t validated at compile time**. Unlike `@Query`, which Room parses and validates during compilation, raw queries are evaluated at runtime.
 
-You typically use `@RawQuery` with either SupportSQLiteQuery (for fully dynamic queries) or plain String (though the latter is limited and absolutely discouraged).
+You typically use `@RawQuery` with either SupportSQLiteQuery (for fully dynamic queries) or plain String (though the latter is limited and discouraged).
 
 ```kotlin
 @Dao
 interface ProductDao {
 
-    @RawQuery
+    @RawQuery 
     suspend fun getProductsWithRawQuery(query: SupportSQLiteQuery): List<Product>
-}
-```
 
-and we call it from repository like this
 
-```kotlin
-suspend fun getProductsAbovePrice(minPrice: Int): List<Product> {
+    // This will be called from the repository
+    @Transaction
+    suspend fun getProductsAbovePrice(minPrice: Int): List<Product> {
     val query = SimpleSQLiteQuery(
         "SELECT * FROM products WHERE price > ?",
         arrayOf(minPrice)
     )
     return productDao.getProductsWithRawQuery(query)
 }
+}
 ```
-
 
 ### ✅ When Should You Use @RawQuery?
 
@@ -97,7 +95,7 @@ val query = SimpleSQLiteQuery("SELECT * FROM products WHERE name = ?", arrayOf(n
 ## 🚀 Conclusion
 `@RawQuery` is the escape hatch when Room’s abstraction becomes a cage. Use it when needed, but use it wisely. Think of it like the goto statement of Room – powerful but potentially dangerous if overused or misused.
 
-In most offline-first app cases, well-structured DAOs using Room’s annotations will suffice. But in edge cases where flexibility is key, @RawQuery gives you that last-mile control.
+In most offline-first app cases, well-structured DAOs using Room’s annotations will suffice. But in edge cases where flexibility is key, `@RawQuery` gives you that last-mile control.
 
 **Next up, we’ll explore Query Optimization Tips to keep your Offline-First App lightning fast, even at scale.**
 

@@ -1,7 +1,7 @@
 ---
 date: '2025-03-09T13:18:39+05:30' 
 draft: false
-title: 'Dao: The Backbone of Offline-First Apps (#OF05)'
+title: 'DAO: The Backbone of Offline-First Apps (#OF05)'
 tags: ["Room", "Android", "Offline-First-App"]
 categories: ["Android", "KMP"]
 ---
@@ -239,4 +239,4 @@ Feel free to connect with me on:
 🔖 [Previous Article in this Series](https://md.eknath.dev/posts/upgrading-your-app-to-offline-first-with-room-part-4/)
 🚀 **Stay tuned for Part 6!** 🚀 
 
-<!-- 🔖 [Next Article in this Series](https://md.eknath.dev/posts/upgrading-your-app-to-offline-first-with-room-part-6/) -->
+🔖 [Next Article in this Series](https://md.eknath.dev/posts/upgrading-your-app-to-offline-first-with-room-part-5/)

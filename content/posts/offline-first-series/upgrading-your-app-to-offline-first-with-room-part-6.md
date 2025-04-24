@@ -1,5 +1,5 @@
 ---
-date: '2025-03-09T08:18:39+05:30' 
+date: '2025-04-22T08:18:39+05:30'
 draft: true
 title: 'Mastering Raw Queries in Room: Why, When & When Not to Use Them (#OF06)'
 tags: ["Room","Android","Offline-First-App"]
@@ -32,24 +32,49 @@ interface ProductDao {
         arrayOf(minPrice)
     )
     return productDao.getProductsWithRawQuery(query)
-}
+    }
 }
 ```
 
 ### ✅ When Should You Use @RawQuery?
 
-Despite its risks, there are legitimate use cases for @RawQuery:
+Despite its risks, there are legitimate use cases for `@RawQuery` which come handy when the app is completely offline and need to do operations similar to server with available data for example sorting, filtering and searching.
 
-1. Complex Queries Room Doesn’t Support
-If you need advanced joins, unions, subqueries, or Common Table Expressions (CTEs), Room’s @Query might fall short.
-2. Dynamic Filtering or Sorting
-When the WHERE clause, ORDER BY, or LIMIT is decided at runtime, and you can’t define it statically.
+There are some cases where you need advanced joins, unions, subqueries Room’s `@Query` might fall short an example i can think of are expense list screen where you need to get associated budgets,tags, users who created and approved them etc getting this merged data specific filter and sort type will be extremely hard with conventional methods in cases like these `@RawQuery` are a boon.
 
+This is one of my dao's functions that is triggered when the there applies a filter, since there was no network i apply the filter and show the available data assuming the user already knows he is in offline mode,we have an indicator that should handle conveying of the message. So take a look and the params and tell me can we acheve this using conventional method faster than this ? i don't think so but do share your views.
+
+
+Lets check out my code for 
 ```kotlin
-suspend fun getProductsSortedBy(sortBy: String): List<Product> {
-    val query = SimpleSQLiteQuery("SELECT * FROM products ORDER BY $sortBy")
-    return productDao.getProductsWithRawQuery(query)
-}
+
+ @RawQuery // Query runner
+    suspend fun getExpensesWithParamsQueryRunner(query: SupportSQLiteQuery): List<LocalExpenseWithDetails>
+
+ @Transaction // this will be called as a fallback option when offline
+    suspend fun getExpensesWithParams(
+        type: String?,
+        budgetId: Long?,
+        sessionId: Long?,
+        filterParam: FilterParams,
+        sortParam: SortParam,
+        searchQuery: String?,
+        page: Int
+    ): List<LocalExpenseWithDetails> {
+        val typeId = if (type != null && type != BaseExpenseType.ALL) getExpenseTypeWithName(type.serverKey) else null
+        return getExpensesWithParamsQueryRunner(
+            query = getExpenseQuery( // query generator
+                typeId = typeId,
+                budgetId = budgetId,
+                sessionId = sessionId,
+                filterParam = filterParam,
+                sortParam = sortParam,
+                search = searchQuery,
+                page = page
+            )
+        )
+    }
+
 ```
 3. Performance Testing / Debugging
 During development, you might want to test different raw SQL statements quickly without baking them into DAOs.

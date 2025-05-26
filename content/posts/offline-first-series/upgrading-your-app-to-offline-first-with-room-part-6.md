@@ -119,7 +119,7 @@ val query = SimpleSQLiteQuery("SELECT * FROM products WHERE name = ?", arrayOf(n
 - ❌ Using @RawQuery when @Query or DAO methods would suffice.
 - ❌ Ignoring test coverage for raw query logic.
 
-I’ve even created my own query builder to simplify this process in my codebase. Whether you should use it or not depends on your needs, but I’m sharing it just so you know it exists because it was extremely useful for me. The code for my query builder can be found here: (CustomQueryBuilder)[https://gist.github.com/Eganathan/6692e2ea77fe51daf02f9e34a036f1b5]
+I’ve even created my own query builder to simplify this process in my codebase. Whether you should use it or not depends on your needs, but I’m sharing it just so you know it exists because it was extremely useful for me. The code for my query builder can be found here: [CustomQueryBuilder](https://gist.github.com/Eganathan/6692e2ea77fe51daf02f9e34a036f1b5)
 
 ## 🚀 Conclusion
 `@RawQuery` is the escape hatch when Room’s abstraction becomes a cage. Use it when needed, but use it wisely. Think of it like the goto statement of Room – powerful but potentially dangerous if overused or misused.

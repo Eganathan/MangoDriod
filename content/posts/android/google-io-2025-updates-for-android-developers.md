@@ -63,4 +63,4 @@ Google I/O 2025 has truly set the stage for an exciting year in Android developm
 The broader device support for Firebase and new design tools like Stitch further empower us to build richer, more robust applications. It's a fantastic time to be an Android developer, and I can't wait to get my hands on these new tools and see what we can build!
 
 Feel free to connect and share your suggestion:
-📩 **[Email](mailto:mail@eknath.dev)**  
+📩 **[Email](mailto:mail@eknath.dev)** 

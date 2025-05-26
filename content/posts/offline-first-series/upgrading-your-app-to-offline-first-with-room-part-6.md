@@ -8,6 +8,7 @@ categories: ["Android","KMP"]
 In the [previous article](https://md.eknath.dev/posts/upgrading-your-app-to-offline-first-with-room-part-5/), we explored the power and flexibility of DAOs with Room’s built-in query annotations. But what if your query needs don’t fit into Room’s constraints? Enter @RawQuery – the most flexible and dangerous tool in the Room arsenal.
 
 Let’s dive into what `@RawQuery` is, when it shines and shuns.
+
 ---
 ## What is @RawQuery?
 
@@ -75,6 +76,7 @@ Lets check out my code for
     }
 
 ```
+
 3. Performance Testing / Debugging
 During development, you might want to test different raw SQL statements quickly without baking them into DAOs.
 
@@ -102,6 +104,7 @@ val query = SimpleSQLiteQuery("SELECT * FROM products WHERE name = ?", arrayOf(n
 ```
 
 ### 📋 Tips for Safely Using Raw Queries
+
 - ✅ Always use SimpleSQLiteQuery with parameterized arguments.
 - ✅ Keep the query logic isolated and well-documented.
 - ✅ Prefer @Query whenever possible.
@@ -110,6 +113,7 @@ val query = SimpleSQLiteQuery("SELECT * FROM products WHERE name = ?", arrayOf(n
 
 
 ### 🚫 Anti-Patterns to Avoid
+
 - ❌ Using raw queries as your primary query method.
 - ❌ Skipping query reuse – dynamic doesn’t mean you can’t structure it.
 - ❌ Using @RawQuery when @Query or DAO methods would suffice.
@@ -127,11 +131,12 @@ In most offline-first app cases, well-structured DAOs using Room’s annotations
 **Next we will explore Data Access Objects**, Stay tuned for the next article in this series! 🚀
 
 ## **Final Thoughts**  
+
 Raw queries are sharp tools — excellent in skilled hands, but risky for the unprepared. If you’ve got a use case or edge case where @RawQuery saved your app or made something possible, I’d love to hear it!
 
 Feel free to connect and share your stories:
 📩 **[Email](mailto:mail@eknath.dev)**  
-🌍 **[Website](https://eknath.dev)**   
+🌍 **[Website](https://eknath.dev)**  
 💫 **[LinkedIn-Post for comments and feedbacks](https://www.linkedin.com/posts/eganathan_offlinefirstandroid-offlinefirst-android-activity-7294912159627546624-TG77?utm_source=share&utm_medium=member_desktop&rcm=ACoAABYcOpgBgvDfy-0uUjfX0HTNqzzLfKZQAQU)** 
 
 🔖 [Previous Article in this Series](https://md.eknath.dev/posts/upgrading-your-app-to-offline-first-with-room-part-5/)

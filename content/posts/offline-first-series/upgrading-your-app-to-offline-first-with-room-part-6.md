@@ -1,6 +1,5 @@
 ---
-date: '2025-04-22T08:18:39+05:30'
-draft: true
+date: '2025-05-25T08:18:39+05:30'
 title: 'Mastering Raw Queries in Room: Why, When & When Not to Use Them (#OF06)'
 tags: ["Room","Android","Offline-First-App"]
 categories: ["Android","KMP"]
@@ -38,9 +37,9 @@ interface ProductDao {
 
 ### ✅ When Should You Use @RawQuery?
 
-Despite its risks, there are legitimate use cases for `@RawQuery` which come handy when the app is completely offline and need to do operations similar to server with available data for example sorting, filtering and searching.
+Despite its risks, there are legitimate use cases for `@RawQuery` which come handy when the app is completely offline and need to do operations similar to server with available data for example sorting, filtering and searching etc.
 
-There are some cases where you need advanced joins, unions, subqueries Room’s `@Query` might fall short an example i can think of are expense list screen where you need to get associated budgets,tags, users who created and approved them etc getting this merged data specific filter and sort type will be extremely hard with conventional methods in cases like these `@RawQuery` are a boon.
+There are some cases where you need advanced joins, unions, subqueries Room’s `@Query` might fall short an example i can think of are expense list screen where you need to get associated budgets,tags, users who created and approved them, etc getting this merged data specific filter and sort type will be extremely hard with conventional methods in cases like these `@RawQuery` are a boon.
 
 This is one of my dao's functions that is triggered when the there applies a filter, since there was no network i apply the filter and show the available data assuming the user already knows he is in offline mode,we have an indicator that should handle conveying of the message. So take a look and the params and tell me can we acheve this using conventional method faster than this ? i don't think so but do share your views.
 
@@ -116,6 +115,7 @@ val query = SimpleSQLiteQuery("SELECT * FROM products WHERE name = ?", arrayOf(n
 - ❌ Using @RawQuery when @Query or DAO methods would suffice.
 - ❌ Ignoring test coverage for raw query logic.
 
+I’ve even created my own query builder to simplify this process in my codebase. Whether you should use it or not depends on your needs, but I’m sharing it just so you know it exists because it was extremely useful for me. The code for my query builder can be found here: (CustomQueryBuilder)[https://gist.github.com/Eganathan/6692e2ea77fe51daf02f9e34a036f1b5]
 
 ## 🚀 Conclusion
 `@RawQuery` is the escape hatch when Room’s abstraction becomes a cage. Use it when needed, but use it wisely. Think of it like the goto statement of Room – powerful but potentially dangerous if overused or misused.

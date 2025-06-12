@@ -1,5 +1,5 @@
 ---
-date: '2025-05-22T16:01:45+05:30' 
+date: '2025-05-26T16:01:45+05:30' 
 title: 'Google IO 2025 Updates Filtered for Android Developers'
 ---
 Google I/O 2025 just wrapped up, and as usual, it delivered a wave of exciting announcements and updates for Android developers. From revolutionary testing tools to enhanced IDE features and broader device support, this year's I/O promises to streamline workflows and unlock new possibilities, if you missed and like to watch them,(here is the playlist)[https://youtube.com/playlist?list=PLWz5rJ2EKKc86SrjccwTtBzH4Ptu3Mrai&si=1BMDinkRFfi4dL9S]
@@ -18,7 +18,7 @@ You can learn more about this groundbreaking feature here: [https://developer.an
 
 ## Agent Tab in Android Studio: Your Intelligent Coding Companion
 
-Remember "Junie" or "Firebase" ? Well, Google has taken that concept and integrated it directly into Android Studio with the new Agent Tab. This is Google's own IDE tooling, designed to act as an intelligent coding companion, much like we've seen with AI-powered assistants.
+Know the "Junie" or "Firebender" ? Well, Google has taken that concept and integrated it directly into Android Studio with the new Agent Tab. This is Google's own IDE tooling, designed to act as an intelligent coding companion, much like we've seen with AI-powered assistants.
 
 This integration signifies a massive leap forward in developer productivity, allowing for a more seamless and intelligent development experience. Imagine getting proactive suggestions and even automated fixes for common issues – a true time-saver!
 

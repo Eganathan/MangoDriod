@@ -1,13 +1,13 @@
 ---
 date: '2025-06-11T20:46:54+05:30' 
 draft: false
-title: 'Basic Bash commands for terminal'
+title: 'Basic Bash commands to start using the terminal'
 categories: ["Bash","Scripting"]
 ---
 
-A growing list of Bash commands i use on mac(some only work on mac and its marked with [M]), tips, and tricks to help me stay sharp on the terminal. This is my personal cheat sheet.
+A growing list of basic Bash commands i use on mac(some only work on mac and its marked with [M]), tips, and tricks to help me stay sharp on the terminal. This is my personal cheat sheet.
 
-## Basics
+## Identity
 
 ```bash
 pwd             # Print current working directory
@@ -31,9 +31,9 @@ cd -            # Go to previous directory
 ```bash
 touch file.txt              # Create a new empty file
 mkdir folder                # Create a new directory
-cp file1.txt file2.txt      # Copy file
-mv file1.txt file2.txt      # Rename or move file
-rm file.txt                 # Delete file
+cp file1.txt file2.txt      # Copy file or dir
+mv file1.txt file2.txt      # Rename or move file or dir
+rm file.txt                 # Delete file 
 rm -r folder                # Delete directory recursively
 ```
 
@@ -63,7 +63,24 @@ tail file.txt               # Last 10 lines
 chmod +x script.sh          # Make script executable
 chmod 755 file              # Set permissions (owner rwx, others rx)
 chown user:group file       # Change ownership
+ls -l file                  # Get info of file permissions and owner etc
+ls -ld folder               # Get info of folder permissions and owner etc
 ```
+
+### Permissions String Quick Reference
+
+```bash
+-rw-r--r-- 1 user group 1234 Jun 16 19:00 myfile.txt # Example output for ls -l file check the table for ref
+drwxr-xr-x 2 user group 4096 Jun 16 19:00 mydir # Example output for ls -ld folder check the table for ref
+```
+
+| Position  | Meaning                                | Example                          |
+|-----------|----------------------------------------|----------------------------------|
+| 1st char  | File type (`-` file, `d` directory, `l` symlink) | `-` = file, `d` = directory        |
+| 2-4       | Owner permissions (read `r`, write `w`, execute `x`) | `rwx` = owner can read, write, execute |
+| 5-7       | Group permissions                      | `r-x` = group can read, execute  |
+| 8-10      | Others permissions                     | `r--` = others can only read     |
+
 
 ## Scripts & Variables
 
@@ -95,37 +112,43 @@ done
 ```bash
 !!              # Repeat last command
 !abc            # Run last command starting with 'abc'
-Ctrl + R        # Reverse search history
+Ctrl + R        # Reverse search command history
 Ctrl + L        # Clear screen (same as `clear`)
 Ctrl + A / E    # Move to beginning / end of line
 ```
 
+## Date Time
 
-## Others
+```bash
+date # Print current date and time
+date +"%T"        # Print current time in 24-hour format (HH:MM:SS)
+date +"%r"        # Print current time in 12-hour format with AM/PM
+date +"%F"        # Print current date in YYYY-MM-DD format
+date +"%d-%m-%Y"  # Print current date in custom format: Day Month Year
+date -u           # Print current UTC time
+```
 
-- Use alias to create shortcuts:
+## Use alias to create shortcuts
 
 ```bash
 alias gs="git status" # hope you have git installed
 alias ..="cd .." # this have saved a quite a lot of time for me
 ```
 
-- Combine commands:
+## Combine commands
 
 ```bash
 command1 && command2  # Run command2 only if command1 succeeds
 command1 || command2  # Run command2 only if command1 fails
 ```
 
-- Use .bashrc or .bash_profile to persist aliases or environment variables. (Really useful, we can use same settings on work and other laptops)
-
-- copy file contents [M]:
+## copy file contents
 
 ```bash
 cat file.txt | pbcopy
 ```
 
-- Cleaning
+## Cleaning
 
 ```bash
 df -h           # Disk usage
@@ -134,10 +157,13 @@ top             # Real-time process list
 ps aux | grep xyz  # Check if a process is running
 ```
 
-- Common Tools
-    -- gpt - gpt cli tool
-    -- ddgr - search from the commandline
-    -- curl – Fetch from URL
-    -- wget – Download files
-    -- tar -xzvf file.tar.gz – Extract tar.gz
-    -- zip/unzip – Compress/uncompress
+## Common commandline tools
+
+  -- homeBrew - package manager like npm
+  -- ddgr - search from the commandline (DuckDuckGo)
+  -- zip/unzip – Compress/uncompress
+  -- curl - API testing and others
+
+## Preserving your preference
+
+Use .bashrc or .bash_profile to persist aliases or environment variables and your personal scripts.

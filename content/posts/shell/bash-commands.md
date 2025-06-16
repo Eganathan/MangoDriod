@@ -1,10 +1,11 @@
 ---
-date: '2025-06-10T12:46:54+05:30' 
+date: '2025-06-11T20:46:54+05:30' 
 draft: false
 title: 'Basic Bash commands for terminal'
+categories: ["Bash","Scripting"]
 ---
 
-A growing list of Bash commands, tips, and tricks to help me stay sharp on the terminal. This is my personal cheat sheet.
+A growing list of Bash commands i use on mac(some only work on mac and its marked with [M]), tips, and tricks to help me stay sharp on the terminal. This is my personal cheat sheet.
 
 ## Basics
 
@@ -99,6 +100,7 @@ Ctrl + L        # Clear screen (same as `clear`)
 Ctrl + A / E    # Move to beginning / end of line
 ```
 
+
 ## Others
 
 - Use alias to create shortcuts:
@@ -117,6 +119,12 @@ command1 || command2  # Run command2 only if command1 fails
 
 - Use .bashrc or .bash_profile to persist aliases or environment variables. (Really useful, we can use same settings on work and other laptops)
 
+- copy file contents [M]:
+
+```bash
+cat file.txt | pbcopy
+```
+
 - Cleaning
 
 ```bash
@@ -127,8 +135,9 @@ ps aux | grep xyz  # Check if a process is running
 ```
 
 - Common Tools
+    -- gpt - gpt cli tool
+    -- ddgr - search from the commandline
     -- curl – Fetch from URL
     -- wget – Download files
     -- tar -xzvf file.tar.gz – Extract tar.gz
     -- zip/unzip – Compress/uncompress
-    

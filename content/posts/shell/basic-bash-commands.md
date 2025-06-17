@@ -186,6 +186,8 @@ These files persist aliases or environment variables and your personal scripts, 
 ✅ Use the Main configuration file for environment variables like JAVA PATH and others.
 ✅ Use the Profile Configuration File for aliases and other similar settings.
 
+⚠️ Once you add your alias or update the profile configuration, you will need to re-start the terminal for the new configuration to come into effect.
+
 I keep a copy of the profile configuration in git so i have access to my configurations both on my work and other systems if i need em.
 
 ## Common commandline tool that is used often by me

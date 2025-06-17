@@ -1,11 +1,13 @@
 ---
 date: '2025-06-11T20:46:54+05:30' 
 draft: false
-title: 'Basic Bash commands to start using the terminal'
+title: 'Basic Bash Commands'
 categories: ["Bash","Scripting"]
 ---
 
-A growing list of basic Bash commands i use on mac(some only work on mac and its marked with [M]), tips, and tricks to help me stay sharp on the terminal. This is my personal cheat sheet.
+One of my mentors, [RWX-Rob](https://linktr.ee/rwxrob), runs online bootcamps called Boost, where he shares tech industry standards. A key lesson he emphasizes is the importance of learning Linux and working with its Bash command-line. Mastering the terminal has helped me save time and stay focused. These are my quick reference notes — not an exhaustive list, but the commands I use most often. Commands marked [M] are Mac-only.
+
+btw BASH is short for Bourne Again SHell, just in case some one asks, so here we go:
 
 ## Identity
 

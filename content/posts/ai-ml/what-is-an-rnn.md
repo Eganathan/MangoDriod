@@ -2,7 +2,7 @@
 date: '2025-02-19T19:47:13+05:30' 
 draft: false
 title: 'Understanding Recurrent Neural Network'
-categories: ["Ai/ML"]
+categories: ["AI/ML"]
 tags: ["AI","ML"]
 ---
 

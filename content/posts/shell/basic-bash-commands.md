@@ -5,9 +5,19 @@ title: 'Basic Bash Commands'
 categories: ["Bash","Scripting"]
 ---
 
-One of my mentors, [RWX-Rob](https://linktr.ee/rwxrob), runs online bootcamps called Boost, where he shares tech industry standards. A key lesson he emphasizes is the importance of learning Linux and working with its Bash command-line. Mastering the terminal has helped me save time and stay focused. These are my quick reference notes — not an exhaustive list, but the commands I use most often. Commands marked [M] are Mac-only.
+One of my mentors, [RWX-Rob](https://linktr.ee/rwxrob), runs online bootcamps called Boost, where he shares tech industry standards. A key lesson he emphasizes is the importance of learning Linux and working with its Bash command-line. Mastering the terminal has helped me save time and stay focused. These are my quick reference notes — not an exhaustive list, but the commands I use most often and im sure it will be useful for you too.
 
-btw BASH is short for Bourne Again SHell, just in case some one asks, so here we go:
+btw BASH is short for Bourne Again SHell, just in case some one asks, so lets move it:
+
+## Mac Switching between Zsh and Bash
+
+As a software developer, choose **Bash** if you're new to shell scripting due to its familiarity and abundance of online resources, while opting for **Zsh** for improved performance, customization, and
+security features, keeping in mind that switching to Zsh might require adapting to some differences when working with Linux distributions.
+
+```bash
+chsh -s /bin/bash  # switch to bash
+chsh -s /bin/zsh   # Switch to zsh
+```
 
 ## Identity
 
@@ -159,13 +169,31 @@ top             # Real-time process list
 ps aux | grep xyz  # Check if a process is running
 ```
 
-## Common commandline tools
+## Configuration Files
 
-  -- homeBrew - package manager like npm
-  -- ddgr - search from the commandline (DuckDuckGo)
-  -- zip/unzip – Compress/uncompress
-  -- curl - API testing and others
+```bash
+# Bash
+cat ~/.bash_profile   # Main configuration file
+cat ~/.bashrc         # Profile configuration file
 
-## Preserving your preference
+# Zsh (Mac)
+cat ~/.zshrc          # Main configuration file
+cat ~/.zprofile       # Profile configuration file
+```
 
-Use .bashrc or .bash_profile to persist aliases or environment variables and your personal scripts.
+These files persist aliases or environment variables and your personal scripts, this is really helpful to customize the shell for your taste
+
+✅ Use the Main configuration file for environment variables like JAVA PATH and others.
+✅ Use the Profile Configuration File for aliases and other similar settings.
+
+I keep a copy of the profile configuration in git so i have access to my configurations both on my work and other systems if i need em.
+
+## Common commandline tool that is used often by me
+
+- homebrew - package manager like npm
+- ddgr - search from the commandline (DuckDuckGo)
+- ollama - for local offline AI models for simple tasks and quires.
+- zip/unzip – Compress/uncompress
+- curl - API testing and others
+
+> "Warning: Terminal use may cause excessive productivity and happiness." - Ollama 3.5

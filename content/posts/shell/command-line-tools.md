@@ -43,8 +43,8 @@ Local models are fantastic for answering generic or timeless questions where acc
 
 **Instructions:**
 
-1. Click on the [Download](https://ollama.com/download) and download the software via the website.
-2. navigate to the downloaded folder and unzip the file, just like this `unzip Ollama-darwin.zip`.
+1. run the following command to download via terminal ```bash curl -fsSL https://ollama.com/install.sh | sh``` or if you like to download manually [https://ollama.com/download)](https://ollama.com/download) and install it.
+2. navigate to the downloaded folder and unzip the file, `unzip Ollama-darwin.zip`.
 3. Now `ls` and you will see a new file called `Ollama.app`.
 4. run the open command `open Ollama.app` and agree and allow everything it asks(don't worry its safe).
 5. Browse a model form the [ModelLIbrary](https://ollama.com/search), keep an eye on the size some models are like 500 GB 🫢

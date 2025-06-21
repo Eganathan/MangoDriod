@@ -1,12 +1,11 @@
 ---
 date: '2025-06-20T19:47:13+05:30' 
-draft: true
 title: 'Ollama & Goose cli - Offline Agent setup'
 categories: ["AI/ML"]
 tags: ["AI","ML"]
 ---
 
-## 👉 Fair Warning
+## Fair Warning
 
 Make sure you are using a capable system — ideally with a powerful CPU, GPU, and adequate cooling — before running large language models locally. LLMs can consume significant resources, generate substantial heat, and may cause system instability or damage if your hardware isn’t up to the task. Please proceed with caution!
 
@@ -54,14 +53,9 @@ You can stop goose by given `/exit` command.
 
 ## Where Offline Agents Work Best
 
-Local/offline agents powered by Ollama work best when:
-
 - The task is narrow, well-defined, and focused.
 - You want fast, private processing without sending data to the cloud.
 - You are working with small to moderate inputs and outputs, as local models may struggle with large contexts or long conversations on limited hardware.
+- Context limit required is less than 32K tokens
 
-## Final Notes
-
-By combining Ollama and Goose CLI, you can build a capable offline agent for educational tasks and more — with the peace of mind that your data stays on your machine.
-
-Always monitor your system’s health, and don’t hesitate to stop the model if things heat up!
+Again, always monitor your system’s health, and don’t hesitate to stop the model if things heat up!

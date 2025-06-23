@@ -28,11 +28,11 @@ params:
   env: production
   defaultTheme: auto 
   title: MangoDriod-A personal Tech Blog of Eknath
-  description: "I write about Android, Kotlin, Bash, Zoho, Google Products and what not that interests me on tech and related stuff"
+  description: "I write about Software-Development,Kotlin, Compose, Android and everything that interests me."
   keywords: [Blog, Android, Kotlin,Zoho,Eganathan,Google, Tech, Software Development]
   homeInfoParams:
     Title: Hi there 👋
-    Content: Welcome to MangoDriod, my personal blog. I am Eknath, a software engineer and a tech enthusiast. I write about software development, tech, and other things that interest me, do check around an if you like to stay connected join our [WhatsApp Community](https://eknath.dev/community).
+    Content: Welcome to MangoDriod, my personal tech blog. I am Eknath, a software developer and a tech enthusiast. I write about software development, tech, and other things that interest me, the thoughts are purely mine but the articles may be written by AI tools, i consider these as a personal note for me hence i publish them here. I hope you find something useful here. Feel free to reach out to me on social media or directly via email [mail@eknath.dev]("emailto:mail@eknath.dev").
 
   socialIcons:
     - name: "X"
@@ -51,7 +51,7 @@ params:
   ShowReadingTime: true
   
   ShowToc: true
-  TocOpen: false
+  TocOpen: true
 
   ShowBreadCrumbs: true
 

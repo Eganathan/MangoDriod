@@ -92,9 +92,9 @@ Before you start there is a bug at login, so stick with me on setting this up.
 - you might see the auth login page
 - now run the `gemini` command again and go to your default browser and authenticate on the latest tab.
 
-⚠️ Unlike ollama her only the tool is open source, not the model which means your data will be passed around.
+⚠️ Unlike ollama here only the "tool" is open source, **not the model** which means your data will be passed around.
 
-⚠️ 60 request/ min is the current limit, but you can upgrade to paid plan to avoid this.
+⚠️ 60 request/ min is the current limit, but you can upgrade to paid plan to overcome this.
 
 ### Common Commands
 

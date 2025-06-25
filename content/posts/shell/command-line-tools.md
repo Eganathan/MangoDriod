@@ -4,7 +4,7 @@ draft: false
 title: 'Recommended Command Line Tools'
 categories: ["Bash","Terminal"]
 ---
-Terminal is lit already but these are some must have commandline tools that i use and i think you must have too.
+The terminal is already a powerful tool, but the right command-line utilities can make it even better. Here are a few essential tools I use daily that you might find helpful too.
 
 ## HomeBrew
 
@@ -15,58 +15,62 @@ Homebrew is a package manager for macOS (and Linux) that lets you easily install
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
-After running the above command, just restart the terminal and you are good to go, before we start installing stuff lets understand what is formula and cask in brew context.
+After running the command, restart your terminal, and you're good to go. Before we start installing, let's understand the difference between a "formula" and a "cask" in Homebrew.
 
-**Formula:**  They are Command-line tools, libraries, languages (Kotlin, Go etc) this does not need any decorators while handling any brew operations. [AllFormulas](https://formulae.brew.sh/formula/)
+**Formula:** Command-line tools, libraries, and languages (e.g., Kotlin, Go). No special flags are needed when using `brew` commands with formulas. [All Formulas](https://formulae.brew.sh/formula/)
 
-**Cask:** Casks are UI applications like chrome, vscode etc and need a `--cask decorator` for operations with it.[CaskDirectory](https://formulae.brew.sh/cask/)
+**Cask:** GUI applications like Chrome, VSCode, etc. These require a `--cask` flag for `brew` operations. [Cask Directory](https://formulae.brew.sh/cask/)
 
 ```bash
-brew install git             # installing  formula example
-brew install --cask firefox  # installing cask example
+brew install git             # Installing a formula
+brew install --cask firefox  # Installing a cask
 
-brew uninstall foo           # remove it
-brew upgrade foo             # upgrade it
-brew list                    # see installed packages
-brew search foo              # find packages
-brew info foo                # details about a package
-brew update                  # update Homebrew itself
-brew upgrade                 # upgrade everything
+brew uninstall foo           # Remove a package
+brew upgrade foo             # Upgrade a specific package
+brew list                    # See all installed packages
+brew search foo              # Find available packages
+brew info foo                # Get details about a package
+brew update                  # Update Homebrew's package list
+brew upgrade                 # Upgrade all outdated packages
 ```
 
 🔗 [HomeBrew-Official](https://brew.sh/)
 
 ## Ollama - Local and OpenSource LLMs
 
-This is an incredibly useful tool — I find myself using it almost every other hour.
-Local models are fantastic for answering generic or timeless questions where accuracy matters and you don’t need up-to-the-minute data. They’re fast, private, work offline, and come with another big advantage: 🌱 reduced environmental impact.
+This is an incredibly useful tool that I find myself using constantly. Local models are fantastic for answering general or timeless questions where you need accuracy without requiring up-to-the-minute data. They’re fast, private, work offline, and have another big advantage: 🌱 a reduced environmental impact.
 
 **Instructions:**
 
-1. run the following command to download via terminal ```bash curl -fsSL https://ollama.com/install.sh | sh``` or if you like to download manually [https://ollama.com/download)](https://ollama.com/download) and install it.
-2. navigate to the downloaded folder and unzip the file, `unzip Ollama-darwin.zip`.
-3. Now `ls` and you will see a new file called `Ollama.app`.
-4. run the open command `open Ollama.app` and agree and allow everything it asks(don't worry its safe).
-5. Browse a model form the [ModelLIbrary](https://ollama.com/search), keep an eye on the size some models are like 500 GB 🫢
-6. Once you have picked you model then run `ollama run model_name` ie `ollama run deepseek-r1`
-7. After the download is complete you can serve it `ollama serve deepseek-r1`.
-8. You can interact with the model now, to exit just type `/bye` and you are out.
+1.  Install Ollama by running the official script in your terminal. If you prefer, you can also download it manually from the [official site](https://ollama.com/download).
+    ```bash
+    curl -fsSL https://ollama.com/install.sh | sh
+    ```
+2.  Browse the [Model Library](https://ollama.com/search) to find a model. Keep an eye on the size, as some models can be several gigabytes.
+3.  Once you've picked a model, pull it using the `pull` command. For example, to get the Llama 3 model:
+    ```bash
+    ollama pull llama3
+    ```
+4.  After the download is complete, you can run the model to start a chat session. To exit, just type `/bye`.
+    ```bash
+    ollama run llama3
+    ```
 
-That was a long process i know, but now anytime you have a question you can just run `ollama run deepseek-r1` and you can interact without any hassle.
+That's it! Now, anytime you have a question, you can just run `ollama run <model_name>` to interact with your local LLM.
 
-| Command                          | Description |
-|-----------------------------------|-------------|
-| `ollama serve`                   | Starts Ollama on your local system. |
-| `ollama create <new_model>`       | Creates a new model from an existing one for customization or training. |
-| `ollama show <model>`             | Displays details about a specific model, such as its configuration and release date. |
-| `ollama run <model>`              | Runs the specified model, making it ready for interaction. |
-| `ollama pull <model>`             | Downloads the specified model to your system. |
-| `ollama list`                     | Lists all the downloaded models. |
-| `ollama ps`                       | Shows the currently running models. |
-| `ollama stop <model>`             | Stops the specified running model. |
-| `ollama rm <model>`               | Removes the specified model from your system. |
+| Command                 | Description                                                               |
+| ----------------------- | ------------------------------------------------------------------------- |
+| `ollama serve`          | Starts the Ollama server (for API access).                                |
+| `ollama create <model>` | Creates a new model from a Modelfile.                                     |
+| `ollama show <model>`   | Displays details about a model.                                           |
+| `ollama run <model>`    | Runs a model for interactive chat.                                        |
+| `ollama pull <model>`   | Downloads a model from the library.                                       |
+| `ollama list`           | Lists all downloaded models.                                              |
+| `ollama ps`             | Shows currently running models.                                           |
+| `ollama stop <model>`   | Stops a running model.                                                    |
+| `ollama rm <model>`     | Removes a model from your system.                                         |
 
-Here is an example how you can download and run other models
+Here is an example of how you can download and run another model in one line:
 
 ```bash
 ollama pull mistral && ollama run mistral
@@ -76,51 +80,57 @@ ollama pull mistral && ollama run mistral
 
 ## Gemini-cli
 
-Gemini CLI, an open-source AI agent (Only agent not the **model**) that brings the power of Gemini directly into your terminal. It provides lightweight access to Gemini, giving you the most direct path from your prompt to our model. While it excels at coding, we built Gemini CLI to do so much more. It’s a versatile, local utility you can use for a wide range of tasks, from content generation and problem solving to deep research and task management.
+Gemini CLI is an open-source tool that brings the power of Google's Gemini models directly into your terminal. It provides lightweight, direct access to the API, making it a versatile utility for a wide range of tasks, from coding and content generation to problem-solving and research.
 
-### installation
+### Installation
 
-Before you start there is a bug at login, so stick with me on setting this up.
+1.  Ensure you have Node.js (version 18+). You can check with `node -v`. If you don't have it, install it with Homebrew:
+    ```bash
+    brew install node
+    ```
+2.  Install the Gemini CLI globally using npm:
+    ```bash
+    npm install -g @google/gemini-cli
+    ```
+3.  Run the setup and authentication command:
+    ```bash
+    gemini
+    ```
+    Follow the prompts to choose a theme and log in with your Google account.
 
-- Ensure you have nodeJs by running `node -v` if your version is greater than `18` you are good to go otherwise upgrade it by running `brew upgrade node`
-- in case you don't have node then just install it by running`brew install node@22`
-- run `npm install -g @google/gemini-cli` (wait for this to complete)
-- run `gemini`
-- choose your theme
-- pick the google login
-- now on some devices the app stops abruptly so open your default browser
-- you might see the auth login page
-- now run the `gemini` command again and go to your default browser and authenticate on the latest tab.
+**Troubleshooting Tip:** On some systems, the authentication flow in the terminal might not complete. If this happens, run `gemini` again, and then check your default web browser for the Google authentication page to complete the login.
 
-⚠️ Unlike ollama here only the "tool" is open source, **not the model** which means your data will be passed around.
+⚠️ Unlike Ollama, only the *tool* is open-source, not the model. Your prompts and data will be processed by Google's servers.
 
-⚠️ 60 request/ min is the current limit, but you can upgrade to paid plan to overcome this.
+⚠️ The free tier has a rate limit (e.g., 60 requests per minute). You can upgrade to a paid plan to overcome this.
 
 ### Common Commands
 
-- `/chat save any_name_you_want` this saves your current chat into this tag
-- `/chat list` lists all the saved chats
-- `/chat resume saved_chat_tag_name` to resume the saved chat
-- `/compress` replace the entire chat context with a summary. This saves on tokens used for future tasks while retaining a high level summary of what has happened.
-- `/auth` if you want to change your auth
-- `/quit` or `/exit` to exit from the tool
+-   `/chat save <name>`: Saves your current chat with a memorable name.
+-   `/chat list`: Lists all your saved chats.
+-   `/chat resume <name>`: Resumes a saved chat session.
+-   `/compress`: Replaces the current chat context with a summary to save tokens.
+-   `/auth`: Manages your authentication settings.
+-   `/quit` or `/exit`: Exits the tool.
 
-### switching to shell mode and back
+### Switching to Shell Mode
 
-You can input `!` to toggle to shell mode, ie in middle of the chat you want to see which directory you currently are just input `!pwd` the terminal will print the current dir and the theme will change to indicate you are in shell mode once you are done with shell commands just input `!` again and you can start using the gemini as normal mode.
+You can input `!` to toggle shell mode. For example, type `!pwd` to see your current directory. The theme will change to indicate you're in shell mode. To return to the chat, just input `!` again.
 
-### Providing context
+### Providing Context
 
-`@<path_to_file_or_directory>` the `@` can you used to provide context to the inference ie `@path/to/your/file.txt Explain this text file.` or `@src/my_project/ Summarize` the code in this directory.
+Use the `@` symbol to provide file or directory context for your prompts.
+-   `@path/to/your/file.txt Explain this text file.`
+-   `@src/my_project/ Summarize the code in this directory.`
 
-There are more commands and you can find theme here [All Commands of Gemini cli tool](https://github.com/google-gemini/gemini-cli/blob/main/docs/cli/commands.md)
+You can find more commands in the [official documentation](https://github.com/google-gemini/gemini-cli/blob/main/docs/cli/commands.md).
 
 
 [Gemini CLI-Github repo](https://github.com/google-gemini/gemini-cli?tab=readme-ov-file)
 
 ## DuckDuckGo
 
-Search engine is not going away, some times you need to verify things quickly so here comes the DuckDuckGo search engine in cli, you just run `ddgr whats the latest news about ai` and you get a list faster than a bullet(Most of the time).
+Sometimes you just need to verify things quickly with a search engine. `ddgr` brings the DuckDuckGo search engine to your CLI, delivering fast results.
 
 ```bash
 # Installation
@@ -129,59 +139,55 @@ brew install ddgr
 
 ### Common Commands
 
-These are the commands you will mostly need
+These are the commands you'll likely use most often:
 
-| Command                          | Description |
-|-----------------------------------|-------------|
-| `ddgr <query>`                   | Perform a search using DuckDuckGo. |
-| `ddgr -n <number> <query>`        | Limit the number of search results. |
-| `ddgr -j <query>`                 | Search and open the first result automatically in the browser. |
-| `ddgr -w <site> <query>`          | Restrict the search to a specific site (site:). |
-| `ddgr -s <region> <query>`        | Set region for search (e.g., `-s us-en`). |
-| `ddgr -x <query>`                 | Search without opening a browser (display URLs only). |
-| `ddgr -C <query>`                 | Colorize the output for easier reading. |
-| `ddgr -l`                         | List search history. |
-| `ddgr -c`                         | Clear search history. |
-| `ddgr --disable-safe`             | Disable safe search filtering. |
-| `ddgr -h`                         | Show help information. |
+| Command                    | Description                                           |
+| -------------------------- | ----------------------------------------------------- |
+| `ddgr <query>`             | Perform a search.                                     |
+| `ddgr -n <num> <query>`    | Limit the number of search results.                   |
+| `ddgr -j <query>`          | Open the first result directly in the browser.        |
+| `ddgr -w <site> <query>`   | Restrict the search to a specific site.               |
+| `ddgr -s <region> <query>` | Set the search region (e.g., `us-en`).                |
+| `ddgr -x <query>`          | Display URLs only, without opening a browser.         |
+| `ddgr -C <query>`          | Colorize the output for easier reading.               |
+| `ddgr -l`                  | List your search history.                             |
+| `ddgr -c`                  | Clear your search history.                            |
+| `ddgr --disable-safe`      | Disable safe search filtering.                        |
+| `ddgr -h`                  | Show the help menu.                                   |
 
 ### navigation Commands
 
-When the results are displayed interactively you can use this to navigate
-| Shortcut / Action | What it does |
-|------------------|--------------|
-| `[number]`        | Open the result with that number in your browser. |
-| `n` or `N`        | Show the next page of results. |
-| `p` or `P`        | Show the previous page of results. |
-| `o [number]`      | Open multiple results by space-separated numbers, e.g. `o 1 3 5`. |
-| `q`               | Quit ddgr. |
+When results are displayed, you can use these keys to navigate:
 
-There is so much you can do which you can explore but here is one that i use extensively:
+| Shortcut / Action | What it does                                                  |
+| ----------------- | ------------------------------------------------------------- |
+| `[number]`        | Open the result with that number in your browser.             |
+| `n` or `N`        | Show the next page of results.                                |
+| `p` or `P`        | Show the previous page of results.                            |
+| `o [numbers]`     | Open multiple results (e.g., `o 1 3 5`).                      |
+| `q`               | Quit ddgr.                                                    |
+
+Here’s an example I use extensively:
 
 ```bash
+# Shows 5 results from GitHub for "awesome shell scripts"
 ddgr -n 5 -w github.com "awesome shell scripts"
-# Shows 5 results from GitHub for your query.
 ```
 
 ### Profile Configuration
 
-You can also configure the behavior my modifying the `.ddgrrc` file, you can update it via terminal by running the `vi ~/.ddgrrc` command, here are the options you can configure:
+You can customize `ddgr`'s default behavior by editing the `~/.ddgrrc` file (`vi ~/.ddgrrc`). Here are some of the options you can configure:
 
-| Option                  | Description |
-|-------------------------|-------------|
-| `-n <number>`            | Set the number of search results per page. |
-| `-C`                     | Enable colorized output for better readability. |
-| `--disable-safe`         | Disable safe search filtering. |
-| `-x`                     | Show URLs only (do not open in browser). |
-| `-r <browser>`           | Set the browser to use for opening results (e.g., `firefox`, `chromium`). |
-| `-s <region>`            | Set the search region (e.g., `us-en`, `in-en`). |
-| `-w <site>`              | Restrict search to a specific site (site search). |
-| `--noua`                 | Disable sending a User-Agent in requests. |
-| `--np`                   | Disable search suggestions (don't use POST requests). |
-| `--no-completion`        | Disable interactive result selection (just print URLs). |
-| `-k <keywords>`          | Set default search keywords (these will always be included in your searches). |
-| `-j`                     | Automatically open the first result in your browser. |
-| `--json`                 | Output results in JSON format (useful for scripts). |
+| Option            | Description                                           |
+| ----------------- | ----------------------------------------------------- |
+| `-n <number>`     | Set the default number of search results per page.    |
+| `-C`              | Enable colorized output.                              |
+| `--disable-safe`  | Disable safe search.                                  |
+| `-x`              | Show URLs only by default.                            |
+| `-r <browser>`    | Set the browser for opening results (e.g., `firefox`). |
+| `-s <region>`     | Set the default search region (e.g., `us-en`).        |
+| `-w <site>`       | Restrict searches to a specific site by default.      |
+| `--json`          | Output results in JSON format (useful for scripting). |
 
 🔗 [ddgr-Repo](https://github.com/jarun/ddgr)
 
@@ -191,36 +197,36 @@ You can also configure the behavior my modifying the `.ddgrrc` file, you can upd
 brew install git
 ```
 
-Im sure you know the git commands so im skipping them, but the profile configuration is really cool so instead of `git status` you can just run `gs` command and here is how.
+I'm sure you're familiar with the basic git commands, but you can create powerful aliases to make your workflow faster. For example, you can run `git st` instead of `git status`.
 
-1. find where your system wide git profile is stored by running `git config --list --show-origin`
-2. open that file in vim and and your aliases and other profiles and save for re-open the terminal.
+1.  Find your global git config file by running `git config --list --show-origin`.
+2.  Open that file (e.g., `vi ~/.gitconfig`) and add your aliases.
 
-Here is an example file at `~/.gitconfig`
+Here is an example `~/.gitconfig` file:
 
 ```ini
 [credential]
-        helper = store
+    helper = store
 [user]
-        name = Eganathan R
-        email = md-email@gmail.com
+    name = Eganathan R
+    email = md-email@gmail.com
 [filter "lfs"]
-        smudge = git-lfs smudge -- %f
-        process = git-lfs filter-process
-        required = true
-        clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
+    required = true
+    clean = git-lfs clean -- %f
 [init]
-        defaultBranch = master
+    defaultBranch = master
 [http]
-        proxy = http://127.1.1.2:xxxx
+    proxy = http://127.0.0.1:xxxx
 [alias]
-        st = status
-        co = checkout
-        br = branch
-        ci = commit
-        lg = log --oneline --graph --decorate
+    st = status
+    co = checkout
+    br = branch
+    ci = commit
+    lg = log --oneline --graph --decorate # Pretty and compact log view
 ```
 
-I am certain this helps you, There are many such commandline tools that are really intreating but i think of them as a decorators so i have not added them but check out starship, podman cli, tmux and many others.
+I'm certain this will help you. There are many other interesting command-line tools out there (like `starship`, `podman`, `tmux`), but I consider them more for customization.
 
-Thanks for reading and have a great day ☺️
+Thanks for reading, and have a great day ☺️

@@ -74,6 +74,49 @@ ollama pull mistral && ollama run mistral
 
 🔗 [Ollama](https://ollama.com/)
 
+## Gemini-cli
+
+Gemini CLI, an open-source AI agent (Only agent not the **modal**) that brings the power of Gemini directly into your terminal. It provides lightweight access to Gemini, giving you the most direct path from your prompt to our model. While it excels at coding, we built Gemini CLI to do so much more. It’s a versatile, local utility you can use for a wide range of tasks, from content generation and problem solving to deep research and task management.
+
+### installation
+
+Before you start there is a bug at login, so stick with me on setting this up.
+
+- Ensure you have nodeJs by running `node -v` if your version is greater than `18` you are good to go otherwise upgrade it by running `brew upgrade node`
+- in case you don't have node then just install it by running`brew install node@22`
+- run `npm install -g @google/gemini-cli` (wait for this to complete)
+- run `gemini`
+- choose your theme
+- pick the google login
+- now on some devices the app stops abruptly so open your default browser
+- you might see the auth login page
+- now run the `gemini` command again and go to your default browser and authenticate on the latest tab.
+
+⚠️ Unlike ollama her only the tool is open source, not the model which means your data will be passed around.
+⚠️ 60 request/ min is the current limit, but you can upgrade to paid plan to avoid this.
+
+### Common Commands
+
+- `/chat save any_name_you_want` this saves your current chat into this tag
+- `/chat list` lists all the saved chats
+- `/chat resume saved_chat_tag_name` to resume the saved chat
+- `/compress` replace the entire chat context with a summary. This saves on tokens used for future tasks while retaining a high level summary of what has happened.
+- `/auth` if you want to change your auth
+- `/quit` or `/exit` to exit from the tool
+
+### switching to shell mode and back
+
+You can input `!` to toggle to shell mode, ie in middle of the chat you want to see which directory you currently are just input `!pwd` the terminal will print the current dir and the theme will change to indicate you are in shell mode once you are done with shell commands just input `!` again and you can start using the gemini as normal mode.
+
+### Providing context
+
+`@<path_to_file_or_directory>` the `@` can you used to provide context to the inference ie `@path/to/your/file.txt Explain this text file.` or `@src/my_project/ Summarize` the code in this directory.
+
+There are more commands and you can find theme here [All Commands of Gemini cli tool](https://github.com/google-gemini/gemini-cli/blob/main/docs/cli/commands.md)
+
+
+[Gemini CLI-Github repo](https://github.com/google-gemini/gemini-cli?tab=readme-ov-file)
+
 ## DuckDuckGo
 
 Search engine is not going away, some times you need to verify things quickly so here comes the DuckDuckGo search engine in cli, you just run `ddgr whats the latest news about ai` and you get a list faster than a bullet(Most of the time).

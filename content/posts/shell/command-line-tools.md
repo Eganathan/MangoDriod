@@ -76,7 +76,7 @@ ollama pull mistral && ollama run mistral
 
 ## Gemini-cli
 
-Gemini CLI, an open-source AI agent (Only agent not the **modal**) that brings the power of Gemini directly into your terminal. It provides lightweight access to Gemini, giving you the most direct path from your prompt to our model. While it excels at coding, we built Gemini CLI to do so much more. It’s a versatile, local utility you can use for a wide range of tasks, from content generation and problem solving to deep research and task management.
+Gemini CLI, an open-source AI agent (Only agent not the **model**) that brings the power of Gemini directly into your terminal. It provides lightweight access to Gemini, giving you the most direct path from your prompt to our model. While it excels at coding, we built Gemini CLI to do so much more. It’s a versatile, local utility you can use for a wide range of tasks, from content generation and problem solving to deep research and task management.
 
 ### installation
 
@@ -93,6 +93,7 @@ Before you start there is a bug at login, so stick with me on setting this up.
 - now run the `gemini` command again and go to your default browser and authenticate on the latest tab.
 
 ⚠️ Unlike ollama her only the tool is open source, not the model which means your data will be passed around.
+
 ⚠️ 60 request/ min is the current limit, but you can upgrade to paid plan to avoid this.
 
 ### Common Commands

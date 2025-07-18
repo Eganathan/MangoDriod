@@ -1,6 +1,5 @@
 ---
 date: '2025-02-15T10:25:15+05:30' 
-draft: false
 title: 'Static App Shortcuts in Android: A Simple Implementation Guide'
 categories: ["Android"]
 ---

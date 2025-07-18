@@ -69,6 +69,14 @@ tail file.txt               # Last 10 lines
 
 - Vim Editor has its own commands and pallets, will add my reference here.
 
+## Manual
+
+The `man` command provides access to the manual pages for other commands, offering detailed information on their usage and options.
+
+```bash
+man ls # show the manual for ls command
+```
+
 ## Permissions
 
 ```bash

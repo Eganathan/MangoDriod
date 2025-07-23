@@ -1,7 +1,7 @@
 ---
 title: "Making Your Terminal Fancy on Linux and macOS"
 date: 2025-06-23T10:00:00+05:30
-draft: false
+categories: ["Terminal"]
 ---
 
 > "My terminal looks really bad, while some people have a really cool CLI starting page with their name etc. What should I do so mine looks cool too?"

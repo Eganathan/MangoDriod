@@ -227,6 +227,44 @@ Here is an example `~/.gitconfig` file:
     lg = log --oneline --graph --decorate # Pretty and compact log view
 ```
 
-I'm certain this will help you. There are many other interesting command-line tools out there (like `starship`, `podman`, `tmux`), but I consider them more for customization.
+## Podman
+
+Podman is a powerful, daemonless container engine for developing, managing, and running OCI containers. It provides a command-line interface that is compatible with Docker, making it an excellent alternative for container management without requiring a central daemon.
+
+### Installation
+
+```bash
+brew install podman
+```
+
+After installation, you may need to initialize a Podman machine, which is a lightweight virtual machine for running containers on macOS.
+
+```bash
+podman machine init
+podman machine start
+```
+
+### Common Commands
+
+Many Podman commands are identical to their Docker counterparts, so you can often use `podman` as a drop-in replacement for `docker`.
+
+| Command                 | Description                                         |
+| ----------------------- | --------------------------------------------------- |
+| `podman pull <image>`   | Pull an image from a container registry.            |
+| `podman push <image>`   | Push an image to a container registry.              |
+| `podman build -t <tag> .`| Build an image from a Dockerfile.                  |
+| `podman images`         | List all local images.                              |
+| `podman run <image>`    | Run a command in a new container.                   |
+| `podman ps`             | List all running containers.                        |
+| `podman ps -a`          | List all containers (running and stopped).          |
+| `podman stop <container>`| Stop one or more running containers.               |
+| `podman rm <container>` | Remove one or more containers.                      |
+| `podman rmi <image>`    | Remove one or more images.                          |
+| `podman machine list`   | List available Podman virtual machines.             |
+| `podman machine stop`   | Stop the Podman virtual machine.                    |
+
+🔗 [Podman-Official](https://podman.io/)
+
+I'm certain this will help you. There are many other interesting command-line tools out there (like `starship`, `tmux`), but I consider them more for customization.
 
 Thanks for reading, and have a great day ☺️

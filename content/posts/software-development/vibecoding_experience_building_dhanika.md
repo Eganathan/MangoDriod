@@ -9,7 +9,7 @@ Software development is often seen as a discipline of pure logic and rigid struc
 
 ### What is Vibecoding?
 
-The term "vibecoding," recently popularized by [Andrej Karpathy](https://x.com/karpathy/status/1886192184808149383?lang=en), describes a software development approach that is less about rigid plans and more about the 'vibe' of the project. It's about letting your intuition and the feel of the product guide the development process. Instead of detailed specs and roadmaps, you work with a general idea, a vision, and you let the project evolve organically.
+The term "vibecoding," recently popularized by [Andrej Karpathy](https://x.com/karpathy/status/1886192184808149383?lang=en), describes a software development approach that is less about rigid plans and more about the “vibe” of the project. It's about letting your intuition and the feel of the product guide the development process. Instead of detailed specs and roadmaps, you work with a general idea, a vision, and you let the project evolve organically.
 
 It's a dance between logic and intuition, a form of mindfulness where you are fully present with the code and the project, responding to its needs in the moment. This might sound chaotic, and in some ways it is. But it's a controlled chaos. It's about being in tune with the project's needs, the user's needs, and your own creative flow.
 
@@ -23,7 +23,7 @@ What started as a personal tool has since been shared with some of my friends, w
 
 ### The Vibecoding Journey with Dhanika
 
-To be honest, the initial phase of this journey was daunting. I felt a profound sense of imposter syndrome. Was this 'vibecoding' just an excuse for not having a proper plan? Was I doing things 'the wrong way'? The feeling was akin to standing still while the world moved on. I had to have a serious talk with myself. I realized that the future of creation is fluid and intuitive, and clinging to old, rigid methods was like trying to carry heavy luggage onto a moving train. Once I broke free from that guilt and embraced the uncertainty, everything changed. The project took off, and I truly started to vibe with the code.
+To be honest, the initial phase of this journey was daunting. I felt a profound sense of imposter syndrome. Was this “vibecoding” just an excuse for not having a proper plan? Was I doing things “the wrong way”? The feeling was akin to standing still while the world moved on. I had to have a serious talk with myself. I realized that the future of creation is fluid and intuitive, and clinging to old, rigid methods was like trying to carry heavy luggage onto a moving train. Once I broke free from that guilt and embraced the uncertainty, everything changed. The project took off, and I truly started to vibe with the code.
 
 I started Dhanika with no grand design document. I had a single-sentence vision: "A beautiful and simple finance tracker that feels good to use."
 
@@ -33,7 +33,7 @@ As I used the app myself, I started to get a feel for what was missing. I'd thin
 
 The development process was a continuous conversation between me, the user, and the code. The "vibe" of the project guided my decisions. If a feature felt too complicated or didn't align with the core vision of simplicity, I'd scrap it.
 
-Git was a magic tool in this process. Before each commit, I had to make sure that none of the existing features would break and the design on web and mobile was not compromised. This also taught me how to incrementally build a basic working PWA, then about UI, then about UX, and then about others. This iterative process of building, testing, and committing was crucial to the project's success.
+Git was a magic tool in this process. Before each commit, I had to make sure that none of the existing features would break and the design on web and mobile was not compromised. This also taught me how to incrementally build a basic working PWA, then focus on the UI, then the UX, and finally other details. This iterative process of building, testing, and committing was crucial to the project's success.
 
 **Pros of Vibecoding:**
 
@@ -46,6 +46,16 @@ Git was a magic tool in this process. Before each commit, I had to make sure tha
 *   **Lack of Predictability:** It's hard to estimate timelines or even what the final product will look like. This makes it unsuitable for projects with strict deadlines or multiple stakeholders.
 *   **Risk of Scope Creep:** Without a clear plan, it's easy to keep adding features and never reach a "finished" state.
 *   **Potential for Architectural Issues:** Making design decisions on the fly can lead to a messy codebase if you're not careful. It requires a good sense of when to refactor and clean up.
+*   **Risk of Project Reset:** The fluid nature of vibecoding can be dangerous. If you're not careful, especially when using powerful CLIs, you might accept permissions that could reset your work. While Git is a lifesaver, it's a critical point to be mindful of.
+
+### Tips for Successful Vibecoding
+
+*   **Embrace Version Control:** Use Git religiously and commit often. It’s your best friend and safety net in a fluid development process.
+*   **Start with a Core Idea:** You don't need a detailed plan, but have a clear, simple vision for what you want to build.
+*   **Listen to Your Gut:** If a feature feels wrong or overly complicated, it probably is. Trust your intuition to guide you.
+*   **Refactor Fearlessly:** Vibecoding can get messy. Don't be afraid to pause and clean up your code when things start to feel disorganized.
+*   **Stay Mindful and Present:** Focus on the task at hand and be fully engaged with the code. The best ideas often come when you're in a state of flow.
+*   **Keep Documentation Updated:** Whether it's a `README.md` or an `agent.md` for AI collaborators, keep documentation current. Since AI models have token limitations, this helps them clearly understand the project's structure, philosophy, and goals, no matter which model you use.
 
 ### Lessons Learned: The Philosophy of Vibecoding
 
@@ -55,7 +65,7 @@ Whether a non-technical person can build complex systems with vibecoding is a va
 
 This approach challenges the traditional separation of roles and encourages a more holistic way of creating. It's about embracing the uncertainty and imperfection of the creative process. It's a reminder that sometimes, the most beautiful things are not planned, but discovered.
 
-Another profound lesson is that when you are vibecoding, you are not just a coder; you are the manager. You have to know what model to use and when, how to order the tasks so they don't break the entire codebase, and when to take control and enforce some structure, even in a fluid process. This includes the often-neglected task of documentation. In a typical software job, you might not get to wear all these hats due to company policies and defined roles. But here, on your own project, you are the boss. You are the founder, the manager, the coder, and what not. This level of ownership and responsibility is both daunting and incredibly empowering.
+Another profound lesson is that when you are vibecoding, you are not just a coder; you are the manager. You have to know what model to use and when, how to order the tasks so they don't break the entire codebase, and when to take control and enforce some structure, even in a fluid process. This includes the often-neglected task of documentation. In a typical software job, you might not get to wear all these hats due to company policies and defined roles. But here, on your own project, you are the boss. You are the founder, the manager, the coder, and so much more. This level of ownership and responsibility is both daunting and incredibly empowering.
 
 I am certain that with this vibecoding experience, I will be able to solve day-to-day problems with technology much faster than before. It has honed my ability to quickly prototype and iterate on ideas, to trust my gut, and to listen to the voice of the project itself.
 

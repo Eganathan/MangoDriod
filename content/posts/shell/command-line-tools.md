@@ -227,9 +227,9 @@ Here is an example `~/.gitconfig` file:
     lg = log --oneline --graph --decorate # Pretty and compact log view
 ```
 
-## Podman
+## Podman (Optional)
 
-Podman is a powerful, daemonless container engine for developing, managing, and running OCI containers. It provides a command-line interface that is compatible with Docker, making it an excellent alternative for container management without requiring a central daemon.
+Podman is a powerful, daemonless(It does not require a background service) container engine for developing, managing, and running containers. It provides a command-line interface that is compatible with Docker, making it an excellent alternative for container management without requiring a central daemon, i most use podman only for experimentation.
 
 ### Installation
 

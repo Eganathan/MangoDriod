@@ -6,3 +6,5 @@ categories: ["IOT"]
 tags: ["IOT"]
 ---
 
+- https://arduino.github.io/arduino-cli/1.3/getting-started/
+- 

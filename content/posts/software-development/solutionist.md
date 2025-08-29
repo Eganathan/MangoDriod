@@ -1,7 +1,8 @@
 ---
-date: 2025-08-03T19:47:13+05:30
-title: "We Are Not Just Developers, We Are Solutionists"
-draft: false
+date: 2025-08-16T04:47:13+05:30
+title: "We Are Not Just Lame Developers, We Are Solutionists"
+categories: ["software-development", "thoughts"]
+tags: ['software-development',"Solutionist"]
 ---
 
 ## The Developer's Box

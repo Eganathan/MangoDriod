@@ -209,23 +209,89 @@ sudo systemctl restart nginx
 
 After setting up your DNS records to point `eknath.dev`, `www.eknath.dev`, `blog.eknath.dev`, and `api.eknath.dev` to your server's IP, you'll be able to access each service through its unique subdomain.
 
-## 5. Securing Your Sites with SSL
+## 5. Securing Your Sites with SSL (HTTPS)
 
-Running sites over HTTP is no longer acceptable. Use Let's Encrypt and Certbot to get free SSL certificates.
+In today's web, serving your content over a secure, encrypted connection is non-negotiable. HTTPS protects your users' data and builds trust. We'll use **Let's Encrypt**, a free and automated Certificate Authority, and **Certbot**, a tool that makes managing SSL/TLS certificates effortless.
+
+### Step 1: Install Certbot
+
+Certbot has a dedicated Nginx plugin that automates the process of obtaining and installing certificates.
 
 ```bash
 # Install Certbot and its Nginx plugin
 sudo apt install certbot python3-certbot-nginx -y
 ```
 
-Now, you can run Certbot. It will read your Nginx configurations, identify the `server_name` directives, and ask you which domains you want to secure.
+### Step 2: Obtain and Install the SSL Certificates
+
+With your server blocks already configured and enabled, running Certbot is incredibly simple. The `--nginx` flag tells Certbot to automatically read your Nginx configuration, identify the domains you've set up, and modify the files for you.
 
 ```bash
-# Run Certbot
+# Run Certbot to get certificates for all configured domains
 sudo certbot --nginx
 ```
 
-Follow the on-screen prompts. Certbot will automatically obtain the certificates and update your Nginx server blocks to handle HTTPS traffic, redirecting HTTP to HTTPS. Your sites are now secure!
+Certbot will guide you through a few simple steps:
+1.  **Enter your email address:** Used for urgent renewal notices and security advisories.
+2.  **Agree to the Terms of Service:** You must agree to proceed.
+3.  **Choose domains:** Certbot will list the `server_name` entries from your Nginx files (e.g., `eknath.dev`, `www.eknath.dev`, `blog.eknath.dev`, `api.eknath.dev`). You can choose to get a certificate for specific domains or for all of them. It's usually best to select all.
+4.  **Redirect HTTP to HTTPS:** Certbot will ask if you want to automatically redirect all HTTP traffic to HTTPS. This is highly recommended for security. Choose `Redirect`.
+
+Once you complete the prompts, Certbot handles everything:
+*   It communicates with the Let's Encrypt server to verify that you control the domains.
+*   It fetches the SSL certificates for your selected domains.
+*   It automatically edits your Nginx configuration files in `/etc/nginx/sites-available/` to install the certificates and set up HTTPS.
+
+### Step 3: Verify the New Configuration
+
+Certbot's changes are immediate. Let's look at what it did to one of our configuration files, for example `/etc/nginx/sites-available/eknath.dev`. It will now look something like this:
+
+```nginx
+server {
+    server_name eknath.dev www.eknath.dev;
+
+    root /var/www/eknath.dev/html;
+    index index.html;
+
+    location / {
+        try_files $uri $uri/ =404;
+    }
+
+    listen [::]:443 ssl; # managed by Certbot
+    listen 443 ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/eknath.dev/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/eknath.dev/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+}
+
+server {
+    if ($host = eknath.dev) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+    if ($host = www.eknath.dev) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+    listen 80;
+    listen [::]:80;
+
+    server_name eknath.dev www.eknath.dev;
+    return 404; # managed by Certbot
+}
+```
+As you can see, Certbot created a new `server` block to handle the HTTPS traffic on port 443 and modified the original block on port 80 to permanently redirect all traffic to the secure version.
+
+### Step 4: Understanding Automatic Renewal
+
+Let's Encrypt certificates are valid for 90 days. Fortunately, the Certbot package you installed automatically sets up a systemd timer or cron job that runs twice a day. It will check if any of your certificates are due for renewal (typically within 30 days of expiring) and automatically renew them without any intervention.
+
+You can test the renewal process with a dry run:
+```bash
+sudo certbot renew --dry-run
+```
+If this command runs without errors, your auto-renewal is set up correctly. Your sites are now secure and will remain so.
 
 ## Conclusion
 

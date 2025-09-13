@@ -48,7 +48,11 @@ sudo ufw allow 'Nginx Full'
 # Enable the firewall
 sudo ufw enable
 ```
-Check the status anytime with `sudo ufw status`.
+
+After enabling, check its status to ensure it's active and your rules are loaded.
+```bash
+sudo ufw status
+```
 
 ### Update Your Server
 
@@ -65,16 +69,32 @@ Nginx is the heart of our setup. It's a high-performance web server that can als
 ```bash
 # Install Nginx
 sudo apt install nginx -y
-
-# Check that it's running
-sudo systemctl status nginx
 ```
 
-Visiting your server's IP in a browser should show the Nginx welcome page.
+While the package should start and enable Nginx automatically, it's good practice to run the commands explicitly to be sure.
+
+```bash
+# Start the Nginx service
+sudo systemctl start nginx
+
+# Enable Nginx to start automatically on boot
+sudo systemctl enable nginx
+
+# Now, check that it's running and enabled
+sudo systemctl status nginx
+```
+You should see `active (running)` in the output. Visiting your server's IP in a browser should also show the Nginx welcome page.
 
 ### Nginx Configuration Structure
 
-Nginx's configuration lives in `/etc/nginx`. The key directories are:
+Nginx's configuration lives in `/etc/nginx`. The `-p` flag in the commands below ensures that the command does nothing if the directories already exist.
+
+```bash
+sudo mkdir -p /etc/nginx/sites-available
+sudo mkdir -p /etc/nginx/sites-enabled
+```
+
+The key directories are:
 *   `/etc/nginx/nginx.conf`: The main configuration file. You rarely edit this.
 *   `/etc/nginx/sites-available/`: Where you store the configuration files for each of your sites (called "server blocks").
 *   `/etc/nginx/sites-enabled/`: Where you create symbolic links to the configurations in `sites-available` that you want to be active.
@@ -85,7 +105,7 @@ This structure lets you easily enable or disable sites without deleting their co
 
 This is where the magic happens. A single server can host a blog, a portfolio website, a web app, and several APIs, all neatly organized using subdomains.
 
-The core concept is the **Reverse Proxy**. Your Nginx server listens on the standard web ports (80 for HTTP, 443 for HTTPS) and intelligently forwards incoming requests to the correct internal service based on the requested domain or subdomain. These internal services can be anything that runs on a port, like a Node.js app, a Python API, or even another web server.
+The core concept is the **Reverse Proxy**. Your Nginx server listens on the standard web ports (80 for HTTP, 443 for HTTPS) and intelligently forwards incoming requests to the correct internal service based on the requested domain or subdomain.
 
 ### Scenario:
 Let's say we want to set up the following on our server:
@@ -105,8 +125,16 @@ sudo mkdir -p /var/www/blog.eknath.dev/html
 # Set correct permissions
 sudo chown -R $USER:$USER /var/www/eknath.dev
 sudo chown -R $USER:$USER /var/www/blog.eknath.dev
+```
 
-# Place some placeholder files
+Verify that the directories were created with the correct ownership.
+```bash
+ls -ld /var/www/eknath.dev/
+ls -ld /var/www/blog.eknath.dev/
+```
+
+Now, place some placeholder files.
+```bash
 echo "<h1>Welcome to Eknath's Site</h1>" | sudo tee /var/www/eknath.dev/html/index.html
 echo "<h1>Welcome to Eknath's Blog</h1>" | sudo tee /var/www/blog.eknath.dev/html/index.html
 ```
@@ -162,7 +190,7 @@ server {
 
 ### Step 3: Configure the Reverse Proxy for the API
 
-For `api.eknath.dev`, we won't serve files directly. Instead, we'll proxy requests to our Node.js app, which we assume is running on `http://127.0.0.1:3000`.
+For `api.eknath.dev`, we'll proxy requests to our Node.js app, which we assume is running on `http://127.0.0.1:3000`.
 
 Create the configuration file:
 ```bash
@@ -185,7 +213,6 @@ server {
     }
 }
 ```
-This `proxy_pass` directive is the key. It tells Nginx to forward all requests for `api.eknath.dev` to the local service on port 3000. The other headers pass along important information about the original request.
 
 ### Step 4: Enable the Sites and Test
 
@@ -207,15 +234,20 @@ If it's successful, restart Nginx to apply the changes:
 sudo systemctl restart nginx
 ```
 
-After setting up your DNS records to point `eknath.dev`, `www.eknath.dev`, `blog.eknath.dev`, and `api.eknath.dev` to your server's IP, you'll be able to access each service through its unique subdomain.
+Check the status to ensure it restarted correctly.
+```bash
+sudo systemctl status nginx
+```
+
+After setting up your DNS records, you'll be able to access each service through its unique subdomain.
 
 ## 5. Securing Your Sites with SSL (HTTPS)
 
-In today's web, serving your content over a secure, encrypted connection is non-negotiable. HTTPS protects your users' data and builds trust. We'll use **Let's Encrypt**, a free and automated Certificate Authority, and **Certbot**, a tool that makes managing SSL/TLS certificates effortless.
+We'll use **Let's Encrypt**, a free and automated Certificate Authority, and **Certbot**, a tool that makes managing SSL/TLS certificates effortless.
 
 ### Step 1: Install Certbot
 
-Certbot has a dedicated Nginx plugin that automates the process of obtaining and installing certificates.
+Certbot has a dedicated Nginx plugin that automates the process.
 
 ```bash
 # Install Certbot and its Nginx plugin
@@ -224,7 +256,7 @@ sudo apt install certbot python3-certbot-nginx -y
 
 ### Step 2: Obtain and Install the SSL Certificates
 
-With your server blocks already configured and enabled, running Certbot is incredibly simple. The `--nginx` flag tells Certbot to automatically read your Nginx configuration, identify the domains you've set up, and modify the files for you.
+With your server blocks already configured, running Certbot is incredibly simple.
 
 ```bash
 # Run Certbot to get certificates for all configured domains
@@ -232,67 +264,23 @@ sudo certbot --nginx
 ```
 
 Certbot will guide you through a few simple steps:
-1.  **Enter your email address:** Used for urgent renewal notices and security advisories.
-2.  **Agree to the Terms of Service:** You must agree to proceed.
-3.  **Choose domains:** Certbot will list the `server_name` entries from your Nginx files (e.g., `eknath.dev`, `www.eknath.dev`, `blog.eknath.dev`, `api.eknath.dev`). You can choose to get a certificate for specific domains or for all of them. It's usually best to select all.
-4.  **Redirect HTTP to HTTPS:** Certbot will ask if you want to automatically redirect all HTTP traffic to HTTPS. This is highly recommended for security. Choose `Redirect`.
-
-Once you complete the prompts, Certbot handles everything:
-*   It communicates with the Let's Encrypt server to verify that you control the domains.
-*   It fetches the SSL certificates for your selected domains.
-*   It automatically edits your Nginx configuration files in `/etc/nginx/sites-available/` to install the certificates and set up HTTPS.
+1.  **Enter your email address.**
+2.  **Agree to the Terms of Service.**
+3.  **Choose domains** from the list Certbot finds.
+4.  **Choose to redirect HTTP to HTTPS.** This is highly recommended.
 
 ### Step 3: Verify the New Configuration
 
-Certbot's changes are immediate. Let's look at what it did to one of our configuration files, for example `/etc/nginx/sites-available/eknath.dev`. It will now look something like this:
-
-```nginx
-server {
-    server_name eknath.dev www.eknath.dev;
-
-    root /var/www/eknath.dev/html;
-    index index.html;
-
-    location / {
-        try_files $uri $uri/ =404;
-    }
-
-    listen [::]:443 ssl; # managed by Certbot
-    listen 443 ssl; # managed by Certbot
-    ssl_certificate /etc/letsencrypt/live/eknath.dev/fullchain.pem; # managed by Certbot
-    ssl_certificate_key /etc/letsencrypt/live/eknath.dev/privkey.pem; # managed by Certbot
-    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
-    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
-}
-
-server {
-    if ($host = eknath.dev) {
-        return 301 https://$host$request_uri;
-    } # managed by Certbot
-
-    if ($host = www.eknath.dev) {
-        return 301 https://$host$request_uri;
-    } # managed by Certbot
-
-    listen 80;
-    listen [::]:80;
-
-    server_name eknath.dev www.eknath.dev;
-    return 404; # managed by Certbot
-}
-```
-As you can see, Certbot created a new `server` block to handle the HTTPS traffic on port 443 and modified the original block on port 80 to permanently redirect all traffic to the secure version.
+Certbot automatically modifies your Nginx files to enable HTTPS. You can check the new configuration by running `sudo nginx -t` and then reloading Nginx with `sudo systemctl reload nginx`.
 
 ### Step 4: Understanding Automatic Renewal
 
-Let's Encrypt certificates are valid for 90 days. Fortunately, the Certbot package you installed automatically sets up a systemd timer or cron job that runs twice a day. It will check if any of your certificates are due for renewal (typically within 30 days of expiring) and automatically renew them without any intervention.
-
-You can test the renewal process with a dry run:
+Let's Encrypt certificates are valid for 90 days. The Certbot package automatically sets up a task to renew them. You can test the renewal process with a dry run:
 ```bash
 sudo certbot renew --dry-run
 ```
-If this command runs without errors, your auto-renewal is set up correctly. Your sites are now secure and will remain so.
+If this command runs without errors, your auto-renewal is set up correctly.
 
 ## Conclusion
 
-You have now transformed a basic VPS into a sophisticated, multi-tenant hosting platform. By leveraging Nginx's server blocks and reverse proxy capabilities, you can host and manage numerous projects, each on its own subdomain, from a single server. This setup is not only cost-effective but is the standard architecture for modern web development and deployment. From here, you can explore containerization with Docker, set up CI/CD pipelines, and further harden your server's security. Happy hosting!
+You have now transformed a basic VPS into a sophisticated, multi-tenant hosting platform. By leveraging Nginx's server blocks and reverse proxy capabilities, you can host and manage numerous projects, each on its own subdomain, from a single server. Happy hosting!

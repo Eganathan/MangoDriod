@@ -1,6 +1,5 @@
 ---
-date: '2025-08-29T14:30:00+05:30'
-draft: false
+date: '2025-08-23T14:30:00+05:30'
 title: 'The Journey of Commercial Computers: From ENIAC to Neuromorphic Chips'
 categories: ["software-development"]
 tags: ['computer-history', 'technology-evolution', 'hardware']
@@ -12,7 +11,7 @@ Computing didn't start with your MacBook or the latest smartphone. It began in t
 
 ## The Dawn: ENIAC and the Electronic Age (1940s)
 
-Picture this: 1946, University of Pennsylvania. A machine the size of a small house, weighing 30 tons, consuming 150 kilowatts of power. This was **ENIAC** – the Electronic Numerical Integrator and Computer. 
+Picture this: 1946, University of Pennsylvania. A machine the size of a smand adall house, weighing 30 tons, consuming 150 kilowatts of power. This was **ENIAC** – the Electronic Numerical Integrator and Computer. 
 
 ENIAC was a beast. It used 17,468 vacuum tubes, each the size of a light bulb, generating so much heat that the room needed industrial cooling. Programming it meant physically rewiring connections – imagine debugging by crawling around inside your computer with a soldering iron.
 

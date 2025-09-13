@@ -130,7 +130,7 @@ server {
     server_name eknath.dev www.eknath.dev;
 
     root /var/www/eknath.dev/html;
-    index index.html;
+    index index.html index.php;
 
     location / {
         try_files $uri $uri/ =404;

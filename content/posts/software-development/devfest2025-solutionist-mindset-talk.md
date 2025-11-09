@@ -5,7 +5,7 @@ categories: ["software-development", "thoughts", "AI", "talks"]
 tags: ['software-development', "Solutionist", "AI", "DevFest", "career", "personal-growth"]
 ---
 
-*This is an elaborated version of my talk at Google Developer Group Chennai's DevFest2025, where I shared my journey from rock bottom to becoming an Android Developer at Zoho, and how the "Solutionist Mindset" can help us thrive in the age of AI.*
+*This is an elaborated version of my talk at Google Developer Group Chennai's DevFest2025, where I shared my journey from rock bottom to becoming an Android Developer at Zoho and how the "Solutionist Mindset" can help us thrive in the age of AI.*
 
 <script defer class="speakerdeck-embed" data-id="ae22be07dca842408af4c8ec3fd4b234" data-ratio="1.7777777777777777" src="//speakerdeck.com/assets/embed.js"></script>
 
@@ -681,6 +681,13 @@ Here are some moments from DevFest2025:
 
 ![Speaker Announcement](/img/devfest_2025/speeker-annoncement-screenshot.png)
 *The announcement that started it all*
+
+---
+
+## Feedbacks from Participants
+
+![Feedbacks from participants](/img/devfest_2025/feedbacks.png)
+*Heartwarming feedback from the DevFest2025 community*
 
 ---
 

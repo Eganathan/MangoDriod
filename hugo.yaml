@@ -51,7 +51,7 @@ params:
   ShowReadingTime: true
   
   ShowToc: true
-  TocOpen: true
+  TocOpen: false
 
   ShowBreadCrumbs: true
 
@@ -69,3 +69,8 @@ outputs:
 analytics:
   google:
     SiteVerificationTag: "G-MVDW52KZVB"
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: true

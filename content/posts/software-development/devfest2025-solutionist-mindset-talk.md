@@ -686,8 +686,8 @@ Here are some moments from DevFest2025:
 
 ## Feedbacks from Participants
 
-![Feedbacks from participants](/img/devfest_2025/feedbacks.png)
-*Heartwarming feedback from the DevFest2025 community*
+![Feedbacks from participants](/img/devfest_2025/updated-feedbacks-10-11-2025.png)
+*Heartwarming feedback from the DevFest2025 participants*
 
 ---
 

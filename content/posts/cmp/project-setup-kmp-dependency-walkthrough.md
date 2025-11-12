@@ -6,4 +6,4 @@ tags: ["Android","AGSL"]
 categories: ["Android"]
 ---
 
-Android Graphics Shader Language is a 
+

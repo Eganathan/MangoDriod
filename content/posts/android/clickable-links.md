@@ -1,6 +1,5 @@
 ---
 date: '2025-11-11T22:30:28+05:30'
-draft: false
 title: 'Clickable Links in Jetpack Compose: AnnotatedString with Custom URL Handler'
 categories: ["Android"]
 tags: ["Android", "Jetpack Compose", "AnnotatedString"]
@@ -264,8 +263,8 @@ Compared to older methods using `pushStringAnnotation`, this approach:
 
 ## Related Resources
 
-- [AnnotatedString Documentation](https://developer.android.com/jetpack/compose/text#click-with-annotation)
-- [Chrome Custom Tabs Guide](https://developer.chrome.com/docs/android/custom-tabs/)
+- [LinkAnitation Documentation](https://developer.android.com/reference/kotlin/androidx/compose/ui/text/LinkAnnotation)
+- [Chrome Custom Tabs Guide](https://developer.chrome.com/docs/android/custom-tabs/guide-get-started)
 
 ---
 

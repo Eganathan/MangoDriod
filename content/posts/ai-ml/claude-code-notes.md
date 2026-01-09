@@ -1,7 +1,8 @@
 ---
-date: '2026-01-09T19:47:13+05:30'
+date: '2026-01-09T11:47:13+05:30'
 title: 'Staying Relevant with Claude Code - A Self-Note for Android & KMP Developers'
 categories: ["AI/ML","AI-Tools"]
+draft: true
 tags: ["AI","ML","Claude","Tools","Android","KMP"]
 ---
 
@@ -48,12 +49,15 @@ Think of it as having a senior developer sitting next to you who can:
 
 Opus 4.5 is now available in model selection. While **Sonnet is superior for general coding tasks**, **Opus is amazing for complex features and crazy bugs**. You can use `-m` flag for selecting a specific model for particular task sessions.
 
-| Model ID | Description |
-|----------|-------------|
-| `claude-sonnet-4-20250514` | Sonnet 4 (default, most balanced) |
-| `claude-opus-4-20250514` | Opus 4 (most capable, slower) |
-| `claude-sonnet-4-5-20250929` | Sonnet 4.5 (smartest, efficient) |
-| `claude-haiku-4-5-20251001` | Haiku 4.5 (fastest, most economical) |
+| Model ID | Description | Context Window | Relative Cost |
+|----------|-------------|----------------|---------------|
+| `claude-sonnet-4-20250514` | Sonnet 4 (default, most balanced) | 200K | $$ (Moderate) |
+| `claude-opus-4-20250514` | Opus 4 (most capable, slower) | 200K | $$$$ (Very High) |
+| `claude-sonnet-4-5-20250929` | Sonnet 4.5 (smartest, efficient) | 500K | $$$ (High) |
+| `claude-haiku-4-5-20251001` | Haiku 4.5 (fastest, most economical) | 200K | $ (Low) |
+
+> [!WARNING]
+> **Token Usage Warning**: Continuous usage of **Opus** models will consume your rate limits and quota significantly faster (approx. 5-10x) than Sonnet. Use Opus only for complex debugging or architectural tasks.
 
 ```bash
 # Run with a specific model
@@ -80,7 +84,7 @@ npm install -g @anthropic-ai/claude-code
 brew install claude-code
 ```
 
-After installation, run `claude` in your terminal to start an interactive session. You'll need to authenticate with your Anthropic API key.
+After installation, run `claude` in your terminal to start an interactive session. You'll need to authenticate with your Anthropic API key or use the `claude --login` command to login via the browser.
 
 ### Basic Usage
 
@@ -236,7 +240,7 @@ Claude handles the boilerplate of Room migrations, which can be error-prone manu
 
 ### ✅ DO
 
-1. **Be specific with context** - Instead of "fix this bug", say "fix the crash in `UserRepository.kt` when the token expires"
+1. **Be specific with context** - Instead of "fix this bug", say "fix the crash in `UserRepository.kt` when the token expires" make sure you add the file and line-number of the function or scope.
 
 2. **Review generated code** - Always understand what Claude writes. Don't blindly accept suggestions.
 
@@ -257,7 +261,7 @@ Claude handles the boilerplate of Room migrations, which can be error-prone manu
 
 1. **Don't share sensitive data** - Avoid passing API keys, secrets, or user data through Claude
 
-2. **Don't skip the review** - Especially for security-critical code (authentication, payment processing)
+2. **Don't skip the review** - Especially for security-critical code (authentication, payment processing, encryption etc)
 
 3. **Don't use it as a crutch** - You should still understand the fundamentals. AI is a multiplier, not a replacement.
 
@@ -301,7 +305,18 @@ Try:
 "Explain the login flow. Start from LoginViewModel."
 ```
 
-### 5️⃣ Check Costs with `/cost`
+### 6️⃣ Offload Tasks to Other Models/Tools (Save those Tokens!)
+
+Not everything requires Claude Code's deep context awareness. Save your tokens by routing tasks to the right tool:
+
+*   **Use Gemini for Quick Concepts**: Need to understand "How `LruCache` works internally" or "Explain the Builder pattern"? Use **Gemini**. It's fast, free/cheap, and great for general knowledge that doesn't need your private codebase context.
+*   **Use ChatGPT for High-Level Project Questions**: If you need advice on "Best practices for modularizing a KMP project" or architecture discussions where providing full code access isn't necessary, **ChatGPT** is a great option.
+*   **Use CLI Tools for Quick Answers**: If you're a terminal power user (using `tmux`, `dia`, etc.), tools like **ddgr** (DuckDuckGo from terminal) or **Ollama** (local models) are fantastic for quick lookups without leaving your flow.
+
+> [!TIP]
+> **Pro Tip**: Reserve Claude Code for tasks that *specifically* need to read your files, understand your project structure, or perform edits. For everything else, cheaper (or free) alternatives often work just as well!
+
+### 7️⃣ Check Costs with `/cost`
 
 Regularly run `/cost` to monitor your usage.
 

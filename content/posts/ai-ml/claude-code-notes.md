@@ -1,5 +1,5 @@
 ---
-date: '2026-01-09T11:47:13+05:30'
+date: '2026-01-09T21:47:13+05:30'
 title: 'Staying Relevant with Claude Code - A Self-Note for Android & KMP Developers'
 categories: ["AI/ML","AI-Tools"]
 draft: true
@@ -467,4 +467,4 @@ Feel free to connect with me on:
 📩 **[Email](mailto:mail@eknath.dev)**
 🌍 **[Website](https://eknath.dev)**
 
-*This article is a living document. Last updated: January 2026*
+*I wish to keep this article as a living document. Last updated: January 2026*

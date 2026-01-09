@@ -2,7 +2,6 @@
 date: '2026-01-09T21:47:13+05:30'
 title: 'Staying Relevant with Claude Code - A Self-Note for Android & KMP Developers'
 categories: ["AI/ML","AI-Tools"]
-draft: true
 tags: ["AI","ML","Claude","Tools","Android","KMP"]
 ---
 

@@ -166,10 +166,91 @@ fun App() {
 }
 ```
 
+### String Respource
+
+This [Documentation](https://developer.android.com/develop/ui/compose/resources) will help you 
+
 ---
 
-## Next Steps
+## Navigation
 
-Once you've set up these dependencies, commit and push your changes. In the next sections, we'll cover navigation setup and other essential dependencies for building a complete multiplatform application.
+### Installation
 
+```kotlin
+commonMain {
+    dependencies {
+        // ... other dependencies
+        implementation("org.jetbrains.androidx.navigation:navigation-compose:2.9.1")
+    }
+}
+```
+Check [Maven Central](https://central.sonatype.com/artifact/org.jetbrains.androidx.navigation/navigation-compose) for the latest version.
+
+Now we need Serialization plugin so lets add that 
+
+```kotlin
+commonMain {
+    dependencies {
+        // ... other dependencies
+        implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.9.0")
+    }
+}
+```
+Now, lets apply the plugin in the project build.gralde 
+```
+plugins {
+    ...
+    kotlin("plugin.serialization") version "your-kotlin-verion" apply false
+}
+```
+
+now in the composeApp modules build.gradle file
+```
+plugins {
+    ...
+    kotlin("plugin.serialization")
+}
+```
+now sync the project and create a AppNavComponent for example like this
+
+```@Serializable
+object Home
+
+@Serializable
+data class Screen2(val name: String)
+
+@Composable
+fun AppNavigation() {
+    val navController = rememberNavController()
+    NavHost(navController = navController, startDestination = Home) {
+
+        composable<Home> {
+            Column { Text("Home") }
+        }
+
+        composable<Screen2> {
+            Column { Text("Screen 2") }
+        }
+
+    }
+}
+
+```
+
+## ViewModel
+```
+
+implementation("org.jetbrains.androidx.lifecycle:lifecycle-viewmodel-compose":2.9.0")
+
+```
+
+## DI
+```
+...
+    implementation(project.dependencies.platform("io.insert-koin:koin-bom:$koin_version"))
+    implementation("io.insert-koin:koin-core")
+    implementation("io.insert-koin:koin-compose")
+    implementation("io.insert-koin:koin-compose-viewmodel")
+    implementation("io.insert-koin:koin-compose-viewmodel-navigation")
+```
 

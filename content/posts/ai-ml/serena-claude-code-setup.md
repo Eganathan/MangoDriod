@@ -5,9 +5,41 @@ categories: ["AI/ML", "AI-Tools"]
 tags: ["AI", "Claude", "Tools", "MCP", "Developer-Productivity"]
 ---
 
+## TL;DR - Quick Setup
+
+Already know what Serena is? Here's the fast track:
+
+```bash
+# 1. Install uv and Serena
+curl -LsSf https://astral.sh/uv/install.sh | sh
+source ~/.zshrc
+uv tool install git+https://github.com/oraios/serena
+
+# 2. Restart terminal, then connect to your project
+cd /path/to/your/project
+claude mcp add serena -- serena-mcp-server --project $(pwd)
+echo ".serena/" >> .gitignore
+
+# 3. Start Claude
+claude --allowedTools "mcp__serena*"
+```
+
+Then tell Claude: *"Use Serena to onboard this project."*
+
+Want to understand what this does and why? Read on.
+
+---
+
 ## A Quick Note
 
 This is a continuation of my [Claude Code notes](https://md.eknath.dev/posts/ai-ml/claude-code-notes/). If you haven't read that yet, I recommend starting there for the fundamentals. This article focuses on a specific optimization that has dramatically improved my Claude Code experience.
+
+**What you'll learn:**
+- Why Claude Code can get expensive on large codebases
+- How Serena uses LSP to provide semantic code navigation
+- Step-by-step setup (takes ~5 minutes)
+- Practical usage patterns and prompts
+- When to use Serena vs. vanilla Claude Code
 
 ---
 
@@ -54,9 +86,9 @@ That 70% isn't marketing fluff - it's real savings from not reading entire files
 
 ## How Serena Works Under the Hood
 
-If you've read my [MCP article](#), you know that MCP servers extend Claude's capabilities through a standardized protocol. Serena specifically provides:
+MCP servers extend Claude's capabilities through a standardized protocol (see [Glossary](#mcp-model-context-protocol) if this is new to you). Serena specifically provides:
 
-1. **Code Indexing**: When you run `serena project create`, it builds an index of your codebase's symbols, types, and relationships.
+1. **Code Indexing**: When you connect Serena to Claude, it automatically builds an index of your codebase's symbols, types, and relationships.
 
 2. **LSP Integration**: Serena wraps language servers (for Kotlin, TypeScript, Python, etc.) to provide semantic navigation.
 
@@ -114,21 +146,35 @@ This gives you two commands:
 - `serena` - Project management CLI
 - `serena-mcp-server` - The MCP server that Claude connects to
 
-### Step 3: Initialize Your Project Index
+### Step 3: Restart Your Terminal
 
-Navigate to your project root and create the index:
+> **Important**: After installing `uv` and Serena, **close all terminal windows and open a fresh one**. This ensures your shell recognizes the new commands.
+
+I spent time debugging "command not found" errors only to realize a terminal restart fixed everything. Save yourself the frustration.
+
+```bash
+# Close all terminals, then open a new one and verify
+which serena
+which serena-mcp-server
+```
+
+Both should return valid paths. If not, try running `source ~/.zshrc` (or `~/.bashrc`).
+
+### Step 4: Connect Serena to Claude Code
+
+Navigate to your project root and register Serena as an MCP server:
 
 ```bash
 cd /path/to/your/project
 
-# Create the Serena index
-serena project create --name your-project-name --index .
+# Add the server (this also initializes the project index automatically)
+claude mcp add serena -- serena-mcp-server --project $(pwd)
 ```
 
 **What this does:**
-- Creates a `.serena/` folder in your project
+- Registers Serena as an MCP server for Claude
+- Auto-initializes the project index (creates `.serena/` folder)
 - Scans your codebase for symbols, types, and relationships
-- Builds a searchable index for Claude to query
 
 **Initial indexing time** depends on project size:
 | Project Size | Approximate Time |
@@ -143,31 +189,7 @@ You can monitor progress at `http://localhost:24282` during indexing.
 > **Important**: Add `.serena/` to your `.gitignore`. This folder is local cache and shouldn't be committed.
 
 ```bash
-# Add to .gitignore
 echo ".serena/" >> .gitignore
-```
-
-### Step 4: Restart Your Terminal
-
-> **Important**: After installing `uv` and Serena, **close all terminal windows and open a fresh one**. This ensures your shell recognizes the new commands.
-
-I spent time debugging "command not found" errors only to realize a terminal restart fixed everything. Save yourself the frustration.
-
-```bash
-# Close all terminals, then open a new one and verify
-which serena
-which serena-mcp-server
-```
-
-Both should return valid paths. If not, try running `source ~/.zshrc` (or `~/.bashrc`).
-
-### Step 5: Connect Serena to Claude Code
-
-Register Serena as an MCP server:
-
-```bash
-# Add the server (run from your project root)
-claude mcp add serena -- serena-mcp-server --project $(pwd)
 ```
 
 Verify it's connected:
@@ -351,12 +373,12 @@ claude mcp add serena -- serena-mcp-server --project $(pwd)
 
 ```bash
 # Rebuild the index
-serena project update --name your-project-name
+serena project update --name <your-project-name>
 ```
 
 **Server not starting:**
 
-Make sure you're in the correct project root where you ran `serena project create`.
+Make sure you're in the correct project root where you ran the `claude mcp add` command.
 
 **Language not supported:**
 
@@ -370,14 +392,14 @@ These Serena commands are verbose. If you find yourself typing them often, consi
 
 ---
 
-
+## Best Practices
 
 ### 1. Keep Your Index Updated
 
 After major refactors or pulling new changes:
 
 ```bash
-serena project update --name your-project-name
+serena project update --name <your-project-name>
 ```
 
 ### 2. Use Specific Queries
@@ -414,30 +436,19 @@ Use `/cost` in Claude Code to track your token usage. Compare sessions before an
 
 ## Comparison: Claude Code vs. Claude Code + Serena
 
-Here's a side-by-side breakdown of how Serena transforms Claude Code's capabilities:
-
-| Feature | Claude Code (Standard) | Claude Code + Serena |
-|---------|------------------------|---------------------|
+| Feature | Without Serena | With Serena |
+|---------|----------------|-------------|
 | **Search Method** | Text-based / Full file reads | Symbolic / LSP-powered |
 | **Code Retrieval** | Reads entire files | Extracts specific symbols/blocks |
 | **Token Usage** | High (linear to file size) | Low (targeted retrieval) |
-| **Memory** | Session-based | Persistent project indexing |
-| **Navigation** | File path guessing | Precise symbol jumping |
+| **Memory** | Session-based only | Persistent project indexing |
+| **Navigation** | File path guessing | Precise "Go to Definition" |
 | **Cross-references** | Manual grep patterns | Semantic "Find All References" |
-| **Type Understanding** | Inferred from context | Actual type hierarchy |
+| **Type Understanding** | Inferred from context | Actual type hierarchy from LSP |
 | **Multi-module Support** | Reads each module separately | Understands module relationships |
 | **Context Preservation** | Fills up quickly | Stays efficient longer |
-| **Setup Required** | None | One-time indexing |
-
-### Practical Scenario Comparison
-
-| Scenario | Raw Reading | With Serena |
-|----------|-------------|-------------|
-| "Find function X" | Reads entire files, guesses locations | Direct jump to definition |
-| "Who calls function Y?" | Manual grep through codebase | Semantic reference finding |
-| "Show class hierarchy" | Reads all related files | Type hierarchy navigation |
-| Large codebase exploration | Context window overflow | Targeted symbol queries |
-| Token efficiency | Baseline | ~70% reduction |
+| **Setup Required** | None | One-time (~5 min) |
+| **Token Efficiency** | Baseline | **~70% reduction** |
 
 ---
 
@@ -475,7 +486,7 @@ uv tool upgrade serena
 After major refactors, dependency updates, or pulling large changes:
 
 ```bash
-serena project update --name your-project-name
+serena project update --name <your-project-name>
 ```
 
 ### Remove Serena from a Project
@@ -558,9 +569,8 @@ Quick reference for new projects:
 - [ ] Install Serena: `uv tool install git+https://github.com/oraios/serena`
 - [ ] **Restart terminal** (close all windows, open fresh)
 - [ ] Verify install: `which serena && which serena-mcp-server`
-- [ ] Create index: `serena project create --name PROJECT_NAME --index .`
+- [ ] Connect to Claude (auto-creates index): `claude mcp add serena -- serena-mcp-server --project $(pwd)`
 - [ ] Add to .gitignore: `echo ".serena/" >> .gitignore`
-- [ ] Connect to Claude: `claude mcp add serena -- serena-mcp-server --project $(pwd)`
 - [ ] Test connection: `claude mcp list`
 - [ ] Start Claude: `claude` (or `claude --allowedTools "mcp__serena*"` to auto-accept Serena permissions)
 - [ ] Onboard Claude: "Use Serena to onboard this project"
@@ -594,7 +604,7 @@ As always, remember: **AI is a copilot, not a pilot**. Serena makes the copilot 
 
 New to some of these terms? Here's a quick reference:
 
-### MCP (Model Context Protocol)
+### MCP (Model Context Protocol) {#mcp-model-context-protocol}
 
 **Model Context Protocol** is an open standard created by Anthropic that allows AI assistants (like Claude) to connect to external tools and data sources. Think of it as a "USB port" for AI - any tool that implements MCP can plug into Claude and extend its capabilities.
 

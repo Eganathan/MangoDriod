@@ -1,5 +1,5 @@
 ---
-date: '2025-02-13T14:30:00+05:30'
+date: '2026-02-13T14:30:00+05:30'
 title: 'Building a Reusable Speech-to-Text Component in Jetpack Compose'
 categories: ["Android", "Jetpack Compose"]
 tags: ["Android", "Jetpack Compose", "Speech Recognition", "Kotlin"]

@@ -40,13 +40,13 @@ I agree completely. Outputting anything publicly without real personal meaning�
 
 Think of AI as an electric chainsaw, and traditional coding as an axe (an example from the article shared above). 
 
-Knowing how to use an axe remains extremely important even when a chainsaw is available. The chainsaw can break or fail. More importantly, a lumberjack who has cut down trees with an axe a thousand times knows exactly how to angle the cut so the tree falls right where he wants it to. 
+Knowing how to use an axe remains extremely important even when a chainsaw is available. The chainsaw can break or fail. More importantly, **a lumberjack who has cut down trees with an axe a thousand times knows exactly how to angle the cut so the tree falls right where he wants it to**. 
 
-Using AI tools doesn't turn your brain to mush, provided you actually understand the changes it makes to your creation. Let me be real here—this is extremely hard! That's actually why I'm thankful for Claude's token limitations sometimes. It forces me to stay involved. AI shifts your role from pure execution to orchestration. You cannot outsource your judgment, experience, or personality. If you rely entirely on AI without applying these human traits, the quality of your work will drop, and you will eventually become redundant.
+Using AI tools doesn't turn your brain to mush, **provided** you actually understand the changes it makes to your creation. Let me be real here THIS IS EXTREMLU HARD! That's actually why I'm thankful for Claude's token limitations sometimes. It forces me to stay involved. AI shifts your role from pure execution to orchestration. You cannot outsource your JUDGEMENT, EXPERIENCE, or PERSONALITY. If you rely entirely on AI without applying these human traits, the quality of your work will drop, and you will eventually become redundant.
 
 ## An Equalizer for Communication
 
-Beyond just writing code, AI is an incredible equalizer for communication. Not everyone is a natural wordsmith. For those of us who are less vocal or struggle to find the right phrasing, AI is a tool that helps us communicate our technical intent clearly. It's not about faking a voice; it's about polishing it. It helps take the raw intent inside my head and words it rightly for the world to understand.
+Beyond just writing code, AI is an incredible equalizer for communication. Not everyone is a natural wordsmith. For those of us who are less vocal or struggle to find the right phrasing, AI is a tool that helps us communicate our technical intent clearly. It's not about faking a voice; it's about polishing it. It helps take the raw intent inside my head and words it rightly for the world to understand, let me say its not easy to get it the way we have in mind there are limitations like token limit, it tries to end it very quickly by saying the crux of things or to draggy but never, or almost never the right proprotion.
 
 ## Wielding the Future
 
@@ -56,12 +56,15 @@ My philosophy in this rapidly changing landscape is simple:
 - Now we have AI, and we should use it extensively.
 - If AI becomes inaccessible or too expensive tomorrow, we simply go back to coding in Kotlin. We should be prepared for that.
 
-To make sure I'm prepared, I've actually started "AI fasting." As silly as it might sound, taking a break from AI helps me make sure I can still build things without these tools. I'm not sure how every employer feels about this, but for me, spending three days coding without AI is a healthy practice. If feature demands increase, I might have to tweak this schedule, but I try not to be too rigid about it.
+To make sure I'm prepared, I've actually started "AI fasting." As silly as it might sound, taking a break from AI helps me make sure I can still build or think differently without these tools. I'm not sure how every employer feels about this, but for me, spending three days coding without AI is a healthy practice. If feature demands increase, I might have to tweak this schedule, but I try not to be too rigid about it, so far looks like we are going all in this new era.
 
-Recently, I was scrolling through Instagram and saw a reel where a developer made a great point. He said: "Before AI, you delivered a project in a week. Now, even with AI, it still takes a week—why is that?" His answer was that while AI generates code quickly, fixing the bugs it creates and reviewing that code has become extremely tedious.
+Recently, I was scrolling through Instagram and saw a reel where a developer made a great point. He said: "Before AI, you delivered a project in a week. Now, even with AI, it still takes a week—why is that?" His answer was that while AI generates code quickly, fixing the bugs or tweeking the code it creates and also reviewing it has become extremely harder.
 
-That really stood out to me. I still have some lingering doubts about all of this, but what matters most is finding the right balance.
+That really stood out to me. I still have some lingering doubts about all of this, but what matters most is finding the right balance,keeping it away is not going to help me, im going to embrance it tight find its strenth and weekness and use it to my advantage.
 
-I don't wish to nitpick on philosophies that have no real meaning to the end user. Coding like a "caveman" shouldn't be a badge of honor. Utilizing tools like MCP, plugins, and advanced prompting is how we stay forward-thinking and effective.
+I don't wish to nitpick on philosophies people have, that have no real meaning to the end user. Coding like a "caveman" shouldn't be a badge of honor. Utilizing tools like MCP, plugins, and advanced prompting is how we stay forward-thinking and effective in this day and age, especially in the phase we are moving in right now.
 
-Ultimately, machines should take the drudgery out of life. Generative AI brings that promise to our doorsteps. It's up to us to embrace it, orchestrate it responsibly, and ensure that we are using it to add real value, rather than just contributing to the noise.
+Ultimately, machines should take the drudgery out of life. AI brings that promise to our doorsteps. It's up to us to embrace it, orchestrate it responsibly, and ensure that we are using it to add real value, rather than just contributing to the noise of confusions around.
+
+I wrote this just to clear some thoughts in my head regarding the excesive ai tool usage, i myself fell into this trap of vibe working for a short period of time, i regret it coz i lost the chance to learn what happend in that part of the code, i thought skipping that was okey but that above article opens by eyes. This is also a phase of learning but don't ever do that on work/personal projects that you truly care, thats a big no no, Blinde Vibecoding is okey for prototying some personal productivity tools, features and such silly thing never on any real product that you truely care.
+

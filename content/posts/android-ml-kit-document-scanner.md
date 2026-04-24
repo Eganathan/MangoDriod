@@ -1,5 +1,5 @@
 ---
-date: '2026-02-14T10:00:00+05:30'
+date: '2026-02-10T21:30:00+05:30'
 title: 'Android ML Kit Document Scanner: Stop Using Camera Capture for Documents'
 categories: ["Android", "ML Kit"]
 tags: ["Android", "ML Kit", "Document Scanner", "Kotlin", "Computer Vision"]

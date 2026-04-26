@@ -24,6 +24,8 @@ so i built one. i call it the **Command Center**. this post is the full breakdow
 
 ## What is it
 
+![The Command Center home — one browser tab with everything: repo status, today's focus, quick links, and doc sync state.](/img/command-center-images/cce-home.png)
+
 the idea is simple. instead of having your docs in Notion, your tasks in Linear, your terminal tabs scattered across screens, your AI knowing nothing about any of it — you put a single shared operational layer above all your repos. not inside them. above them.
 
 ```
@@ -112,6 +114,8 @@ this replaces re-explaining the codebase every session. the entire briefing is g
 
 ## Documentation that doesn't go stale
 
+![Docs folder — each file has watches frontmatter so the sync script knows exactly which code changes make it stale.](/img/command-center-images/cce-doc-folder.png)
+
 the biggest problem with docs is they go stale the moment you stop actively maintaining them. and the honest truth is most people stop maintaining them pretty quickly.
 
 so instead of relying on discipline, i wired it into the workflow. every doc has frontmatter that declares what code it describes:
@@ -136,6 +140,8 @@ one more thing worth building: a `doc_sync_prompt.md` template. when `doc_sync.j
 ---
 
 ## Task management across platforms
+
+![Per-platform todo files with priority buckets — high, medium, low, and completed. Daily.md pulls from these each morning.](/img/command-center-images/cce-todos.png)
 
 one file per platform. `ios_todos.md`, `android_todos.md`, `win_todos.md`. same structure in all of them:
 
@@ -181,6 +187,10 @@ one row per notable change. the practical use: "did we ship X on all platforms y
 
 ## The local web dashboard
 
+![Quick links panel — one-click access to docs, scripts, and frequently used paths across all projects.](/img/command-center-images/cce-home-quicklinks.png)
+
+![Keyboard shortcuts reference — configured per-project so you never forget the exact command flags.](/img/command-center-images/cce-shortcuts.png)
+
 the dashboard is a local Node.js server. no framework, no build step, runs offline, starts in two seconds.
 
 ```bash
@@ -206,9 +216,13 @@ here is the thing: everyone's pain is different. the folder structure and script
 
 for me, the two things i added that made the biggest difference:
 
+![Embedded terminal with per-project tabs — each one opens a PTY in that project's directory. Quick-command buttons above run the commands you'd otherwise forget.](/img/command-center-images/cce-terminal.png)
+
 **CMD view** — `xterm.js` + `node-pty` over WebSocket. a real terminal embedded in the browser, one tab per project. each tab opens a PTY session in that project's directory. per-project quick-command buttons — you configure a label and a shell command, they appear as buttons above the terminal. so `Build Debug` runs `./gradlew assembleDebug` in the Android tab. `Sync Pods` runs `pod install` in the iOS tab. i click once, watch it run. no switching windows, no remembering the exact command flags.
 
 before this i was constantly switching terminal windows and losing track of which one was which. now everything is in one browser tab.
+
+![RSS feeds grouped by platform — no algorithm, no app, just the dev blogs and release channels you actually want to follow.](/img/command-center-images/cce-rss.png)
 
 **RSS feeds / newsletters** — each platform has its own dev newsletter and release channel. iOS dev forum, Android releases, Kotlin blog. i added an RSS tab. feed URLs live in a `feeds.json` file, keyed by platform:
 
@@ -233,6 +247,8 @@ other ideas i have seen or thought about that i haven't built yet: a meeting not
 ---
 
 ## The two-tier AI model
+
+![Local AI chat powered by Mistral 7B via Ollama — answers questions about your codebase from the RAG index, free and fully offline.](/img/command-center-images/cce-local-ai-chat.png)
 
 the local web dashboard has a built-in AI chat powered by Mistral 7B via Ollama — not Claude. this is the layer that routes cheap questions away from the cloud.
 

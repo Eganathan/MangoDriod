@@ -1,9 +1,8 @@
 ---
-date: '2026-04-26'
+date: '2026-04-26T10:25:15+05:30'
 title: 'A AI Command Center to manage multiple repos [Expriment]'
 categories: ["software-development", "AI"]
 tags: ['software-development', 'ai', 'tools', 'productivity', 'claude', 'llm']
-draft: true
 ---
 
 a team of 20+ handed over a project to our team of 5. i ended up owning all the native clients — iOS, Android, Windows — solo. multiple repos, multiple languages, multiple release timelines.

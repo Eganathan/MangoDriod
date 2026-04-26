@@ -385,3 +385,5 @@ the rest you will figure out as you go, shaped around whatever is actually slowi
 ---
 
 *a note on this post — the ideas, the frustration, the architecture, the decisions are all mine. i used Claude to help structure and articulate things i already knew but was too lazy to write out properly. felt right to mention it given the whole post is about working with AI. use your tools.*
+
+*after writing this i came across andrej karpathy's wiki pattern — same instinct around plain files, single source of truth, readable by humans and machines. worth looking up if this resonated.*

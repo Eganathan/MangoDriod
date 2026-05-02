@@ -1,31 +1,31 @@
 ---
 date: '2026-04-26T10:25:15+05:30'
-title: 'A AI Command Center to manage multiple repos [Expriment]'
+title: 'AI Command Center to manage multiple projects [Expriment]'
 categories: ["software-development", "AI"]
 tags: ['software-development', 'ai', 'tools', 'productivity', 'claude', 'llm']
 ---
 
-a team of 20+ handed over a project to our team of 5. i ended up owning all the native clients — iOS, Android, Windows — solo. multiple repos, multiple languages, multiple release timelines.
+a team of 20+ handed over a project to our team of 5. i ended up owning all the native clients: iOS, Android, Windows by mostly bymyself. There are multiple repos, multiple languages and the hardship of understanding thier 7 year codebase.
 
-the first week i was stressed. the second week i was scared. the third week i stopped panicking and started building.
+initially the thought of this was pretty stressful, but being a good solutionist i proceeded with dicecting the issues one by one and presistent on finding a solition for them all.
 
-i checked the usage stats, shared them with my manager, got iOS and Android prioritized, Windows parked for later. at least i had a direction.
+The first thing is prioritizing platoforms, The stats were clear hence shared them with my manager, got iOS, Android prioritized in order and parked Windows for later as usage is extremly low. now the priority is set to the next thing.
 
-but the actual problem was not the workload. it was the cognitive overhead. i can barely understand my own code after a few weeks. here i am inheriting code from N people who clearly took shortcuts to ship fast. folder structure was a dump. files everywhere. and on top of reverse-engineering three codebases i had to track what is done, what is next, what is blocked — simultaneously, across all platforms.
+The problem was not the workload. it was the cognitive overhead. i can barely understand my own code after a few months. here i am inheriting code from 6-7 people who clearly took shortcuts to ship fast. folder structure was a dump. files everywhere. and on top of reverse-engineering three codebases i had to track what is done, what is next, what is blocked: simultaneously, across all platforms this task alone without AI would be a real pain and would def take more than few months.
 
-and i only have the $20 Claude subscription. so every session i was wasting the first chunk of context re-explaining the same codebase to Claude, re-orienting it to where i left off, re-answering questions it should already know. by lunch i was running on fumes.
+I opted to the $20 Claude subscription. so every session i was wasting the first chunk of context re-explaining the same codebase to Claude, re-orienting it to where i left off, re-answering questions it should already know. by lunch i was running out of tokens i had to use my colleague's accounts to do whole thing again (Thanks Arun!)
 
-i needed a single place. one terminal. one browser tab. one AI session that already knows everything and picks up exactly where we left off.
+out of this mess i needed a single place. one terminal. one browser tab. one AI session that already knows everything and picks up exactly where we left off, an interface for me and claude to read/update/learn about the project im working and it has to be highly structured, organized and prioritized.
 
-so i built one. i call it the **Command Center**. this post is the full breakdown — what it is, how it works, and how you can shape it for your own problems.
+so i built one. i call it the **Command Center**. if you have any other name to suggest, my inbox is open. this post is the full breakdown of what it is, how it works, and how you can shape it for your your own structure if you ever are in that spot, a little future pridction i think by the end of 2026 we all might have to work in this kind of set-up working on multiple projects simultaniously or atleast we will be capabble of that level of productivity.
 
 ---
 
-## What is it
+## What is this AI-Command Center
 
-![The Command Center home — one browser tab with everything: repo status, today's focus, quick links, and doc sync state.](/img/command-center-images/cce-home.png)
+![The Command Center's Dashboard Home Screen — This is the primary human interface rendered in the browser tab with everything: repo status, today's focus, quick links, docs and more](/img/command-center-images/cce-home.png)
 
-the idea is simple. instead of having your docs in Notion, your tasks in Linear, your terminal tabs scattered across screens, your AI knowing nothing about any of it — you put a single shared operational layer above all your repos. not inside them. above them.
+the idea is simple. instead of having our docs, tasks, changelogs in multiple apps and your terminal tabs scattered across screens for different platforms wokfing with different stages of the tasks or even totally different task altogether: and your daily runner claude-code has no means to know about all these instead you put a single shared operational layer above all your repos. not inside them. above them hence the term command center.
 
 ```
 MyWorkspace/
@@ -43,17 +43,17 @@ MyWorkspace/
     └── dashboard/     ← local web dashboard
 ```
 
-the project folders stay completely independent. `git -C ios/ status` never bleeds into `git -C android/ status`. you can add or remove a project folder without touching anything else.
+Don't worry the project folders stay completely independent. `git -C ios/ status` never bleeds into `git -C android/ status`. you can add or remove a project folder without touching anything else, this is very important sepearation for corporate repositories where the restrictions are tight.
 
-everything in `.ops/` is Markdown. not because i have a philosophy about it, just because it is readable by me, readable by the AI, diffs cleanly, and has zero dependencies.
+almost everything in `.ops/` is a markdown, here is where it might looks like the WiKi pattern shared by the Andrej Karpathy. it is readable by me and the AI, diffs cleanly, and has zero dependencies you can stop here is you want a bare simple command-center but if you are like me this is not enough and there are many flaws here like doc's going stale as we make changes so lets get to the text stage.
 
 ---
 
 ## The scripts are the real MVP
 
-here is something people do not talk about enough: **scripts save more tokens than any other optimization**.
+As i said earlier i still use the 20$ subscription so for me tokens are really valuable running out of limit means one less productive day that might gift me a day of guilt so making use of scripts to save some routine commands that im sure will be helpful for claude to not be too dependent on remote calls, it might be confusting so here is example:
 
-when you ask Claude "what is the git status across all my repos?" one of two things happens. either Claude tries to figure it out by calling tools one at a time — burning tokens on reasoning and multiple tool calls — or it does not know and asks you. both are bad.
+when i ask Claude "what is the git status across all my repos?"  Claude tries to figure it out by calling tools one at a time burning tokens on reasoning and multiple tool calls to give me accurate and proper response
 
 but if you have a script that does it:
 
@@ -70,9 +70,9 @@ for dir in android ios ios-dataKit ios-textEditor win; do
 done
 ```
 
-Claude runs the script. gets the answer in one shot. no reasoning, no guessing, no tool call loop.
+Claude runs the script. gets the answer in one shot. no reasoning, no guessing, no tool call loop you don't have to write this manually you can just ask it to do, just make sure you get the code though.
 
-the scripts i have built up over time:
+the scripts i have accumulated up over time:
 
 | Script | What it does |
 |--------|-------------|
@@ -84,11 +84,11 @@ the scripts i have built up over time:
 | `git_branch_all.sh` | current branch per repo |
 | `doc_sync.js` | diffs each doc's last-verified commit against HEAD, flags stale docs |
 | `pre-push-codecheck.sh` | pre-push validation — lint, build check, etc. per platform |
-| `log_token_saving.py` | PostToolUse hook — logs each local MCP call with estimated tokens saved, reminds Claude to tag responses with `[tib-mcp-info]` |
+| `log_token_saving.py` | PostToolUse hook — logs each local MCP call with estimated tokens saved, reminds Claude to tag responses with `[local-command-center-mcp]` |
 
-the pattern is always the same: take something that would require Claude to do N tool calls or make assumptions, turn it into one script, let Claude just run it and read the output. you get a more reliable answer and you spend a fraction of the tokens.
+the pattern is always same: take something that would require Claude to do many tool calls or make assumptions, turn it into one script, let Claude just run it and read the output. you get a more reliable answer and you spend a fraction of the tokens.
 
-the `session_context.sh` one is worth explaining. it runs as a session-start hook and injects this into Claude's context automatically before you type anything:
+the `session_context.sh` one is worth explaining. it runs as a session-start hook and injects the project context automatically before i type anything:
 
 ```
 === SESSION BRIEFING (2026-04-26) ===
@@ -107,7 +107,7 @@ DOC SYNC: 8 stale docs — run /sync
 =====================================
 ```
 
-this replaces re-explaining the codebase every session. the entire briefing is generated from actual file state and costs about 100 tokens to inject. compare that to the 500–1000 tokens you'd spend manually orienting Claude each time.
+this replaces re-explaining the codebase every session. the entire briefing is generated from actual file state and costs about 100 tokens to inject i shared only a small portion of this but it basically added more relavant contexts that im sure will help claude so compare that to the 500–1000 tokens you'd spend manually orienting Claude each time.
 
 ---
 

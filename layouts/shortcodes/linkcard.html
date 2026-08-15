@@ -1,0 +1,14 @@
+{{ $url := .Get "url" }}
+{{ $title := .Get "title" }}
+{{ $desc := .Get "desc" | default "" }}
+{{ $type := .Get "type" | default "link" }}
+
+<a href="{{ $url }}" target="_blank" rel="noopener noreferrer" class="linkcard">
+  <span class="linkcard-type linkcard-type--{{ $type }}">{{ $type }}</span>
+  <span class="linkcard-body">
+    <span class="linkcard-title">{{ $title }}</span>
+    {{ if $desc }}<span class="linkcard-desc">{{ $desc }}</span>{{ end }}
+    <span class="linkcard-url">{{ $url | replaceRE "https?://" "" }}</span>
+  </span>
+  <span class="linkcard-arrow">↗</span>
+</a>

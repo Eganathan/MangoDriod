@@ -1,0 +1,87 @@
+.linkcard {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  margin: 10px 0;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.2s, background 0.2s;
+  background: var(--entry);
+}
+
+.linkcard:hover {
+  border-color: var(--primary);
+  background: var(--code-bg);
+}
+
+.linkcard-type {
+  flex-shrink: 0;
+  font-size: 0.65rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 3px 8px;
+  border-radius: 4px;
+  background: var(--tertiary);
+  color: var(--secondary);
+}
+
+.linkcard-type--video    { background: #fde68a; color: #78350f; }
+.linkcard-type--playlist { background: #bbf7d0; color: #14532d; }
+.linkcard-type--article  { background: #bfdbfe; color: #1e3a5f; }
+.linkcard-type--doc      { background: #e9d5ff; color: #4c1d95; }
+.linkcard-type--tool     { background: #fed7aa; color: #7c2d12; }
+.linkcard-type--repo     { background: #d1fae5; color: #065f46; }
+.linkcard-type--link     { background: var(--tertiary); color: var(--secondary); }
+
+.linkcard-body {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+  min-width: 0;
+}
+
+.linkcard-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.linkcard-desc {
+  font-size: 0.8rem;
+  color: var(--secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.linkcard-url {
+  font-size: 0.72rem;
+  color: var(--secondary);
+  opacity: 0.6;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.linkcard-arrow {
+  flex-shrink: 0;
+  font-size: 1rem;
+  color: var(--secondary);
+  opacity: 0.5;
+}
+
+/* dark mode label colours invert nicely on their own via opacity */
+.dark .linkcard-type--video    { background: #92400e; color: #fde68a; }
+.dark .linkcard-type--playlist { background: #14532d; color: #bbf7d0; }
+.dark .linkcard-type--article  { background: #1e3a5f; color: #bfdbfe; }
+.dark .linkcard-type--doc      { background: #4c1d95; color: #e9d5ff; }
+.dark .linkcard-type--tool     { background: #7c2d12; color: #fed7aa; }
+.dark .linkcard-type--repo     { background: #065f46; color: #d1fae5; }

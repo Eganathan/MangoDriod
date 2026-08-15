@@ -22,11 +22,18 @@ menu:
       name: Archives
       url: /archives/
       weight: 4
+    - identifier: "resources"
+      name: Resources
+      url: /resources/
+      weight: 5
       
+
+enableGitInfo: true
 
 params:
   env: production
   mainSections: ["posts"]
+  ShowLastMod: true
   defaultTheme: auto 
   title: MangoDriod-A personal Tech Blog of Eknath
   description: "I write about Software-Development,Kotlin, Compose, Android and everything that interests me."

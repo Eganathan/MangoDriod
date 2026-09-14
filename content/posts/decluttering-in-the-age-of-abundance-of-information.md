@@ -105,5 +105,3 @@ Sometimes, to truly think, I turn off the fan in my room.
 In that sudden, absolute stillness—when even the ambient mechanical hum drops to zero—the mind shifts into a meditative state. You realize just how much noise we tolerate daily, both digitally and physically.
 
 True freedom in the digital age is the ability to step into that silence without anxiety, look at a blank screen without reaching for a refresh button, and let stillness cultivate the ideas that matter.
-
-> *What is one piece of digital clutter you will let go of today?*
